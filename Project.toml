@@ -1,0 +1,18 @@
+name = "SGtoRFEM"
+uuid = "c4e901a8-bc5e-4a22-8db3-7c88164cb485"
+authors = ["Josua A <cylconehopper@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+ODBC = "be6f12e9-ca4f-5eb2-a339-a4f995cc0291"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+DataFrames = "1.7.0"
+ODBC = "1.1.2"
+Pkg = "1.11.0"
+Revise = "3.6.4"
+Test = "1.11.0"
