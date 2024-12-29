@@ -49,7 +49,6 @@ push!(pyscript, create_hinges(hinges))
 
 # CREATE MEMBERS
 push!(pyscript, create_beam(df_members, parse_dir_angle(df_members, df_nodes)))
-write("sg2rfem.py", join(pyscript, ""))
 
 
 # CREATE NODAL RESTRAITNS
@@ -92,5 +91,5 @@ df_member_forces = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Member 
 push!(pyscript, create_member_load_distributed(df_member_forces))
 
 # write to file
-# write("sg2rfem.py", join(pyscript, ""))
+write("sg2rfem.py", join(pyscript, ""))
 ODBC.disconnect!(dbconn)
