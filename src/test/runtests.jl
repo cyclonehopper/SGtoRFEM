@@ -30,6 +30,7 @@ df_secprop = DataFrame(query_secprop)
 
 push!(pyscript, create_sections(df_secprop))
 
+
 # CREATE NODES
 query_nodes = DBInterface.execute(dbconn, "SELECT * FROM Nodes");
 df_nodes = DataFrame(query_nodes)
@@ -47,7 +48,8 @@ hinges = get_unique_hinges(df_members)
 push!(pyscript, create_hinges(hinges))
 
 # CREATE MEMBERS
-push!(pyscript, create_beam(df_members))
+push!(pyscript, create_beam(df_members, parse_dir_angle(df_members, df_nodes)))
+write("sg2rfem.py", join(pyscript, ""))
 
 
 # CREATE NODAL RESTRAITNS
@@ -65,12 +67,30 @@ df_LC_table = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Combination 
 
 push!(pyscript, create_primary_loadcase_titles(df_lc_titles, df_LC_table))
 
+
 # CREATE DESIGN SITUATIONS
 push!(pyscript, create_design_situations())
 
 # CAREAT LOAD COMBINATIONS TABLE  
 push!(pyscript, create_load_combinations(df_lc_titles, df_LC_table))
 
+
+# CREATE NODAL LOADS
+query_nodal_loads = DBInterface.execute(dbconn, "SELECT * FROM `Node Loads`");
+df_nodal_loads = DataFrame(query_nodal_loads)
+push!(pyscript, create_nodal_loads(df_nodal_loads))
+
+
+
+# CREATE MEMBER LOADS - CONCENTRATED
+df_member_loads = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Member Concentrated Loads`"))
+push!(pyscript, create_member_load_concentrated(df_member_loads))
+
+
+# CREATE MEMBER LOADS - DISTRIBUTED
+df_member_forces = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Member Distributed Forces`"))
+push!(pyscript, create_member_load_distributed(df_member_forces))
+
 # write to file
-write("sg2rfem.py", join(pyscript, ""))
+# write("sg2rfem.py", join(pyscript, ""))
 ODBC.disconnect!(dbconn)
