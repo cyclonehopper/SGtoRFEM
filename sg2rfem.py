@@ -22,6 +22,7 @@ materials.create(2, name="dummy_steel", definition_type="E | (G) | ν")
 
 # Create Sections
 
+sections.create_standardized_steel(1, "150 UB 14.0")
 sections.create_standardized_steel(40, "40diaRod")
 sections.create_standardized_steel(65, "65*5 EA")
 sections.create_standardized_steel(75, "75*6 EA")
@@ -56,1785 +57,1061 @@ sections.create_standardized_steel(1002, "250*6shs_dum")
 
 # Create Nodes
 nodes.create_standard( 1, 0.0, 0.0, 0.0)
-nodes.create_standard( 2, 0.0, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 3, 10.78, 0.0, 0.0)
-nodes.create_standard( 4, 3.0, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 5, 15.78, 0.0, 0.0)
-nodes.create_standard( 6, 10.78, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 7, 0.0, 9.4, 5.75564986296517e-16)
-nodes.create_standard( 8, 0.0, 9.4, 20.122)
-nodes.create_standard( 9, 3.0, 9.4, 5.75564986296517e-16)
-nodes.create_standard( 10, 3.0, 9.4, 20.122)
-nodes.create_standard( 11, 10.78, 9.4, 5.75564986296518e-16)
-nodes.create_standard( 12, 10.78, 9.4, 20.122)
-nodes.create_standard( 13, 0.0, -7.47744639643944e-16, 12.212)
-nodes.create_standard( 14, 0.0, 9.4, 12.212)
-nodes.create_standard( 15, 3.0, -7.47744639643944e-16, 12.212)
-nodes.create_standard( 16, 10.78, -7.47744639643944e-16, 12.212)
-nodes.create_standard( 17, 3.0, 9.4, 12.212)
-nodes.create_standard( 18, 10.78, 9.4, 12.212)
-nodes.create_standard( 19, 0.0, 3.1, 12.212)
-nodes.create_standard( 20, 3.0, 3.1, 12.212)
-nodes.create_standard( 21, 6.55, 4.1, 12.212)
-nodes.create_standard( 22, 10.78, 3.19000000000001, 12.212)
-nodes.create_standard( 23, 10.78, 3.1, 12.212)
-nodes.create_standard( 24, 3.0, 7.126, 12.212)
-nodes.create_standard( 25, 4.285, 8.263, 12.212)
-nodes.create_standard( 26, 15.78, 1.73000003067351, 19.4512829814057)
-nodes.create_standard( 27, 10.78, 7.126, 12.212)
-nodes.create_standard( 28, 6.55, 6.8, 12.212)
-nodes.create_standard( 29, 8.7, 3.1, 12.212)
-nodes.create_standard( 30, 8.7, 7.126, 12.212)
-nodes.create_standard( 31, 4.285, 9.4, 12.212)
-nodes.create_standard( 32, 6.55, 9.4, 12.212)
-nodes.create_standard( 33, 8.7, 8.263, 12.212)
-nodes.create_standard( 34, 8.7, 9.4, 12.212)
-nodes.create_standard( 35, 7.75, 6.559, 13.412)
-nodes.create_standard( 36, 3.0, 9.4, 11.256)
-nodes.create_standard( 37, 6.55, 9.4, 11.256)
-nodes.create_standard( 38, 10.78, 9.4, 11.256)
-nodes.create_standard( 39, 8.7, 9.4, 11.256)
-nodes.create_standard( 40, 4.285, 7.126, 12.212)
-nodes.create_standard( 41, 7.625, 5.45, 12.212)
-nodes.create_standard( 42, 10.78, 4.67874701502286, 19.7091414942924)
-nodes.create_standard( 43, 8.525, 9.4, 11.256)
-nodes.create_standard( 44, 10.78, 1.73000003067351, 19.4512829814057)
-nodes.create_standard( 45, 4.01, 7.31, 8.712)
-nodes.create_standard( 46, 3.31, 7.31, 9.412)
-nodes.create_standard( 47, 10.78, 7.62749399937221, 19.9670000071791)
-nodes.create_standard( 48, 6.89, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 49, 6.89, 1.73, 19.45128)
-nodes.create_standard( 50, 6.89, 7.6274939996861, 19.9670000035896)
-nodes.create_standard( 51, 6.89, 9.4, 20.122)
-nodes.create_standard( 52, 3.0, 1.73, 19.95128)
-nodes.create_standard( 53, 3.0, 7.627494, 20.467)
-nodes.create_standard( 54, 10.78, 1.73, 19.95128)
-nodes.create_standard( 55, 10.78, 7.627494, 20.467)
-nodes.create_standard( 56, 3.0, 1.73, 19.45128)
-nodes.create_standard( 57, 3.0, 7.627494, 19.967)
-nodes.create_standard( 58, 0.0, 4.7, 12.212)
-nodes.create_standard( 59, 0.0, 4.7, 19.7109999963569)
-nodes.create_standard( 60, 6.93, 7.627494, 20.467)
-nodes.create_standard( 61, 6.93, 1.73, 19.95128)
-nodes.create_standard( 62, 3.0, 4.70001690877784, 19.7109999963569)
-nodes.create_standard( 63, 10.78, -1.096023e-15, 17.16)
-nodes.create_standard( 64, 10.78, 0.364999999999999, 17.16)
-nodes.create_standard( 65, 3.0, -1.096023e-15, 17.16)
-nodes.create_standard( 66, 3.0, 0.364999999999999, 17.16)
-nodes.create_standard( 67, 0.0, -1.096023e-15, 17.16)
-nodes.create_standard( 68, 0.0, 0.364999999999999, 17.16)
-nodes.create_standard( 69, 0.0, 9.4, 17.16)
-nodes.create_standard( 70, 0.0, 9.035, 17.16)
-nodes.create_standard( 71, 3.0, 9.4, 17.16)
-nodes.create_standard( 72, 3.0, 9.035, 17.16)
-nodes.create_standard( 73, 10.78, 9.4, 17.16)
-nodes.create_standard( 74, 10.78, 9.035, 17.16)
-nodes.create_standard( 75, 2.36, 7.31, 8.712)
-nodes.create_standard( 76, 3.06, 7.31, 9.412)
-nodes.create_standard( 77, 2.0, 9.4, 12.212)
-nodes.create_standard( 78, 10.78, -3.926088e-16, 6.412)
-nodes.create_standard( 79, 3.0, -3.92608797035454e-16, 6.412)
-nodes.create_standard( 80, 4.61, 3.19, 6.412)
-nodes.create_standard( 81, 10.78, 3.19, 6.412)
-nodes.create_standard( 82, 9.1, 3.19, 6.412)
-nodes.create_standard( 83, 10.78, 7.31, 6.412)
-nodes.create_standard( 84, 10.78, 9.4, 6.412)
-nodes.create_standard( 85, 3.0, 9.4, 6.412)
-nodes.create_standard( 86, 0.0, 9.4, 6.412)
-nodes.create_standard( 87, 9.1, 9.4, 6.412)
-nodes.create_standard( 88, 0.0, -3.92608797035454e-16, 6.412)
-nodes.create_standard( 89, 0.71, -3.926088e-16, 6.412)
-nodes.create_standard( 90, 0.71, 3.19, 1.08350313313479e-15)
-nodes.create_standard( 91, 0.71, 3.19, 6.412)
-nodes.create_standard( 92, 0.71, 3.19, 5.912)
-nodes.create_standard( 93, 0.71, 7.31, -4.40584797378046e-16)
-nodes.create_standard( 94, 0.71, 7.31, 5.912)
-nodes.create_standard( 95, 0.71, 7.31, 6.412)
-nodes.create_standard( 96, 4.215, 7.31, 6.412)
-nodes.create_standard( 97, 0.710000000000001, 9.4, 6.412)
-nodes.create_standard( 98, 2.36, -3.926088e-16, 6.412)
-nodes.create_standard( 99, 2.36, 3.19, 6.412)
-nodes.create_standard( 100, 15.78, 9.4, 15.056)
-nodes.create_standard( 101, 2.36, 2.04682593856655, 6.412)
-nodes.create_standard( 102, 10.78, 1.16, 6.412)
-nodes.create_standard( 103, 2.36, 7.31, 6.412)
-nodes.create_standard( 104, 1.9, 8.31393013100437, 6.412)
-nodes.create_standard( 105, 3.0, 7.31, 6.412)
-nodes.create_standard( 106, 5.575, 9.4, 6.412)
-nodes.create_standard( 107, 9.1, 8.06, 6.412)
-nodes.create_standard( 108, 5.575, 1.16, 6.412)
-nodes.create_standard( 109, 9.1, 7.31, 6.412)
-nodes.create_standard( 110, 2.36, 7.31, 9.412)
-nodes.create_standard( 111, 2.36, 3.19, 9.412)
-nodes.create_standard( 112, 2.985, 7.31, 9.412)
-nodes.create_standard( 113, 2.985, 3.19, 9.412)
-nodes.create_standard( 114, 4.01, 7.31, 7.612)
-nodes.create_standard( 115, 8.0175, 8.06, 7.612)
-nodes.create_standard( 116, 9.94, -3.926088e-16, 6.412)
-nodes.create_standard( 117, 9.94, 1.16, 6.412)
-nodes.create_standard( 118, 2.36, 3.19, 8.712)
-nodes.create_standard( 119, 9.94, 3.19, 6.412)
-nodes.create_standard( 120, 10.78, -5.70176719821972e-16, 9.312)
-nodes.create_standard( 121, 9.74, 9.4, 12.212)
-nodes.create_standard( 122, -8.88178419700125e-16, 8.263, 12.212)
-nodes.create_standard( 123, 6.55, 8.263, 12.212)
-nodes.create_standard( 124, 6.55, 8.263, 12.412)
-nodes.create_standard( 125, 3.06, 3.19, 9.412)
-nodes.create_standard( 126, 4.01, 3.19, 8.712)
-nodes.create_standard( 127, 0.0, 1.72999974161328, 19.4512829547873)
-nodes.create_standard( 128, 0.71, 6.0, 5.912)
-nodes.create_standard( 129, 15.78, 4.7, 6.412)
-nodes.create_standard( 130, 0.71, 4.5, 5.912)
-nodes.create_standard( 131, 3.0, 8.355, 6.412)
-nodes.create_standard( 132, 0.0, 2.768, 4.0)
-nodes.create_standard( 133, 3.31, 3.19, 9.412)
-nodes.create_standard( 134, 0.0, 9.4, 7.012)
-nodes.create_standard( 135, 0.0, -4.29347e-16, 7.012)
-nodes.create_standard( 136, 1.5, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 137, 0.0, 7.62749371031198, 19.9669999805608)
-nodes.create_standard( 138, 15.78, 7.62749399937221, 19.9670000071791)
-nodes.create_standard( 139, 1.5, 9.4, 20.122)
-nodes.create_standard( 140, 6.55, 7.126, 12.412)
-nodes.create_standard( 141, 9.74, 7.126, 12.212)
-nodes.create_standard( 142, 6.55, 6.559, 13.412)
-nodes.create_standard( 143, 6.55, 7.126, 12.212)
-nodes.create_standard( 144, 10.78, 8.263, 12.212)
-nodes.create_standard( 145, 3.0, 8.263, 12.212)
-nodes.create_standard( 146, 6.55, 3.1, 12.212)
-nodes.create_standard( 147, 8.7, 8.263, 12.412)
-nodes.create_standard( 148, 8.7, 7.126, 12.412)
-nodes.create_standard( 149, 8.7, 7.126, 13.412)
-nodes.create_standard( 150, 8.7, 6.559, 13.412)
-nodes.create_standard( 151, 7.75, 6.79157043087442, 13.3625656288672)
-nodes.create_standard( 152, 10.78, 2.606, 6.412)
-nodes.create_standard( 153, 6.725, 9.4, 11.256)
-nodes.create_standard( 154, 1.855, 7.31, 6.412)
-nodes.create_standard( 155, 3.0, 3.19, 6.412)
-nodes.create_standard( 156, 3.0, 1.16, 6.412)
-nodes.create_standard( 157, 4.6345, -3.92608799258864e-16, 6.412)
-nodes.create_standard( 158, 10.78, 5.92, 12.212)
-nodes.create_standard( 159, 6.55, 7.126, 13.412)
-nodes.create_standard( 160, 10.78, 4.27933333333333, 12.212)
-nodes.create_standard( 161, 10.78, 9.4, 0.05)
-nodes.create_standard( 162, 1.855, 3.19, 6.412)
-nodes.create_standard( 163, 10.68, 3.1, 12.212)
-nodes.create_standard( 164, 10.78, -3.061516e-18, 0.05)
-nodes.create_standard( 165, 4.6345, 1.16, 6.412)
-nodes.create_standard( 166, 13.28, 9.4, 20.122)
-nodes.create_standard( 167, 1.9, 9.4, 6.412)
-nodes.create_standard( 168, 4.01, 3.19, 9.412)
-nodes.create_standard( 169, 10.68, 6.0, 12.412)
-nodes.create_standard( 170, 8.7, 6.8, 12.212)
-nodes.create_standard( 171, 8.8, 6.0, 12.412)
-nodes.create_standard( 172, 8.7, 4.1, 12.212)
-nodes.create_standard( 173, 7.625, 6.8, 12.212)
-nodes.create_standard( 174, 7.625, 4.1, 12.212)
-nodes.create_standard( 175, 3.0, 9.4, 0.05)
-nodes.create_standard( 176, 7.625, 5.45, 12.712)
-nodes.create_standard( 177, 4.01, 1.16, 6.412)
-nodes.create_standard( 178, 4.01, 1.16, 7.612)
-nodes.create_standard( 179, 4.01, 3.19, 6.412)
-nodes.create_standard( 180, 4.01, 3.19, 7.612)
-nodes.create_standard( 181, 9.1, 3.19, 7.612)
-nodes.create_standard( 182, 9.1, 1.16, 6.412)
-nodes.create_standard( 183, 9.1, 1.16, 7.612)
-nodes.create_standard( 184, 5.575, 3.19, 7.612)
-nodes.create_standard( 185, 5.575, 1.16, 7.612)
-nodes.create_standard( 186, 6.99, 3.19, 7.612)
-nodes.create_standard( 187, 6.99, 1.16, 7.612)
-nodes.create_standard( 188, 4.01, 2.49, 7.612)
-nodes.create_standard( 189, 4.01, 2.114, 7.612)
-nodes.create_standard( 190, 5.575, 2.49, 7.612)
-nodes.create_standard( 191, 5.575, 2.114, 7.612)
-nodes.create_standard( 192, 6.99, 2.49, 7.612)
-nodes.create_standard( 193, 6.99, 2.114, 7.612)
-nodes.create_standard( 194, 5.575, 2.114, 7.927)
-nodes.create_standard( 195, 4.01, 2.114, 7.927)
-nodes.create_standard( 196, 6.99, 2.114, 7.927)
-nodes.create_standard( 197, 5.575, 2.49, 7.927)
-nodes.create_standard( 198, 4.01, 2.49, 7.927)
-nodes.create_standard( 199, 6.99, 2.49, 7.927)
-nodes.create_standard( 200, 4.7925, 3.19, 7.612)
-nodes.create_standard( 201, 4.7925, 1.16, 7.612)
-nodes.create_standard( 202, 8.045, 3.19, 7.612)
-nodes.create_standard( 203, 8.045, 1.16, 7.612)
-nodes.create_standard( 204, 1.535, 3.19, 6.412)
-nodes.create_standard( 205, 1.535, -3.926088e-16, 6.412)
-nodes.create_standard( 206, 5.575, 3.19, 6.412)
-nodes.create_standard( 207, 2.36, 3.19, 8.912)
-nodes.create_standard( 208, 3.485, -3.92608798517727e-16, 6.412)
-nodes.create_standard( 209, 3.485, 1.16, 6.412)
-nodes.create_standard( 210, 9.1, 8.06, 7.612)
-nodes.create_standard( 211, 8.132, -3.926088e-16, 6.412)
-nodes.create_standard( 212, 6.99, -1.70564195074969e-16, 6.412)
-nodes.create_standard( 213, 5.784, -3.926088e-16, 6.412)
-nodes.create_standard( 214, 5.784, 1.16, 6.412)
-nodes.create_standard( 215, -7.0, 2.768, 4.0)
-nodes.create_standard( 216, 8.132, 1.16, 6.412)
-nodes.create_standard( 217, 9.1, -3.926088e-16, 6.412)
-nodes.create_standard( 218, 6.935, 9.4, 6.412)
-nodes.create_standard( 219, 9.1, 7.31, 7.612)
-nodes.create_standard( 220, 1.9, 7.31, 6.412)
-nodes.create_standard( 221, 6.935, 8.06, 6.412)
-nodes.create_standard( 222, 6.935, 8.06, 7.612)
-nodes.create_standard( 223, 6.935, 7.31, 6.412)
-nodes.create_standard( 224, 6.935, 7.31, 7.612)
-nodes.create_standard( 225, 5.575, 7.31, 6.412)
-nodes.create_standard( 226, 8.0175, 9.4, 6.412)
-nodes.create_standard( 227, 8.0175, 7.31, 6.412)
-nodes.create_standard( 228, 0.0, -2.449213e-16, 4.0)
-nodes.create_standard( 229, 0.71, -2.44921302964546e-16, 4.0)
-nodes.create_standard( 230, 0.71, 3.19, 4.0)
-nodes.create_standard( 231, 0.71, 7.31, 4.0)
-nodes.create_standard( 232, 0.710000000000001, 9.4, 4.0)
-nodes.create_standard( 233, 3.0, -2.44921270764475e-16, 4.0)
-nodes.create_standard( 234, 2.35, -2.449213e-16, 4.0)
-nodes.create_standard( 235, 2.35, 9.4, 4.0)
-nodes.create_standard( 236, 2.35, 3.19, 4.0)
-nodes.create_standard( 237, 2.35, 7.31, 4.0)
-nodes.create_standard( 238, 2.35, 4.54, 4.0)
-nodes.create_standard( 239, 0.71, 4.54, 4.0)
-nodes.create_standard( 240, 2.35, 5.96, 4.0)
-nodes.create_standard( 241, 0.71, 5.96, 4.0)
-nodes.create_standard( 242, 1.32, 3.19, 4.0)
-nodes.create_standard( 243, 1.32, 4.54, 4.0)
-nodes.create_standard( 244, 1.32, 5.96, 4.0)
-nodes.create_standard( 245, 1.32, 7.31, 4.0)
-nodes.create_standard( 246, 4.44089209850063e-16, 9.4, 4.0)
-nodes.create_standard( 247, 3.0, 9.4, 4.0)
-nodes.create_standard( 248, 0.71, 7.728, 4.0)
-nodes.create_standard( 249, 0.71, 8.28533333333333, 4.0)
-nodes.create_standard( 250, 2.36, 4.56333333333333, 9.412)
-nodes.create_standard( 251, 2.985, 4.56333333333333, 9.412)
-nodes.create_standard( 252, 2.36, 5.93666666666667, 9.412)
-nodes.create_standard( 253, 2.985, 5.93666666666667, 9.412)
-nodes.create_standard( 254, 6.99, 1.16, 6.412)
-nodes.create_standard( 255, 15.78, 4.7, 0.05)
-nodes.create_standard( 257, 7.61166648517463, 8.263, 12.212)
-nodes.create_standard( 259, 2.36, 7.31, 8.912)
-nodes.create_standard( 262, 3.0, 0.0, 0.0)
-nodes.create_standard( 263, 13.28, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 264, 15.78, -3.926088e-16, 6.412)
-nodes.create_standard( 265, 4.945, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 266, 15.78, -7.47744639643944e-16, 12.212)
-nodes.create_standard( 267, 15.78, -1.096023e-15, 17.16)
-nodes.create_standard( 268, 15.78, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 269, 15.78, 9.4, 5.75564986296518e-16)
-nodes.create_standard( 270, 15.78, 9.4, 6.412)
-nodes.create_standard( 271, 1.0, 8.263, 12.212)
-nodes.create_standard( 272, 15.78, 9.4, 11.256)
-nodes.create_standard( 273, 15.78, 9.4, 12.212)
-nodes.create_standard( 274, 15.78, 9.4, 17.16)
-nodes.create_standard( 275, 15.78, 9.4, 20.122)
-nodes.create_standard( 276, 15.78, 4.7, 19.711)
-nodes.create_standard( 277, 8.835, -1.18174513143859e-15, 19.3)
-nodes.create_standard( 278, 4.945, 9.4, 20.122)
-nodes.create_standard( 279, 8.835, 9.4, 20.122)
-nodes.create_standard( 281, 15.78, 0.364999999999999, 17.16)
-nodes.create_standard( 282, 15.78, 9.035, 17.16)
-nodes.create_standard( 283, 5.57, 3.1, 12.212)
-nodes.create_standard( 284, 6.45, 3.1, 12.212)
-nodes.create_standard( 285, 6.45, 3.1, 12.412)
-nodes.create_standard( 286, 5.57, 7.126, 12.212)
-nodes.create_standard( 287, 5.57, 8.263, 12.212)
-nodes.create_standard( 288, 6.99, 3.19, 6.412)
-nodes.create_standard( 289, 2.36, 6.81, 9.412)
-nodes.create_standard( 290, 2.36, 3.69, 9.412)
-nodes.create_standard( 291, 4.01, 7.31, 9.412)
-nodes.create_standard( 292, 4.01, 7.31, 6.412)
-nodes.create_standard( 293, 8.0175, 7.31, 7.612)
-nodes.create_standard( 294, 6.45, 4.10110940707849, 12.412)
-nodes.create_standard( 296, 15.78, 4.7, 12.212)
-nodes.create_standard( 297, 15.78, 4.7, 0.0)
-nodes.create_standard( 298, 10.78, 9.4, 4.27466666666667)
-nodes.create_standard( 300, 10.78, 9.4, 8.312)
-nodes.create_standard( 301, 9.94, 7.31, 6.412)
-nodes.create_standard( 302, 9.94, 9.4, 6.412)
-nodes.create_standard( 303, 10.78, 2.175, 6.412)
-nodes.create_standard( 304, 10.78, 4.22, 6.412)
-nodes.create_standard( 305, 9.94, 5.25, 6.412)
-nodes.create_standard( 306, 10.78, 6.28, 6.412)
-nodes.create_standard( 307, 10.78, 8.355, 6.412)
-nodes.create_standard( 308, -7.0, 0.0, 4.0)
-nodes.create_standard( 309, 0.71, 2.12666666666667, 6.412)
-nodes.create_standard( 310, 1.535, 1.06333333333333, 6.412)
-nodes.create_standard( 311, 0.0, -9.79930213214648e-16, 16.004)
-nodes.create_standard( 312, 4.215, 9.4, 6.412)
-nodes.create_standard( 313, 3.650508e-16, 7.727, 4.0)
-nodes.create_standard( 314, 4.215, 8.29615533980583, 6.412)
-nodes.create_standard( 315, 9.1, 8.48681404421326, 6.412)
-nodes.create_standard( 316, 6.935, 8.23627430910952, 6.412)
-nodes.create_standard( 317, 10.78, 5.25, 6.412)
-nodes.create_standard( 318, 9.94, 2.175, 6.412)
-nodes.create_standard( 319, 9.94, 4.22, 6.412)
-nodes.create_standard( 320, 9.94, 6.28, 6.412)
-nodes.create_standard( 321, -7.0, 7.727, 4.0)
-nodes.create_standard( 322, 1.0, 9.4, 12.212)
-nodes.create_standard( 323, -7.0, 9.40000000000001, 4.0)
-nodes.create_standard( 325, -1.0, 2.768, 4.0)
-nodes.create_standard( 326, -1.0, -2.449213e-16, 4.0)
-nodes.create_standard( 327, -1.0, 9.4, 4.0)
-nodes.create_standard( 328, -1.0, 7.727, 4.0)
-nodes.create_standard( 329, -2.0, 2.768, 4.0)
-nodes.create_standard( 330, -2.0, -2.449213e-16, 4.0)
-nodes.create_standard( 331, -2.0, 9.4, 4.0)
-nodes.create_standard( 332, -2.0, 7.727, 4.0)
-nodes.create_standard( 333, -3.0, 2.768, 4.0)
-nodes.create_standard( 334, -3.0, -2.449213e-16, 4.0)
-nodes.create_standard( 335, -3.0, 9.4, 4.0)
-nodes.create_standard( 336, -3.0, 7.727, 4.0)
-nodes.create_standard( 337, -4.0, 2.768, 4.0)
-nodes.create_standard( 338, -4.0, -2.449213e-16, 4.0)
-nodes.create_standard( 339, -4.0, 9.4, 4.0)
-nodes.create_standard( 340, -4.0, 7.727, 4.0)
-nodes.create_standard( 341, -5.0, 2.768, 4.0)
-nodes.create_standard( 342, -5.0, -2.449213e-16, 4.0)
-nodes.create_standard( 343, -5.0, 9.4, 4.0)
-nodes.create_standard( 344, -5.0, 7.727, 4.0)
-nodes.create_standard( 345, -6.0, 2.768, 4.0)
-nodes.create_standard( 346, -6.0, -2.449213e-16, 4.0)
-nodes.create_standard( 347, -6.0, 9.4, 4.0)
-nodes.create_standard( 348, -6.0, 7.727, 4.0)
-nodes.create_standard( 349, 0.71, 2.768, 4.0)
-nodes.create_standard( 350, 0.0, 0.692, 4.0)
-nodes.create_standard( 351, 0.71, 1.384, 4.0)
-nodes.create_standard( 352, 10.68, 7.126, 12.412)
-nodes.create_standard( 353, 10.78, 7.026, 6.412)
-nodes.create_standard( 354, 3.10650206896552e-17, 3.19, 4.0)
-nodes.create_standard( 355, 3.34353848275862e-16, 7.31, 4.0)
-nodes.create_standard( 356, 5.57, 9.4, 12.212)
-nodes.create_standard( 359, 0.71, 6.635, 4.0)
-nodes.create_standard( 361, 0.71, 5.25, 4.0)
-nodes.create_standard( 362, 5.57, 7.126, 12.412)
-nodes.create_standard( 363, 0.71, 3.865, 4.0)
-nodes.create_standard( 364, 6.45, 5.17626224858422, 12.412)
-nodes.create_standard( 366, 11.78, 3.1, 12.212)
-nodes.create_standard( 367, 11.78, -7.47744639643944e-16, 12.212)
-nodes.create_standard( 369, 11.78, 4.816, 12.212)
-nodes.create_standard( 370, 11.78, 5.65266666666667, 12.212)
-nodes.create_standard( 372, 11.78, 7.126, 12.212)
-nodes.create_standard( 374, 11.78, 9.4, 12.212)
-nodes.create_standard( 375, 8.8, 7.126, 12.212)
-nodes.create_standard( 376, 8.8, 3.1, 12.212)
-nodes.create_standard( 377, 8.8, 7.126, 12.412)
-nodes.create_standard( 379, 8.8, 3.1, 12.412)
-nodes.create_standard( 382, 8.8, 5.0, 12.412)
-nodes.create_standard( 383, 10.68, 5.0, 12.412)
-nodes.create_standard( 385, 8.8, 3.95248371088776, 12.412)
-nodes.create_standard( 386, 10.68, 3.95248371088776, 12.412)
-nodes.create_standard( 388, 3.0, 3.1, 12.412)
-nodes.create_standard( 389, 5.57, 6.17347323585555, 12.412)
-nodes.create_standard( 390, 10.68, 3.1, 12.412)
-nodes.create_standard( 391, 10.68, 7.126, 12.212)
-nodes.create_standard( 392, 5.57, 5.17626224858422, 12.412)
-nodes.create_standard( 393, 2.0, -7.477446e-16, 12.212)
-nodes.create_standard( 394, 5.57, 3.1, 12.412)
-nodes.create_standard( 395, 3.0, 4.10110940707849, 12.412)
-nodes.create_standard( 396, 10.78, 1.303, 12.212)
-nodes.create_standard( 397, 3.0, 4.10110940707849, 12.212)
-nodes.create_standard( 398, 6.45, 3.79687861093091, 12.412)
-nodes.create_standard( 399, 6.45, 6.17347323585555, 12.412)
-nodes.create_standard( 400, 8.8, 3.79687861093091, 12.412)
-nodes.create_standard( 401, 6.45, 7.126, 12.412)
-nodes.create_standard( 402, 6.45, 7.126, 12.212)
-nodes.create_standard( 403, 9.74, 8.263, 12.212)
-nodes.create_standard( 404, 0.0, 4.10110940707849, 12.212)
-nodes.create_standard( 405, 2.0, 3.1, 12.212)
-nodes.create_standard( 406, 2.0, 4.10110940707849, 12.212)
-nodes.create_standard( 408, 5.57, 4.10110940707849, 12.412)
-nodes.create_standard( 409, 10.78, 3.711, 12.212)
+nodes.create_standard( 2, 3.17062643365463, 0.0, -0.883746256094687)
+nodes.create_standard( 3, 3.17062643365463, 0.0, 3.77278140300982)
+nodes.create_standard( 4, 3.08936348356984, 0.713235759181138, -0.883746256094687)
+nodes.create_standard( 5, 3.08936348356984, 0.713235759181138, 3.77278140300982)
+nodes.create_standard( 6, 2.84974016160754, 1.38991114576094, -0.883746256094687)
+nodes.create_standard( 7, 2.84974016160754, 1.38991114576094, 3.77278140300982)
+nodes.create_standard( 8, 2.46403952820341, 1.99533986710048, -0.883746256094687)
+nodes.create_standard( 9, 2.46403952820341, 1.99533986710048, 3.77278140300982)
+nodes.create_standard( 10, 1.95203254785034, 2.49848772538958, -0.883746256094687)
+nodes.create_standard( 11, 1.95203254785034, 2.49848772538958, 3.77278140300982)
+nodes.create_standard( 12, 1.33996463202023, 2.87356342660543, -0.883746256094687)
+nodes.create_standard( 13, 1.33996463202023, 2.87356342660543, 3.77278140300982)
+nodes.create_standard( 14, 0.659210302772616, 3.10134063890246, -0.883746256094687)
+nodes.create_standard( 15, 0.659210302772616, 3.10134063890246, 3.77278140300982)
+nodes.create_standard( 16, -0.0553350611809352, 3.17014353189151, -0.883746256094687)
+nodes.create_standard( 17, -0.0553350611809352, 3.17014353189151, 3.77278140300982)
+nodes.create_standard( 18, -0.767043957068143, 3.07644527819279, -0.883746256094687)
+nodes.create_standard( 19, -0.767043957068143, 3.07644527819279, 3.77278140300982)
+nodes.create_standard( 20, -1.43943427910228, 2.82504883815037, -0.883746256094687)
+nodes.create_standard( 21, -1.43943427910228, 2.82504883815037, 3.77278140300982)
+nodes.create_standard( 22, -2.03803938649782, 2.42884076070727, -0.883746256094687)
+nodes.create_standard( 23, -2.03803938649782, 2.42884076070727, 3.77278140300982)
+nodes.create_standard( 24, -2.5321748590112, 1.90813062057636, -0.883746256094687)
+nodes.create_standard( 25, -2.5321748590112, 1.90813062057636, 3.77278140300982)
+nodes.create_standard( 26, -2.89651137634675, 1.28960995207208, -0.883746256094687)
+nodes.create_standard( 27, -2.89651137634675, 1.28960995207208, 3.77278140300982)
+nodes.create_standard( 28, -3.11237309583311, 0.604984044519956, -0.883746256094687)
+nodes.create_standard( 29, -3.11237309583311, 0.604984044519956, 3.77278140300982)
+nodes.create_standard( 30, -3.16869497369871, -0.110653266766192, -0.883746256094687)
+nodes.create_standard( 31, -3.16869497369871, -0.110653266766192, 3.77278140300982)
+nodes.create_standard( 32, -3.06258995778181, -0.820618505935303, -0.883746256094687)
+nodes.create_standard( 33, -3.06258995778181, -0.820618505935303, 3.77278140300982)
+nodes.create_standard( 34, -2.79949697745024, -1.4885189468181, -0.883746256094687)
+nodes.create_standard( 35, -2.79949697745024, -1.4885189468181, 3.77278140300982)
+nodes.create_standard( 36, -2.39290214478671, -2.08011809935509, -0.883746256094687)
+nodes.create_standard( 37, -2.39290214478671, -2.08011809935509, 3.77278140300982)
+nodes.create_standard( 38, -1.86364745823087, -2.56509066764103, -0.883746256094687)
+nodes.create_standard( 39, -1.86364745823087, -2.56509066764103, 3.77278140300982)
+nodes.create_standard( 40, -1.2388624444398, -2.91857702066369, -0.883746256094687)
+nodes.create_standard( 41, -1.2388624444398, -2.91857702066369, 3.77278140300982)
+nodes.create_standard( 42, -0.550573502266725, -3.12245749376853, -0.883746256094687)
+nodes.create_standard( 43, -0.550573502266725, -3.12245749376853, 3.77278140300982)
+nodes.create_standard( 44, 0.16593776629447, -3.16628120032108, -0.883746256094687)
+nodes.create_standard( 45, 0.16593776629447, -3.16628120032108, 3.77278140300982)
+nodes.create_standard( 46, 0.873943086456045, -3.04780174280171, -0.883746256094687)
+nodes.create_standard( 47, 0.873943086456045, -3.04780174280171, 3.77278140300982)
+nodes.create_standard( 48, 1.5371501972431, -2.77309236285144, -0.883746256094687)
+nodes.create_standard( 49, 1.5371501972431, -2.77309236285144, 3.77278140300982)
 
- # Create Member Hinges
-member_hinges.create(1, axial_release_n=inf, axial_release_vy=inf, axial_release_vz=inf, moment_release_mt=inf)
-member_hinges.create(2, axial_release_n=inf, axial_release_vy=inf, axial_release_vz=inf, moment_release_mt=inf, moment_release_my=inf)
-member_hinges.create(3, axial_release_n=inf, axial_release_vy=inf, axial_release_vz=inf, moment_release_mt=inf, moment_release_mz=inf)
-member_hinges.create(4, axial_release_n=inf, axial_release_vy=inf, axial_release_vz=inf, moment_release_my=inf, moment_release_mz=inf)
-member_hinges.create(5, axial_release_vy=inf, axial_release_vz=inf, moment_release_mt=inf, moment_release_my=inf, moment_release_mz=inf)
-member_hinges.create(6, axial_release_vy=inf, axial_release_vz=inf, moment_release_mt=inf)# Create Lines
+ # Create Member Hinges# Create Lines
 
-lines.create_polyline(1, "228,1")
-lines.create_polyline(2, "233,262")
-lines.create_polyline(3, "3,164")
-lines.create_polyline(4, "7,246")
-lines.create_polyline(5, "9,175")
-lines.create_polyline(6, "11,161")
-lines.create_polyline(7, "13,311")
-lines.create_polyline(8, "14,69")
-lines.create_polyline(9, "13,19")
-lines.create_polyline(10, "15,65")
-lines.create_polyline(11, "13,393")
-lines.create_polyline(12, "16,63")
-lines.create_polyline(13, "15,16")
-lines.create_polyline(14, "20,15")
-lines.create_polyline(15, "17,31")
-lines.create_polyline(16, "353,83")
-lines.create_polyline(17, "20,283")
-lines.create_polyline(18, "19,404")
-lines.create_polyline(19, "17,71")
-lines.create_polyline(20, "17,145")
-lines.create_polyline(21, "146,29")
-lines.create_polyline(22, "63,267")
-lines.create_polyline(23, "19,405")
-lines.create_polyline(24, "26,268")
-lines.create_polyline(25, "27,158")
-lines.create_polyline(26, "18,144")
-lines.create_polyline(27, "374,273")
-lines.create_polyline(28, "29,376")
-lines.create_polyline(29, "30,170")
-lines.create_polyline(30, "40,286")
-lines.create_polyline(31, "145,24")
-lines.create_polyline(32, "36,37")
-lines.create_polyline(33, "123,287")
-lines.create_polyline(34, "32,123")
-lines.create_polyline(35, "34,33")
-lines.create_polyline(36, "18,121")
-lines.create_polyline(37, "143,30")
-lines.create_polyline(38, "161,298")
-lines.create_polyline(39, "30,375")
-lines.create_polyline(40, "398,285")
-lines.create_polyline(41, "36,17")
-lines.create_polyline(42, "38,18")
-lines.create_polyline(43, "18,73")
-lines.create_polyline(44, "37,32")
-lines.create_polyline(45, "39,34")
-lines.create_polyline(46, "400,379")
-lines.create_polyline(47, "367,266")
-lines.create_polyline(48, "172,29")
-lines.create_polyline(49, "24,397")
-lines.create_polyline(50, "182,181")
-lines.create_polyline(51, "254,186")
-lines.create_polyline(52, "12,47")
-lines.create_polyline(53, "8,137")
-lines.create_polyline(54, "48,277")
-lines.create_polyline(55, "56,4")
-lines.create_polyline(56, "268,296")
-lines.create_polyline(57, "47,42")
-lines.create_polyline(58, "49,44")
-lines.create_polyline(59, "48,49")
-lines.create_polyline(60, "296,275")
-lines.create_polyline(61, "44,26")
-lines.create_polyline(62, "50,47")
-lines.create_polyline(63, "51,279")
-lines.create_polyline(64, "50,51")
-lines.create_polyline(65, "56,52")
-lines.create_polyline(66, "57,53")
-lines.create_polyline(67, "44,54")
-lines.create_polyline(68, "47,55")
-lines.create_polyline(69, "53,52")
-lines.create_polyline(70, "60,53")
-lines.create_polyline(71, "54,55")
-lines.create_polyline(72, "52,61")
-lines.create_polyline(73, "8,139")
-lines.create_polyline(74, "10,278")
-lines.create_polyline(75, "2,136")
-lines.create_polyline(76, "4,265")
-lines.create_polyline(77, "56,49")
-lines.create_polyline(78, "57,62")
-lines.create_polyline(79, "10,57")
-lines.create_polyline(80, "58,8")
-lines.create_polyline(81, "58,122")
-lines.create_polyline(82, "59,127")
-lines.create_polyline(83, "58,59")
-lines.create_polyline(84, "55,60")
-lines.create_polyline(85, "61,54")
-lines.create_polyline(86, "73,274")
-lines.create_polyline(87, "16,267")
-lines.create_polyline(88, "267,6")
-lines.create_polyline(89, "23,396")
-lines.create_polyline(90, "18,274")
-lines.create_polyline(91, "18,374")
-lines.create_polyline(92, "63,6")
-lines.create_polyline(93, "63,64")
-lines.create_polyline(94, "65,66")
-lines.create_polyline(95, "67,68")
-lines.create_polyline(96, "69,70")
-lines.create_polyline(97, "71,72")
-lines.create_polyline(98, "73,74")
-lines.create_polyline(99, "67,2")
-lines.create_polyline(100, "69,8")
-lines.create_polyline(101, "65,4")
-lines.create_polyline(102, "71,10")
-lines.create_polyline(103, "73,12")
-lines.create_polyline(104, "68,66")
-lines.create_polyline(105, "66,64")
-lines.create_polyline(106, "64,281")
-lines.create_polyline(107, "70,72")
-lines.create_polyline(108, "72,74")
-lines.create_polyline(109, "74,282")
-lines.create_polyline(110, "6,263")
-lines.create_polyline(111, "12,166")
-lines.create_polyline(112, "127,2")
-lines.create_polyline(113, "296,270")
-lines.create_polyline(114, "314,225")
-lines.create_polyline(115, "33,30")
-lines.create_polyline(116, "58,2")
-lines.create_polyline(117, "283,394")
-lines.create_polyline(118, "78,120")
-lines.create_polyline(119, "79,15")
-lines.create_polyline(120, "157,208")
-lines.create_polyline(121, "286,402")
-lines.create_polyline(122, "79,98")
-lines.create_polyline(123, "404,58")
-lines.create_polyline(124, "80,206")
-lines.create_polyline(125, "81,152")
-lines.create_polyline(126, "82,119")
-lines.create_polyline(127, "56,127")
-lines.create_polyline(128, "81,304")
-lines.create_polyline(129, "84,300")
-lines.create_polyline(130, "83,307")
-lines.create_polyline(131, "85,36")
-lines.create_polyline(132, "84,302")
-lines.create_polyline(133, "86,134")
-lines.create_polyline(134, "220,104")
-lines.create_polyline(135, "87,226")
-lines.create_polyline(136, "82,109")
-lines.create_polyline(137, "88,135")
-lines.create_polyline(138, "78,116")
-lines.create_polyline(139, "89,88")
-lines.create_polyline(140, "90,230")
-lines.create_polyline(141, "89,309")
-lines.create_polyline(142, "80,179")
-lines.create_polyline(143, "92,91")
-lines.create_polyline(144, "93,231")
-lines.create_polyline(145, "94,95")
-lines.create_polyline(146, "96,292")
-lines.create_polyline(147, "97,86")
-lines.create_polyline(148, "95,97")
-lines.create_polyline(149, "94,128")
-lines.create_polyline(150, "98,101")
-lines.create_polyline(151, "98,205")
-lines.create_polyline(152, "165,177")
-lines.create_polyline(153, "102,117")
-lines.create_polyline(154, "215,345")
-lines.create_polyline(155, "105,131")
-lines.create_polyline(156, "85,312")
-lines.create_polyline(157, "223,227")
-lines.create_polyline(158, "109,107")
-lines.create_polyline(159, "96,225")
-lines.create_polyline(160, "24,40")
-lines.create_polyline(161, "103,75")
-lines.create_polyline(162, "99,118")
-lines.create_polyline(163, "110,289")
-lines.create_polyline(164, "112,253")
-lines.create_polyline(165, "25,145")
-lines.create_polyline(166, "111,113")
-lines.create_polyline(167, "43,39")
-lines.create_polyline(168, "291,46")
-lines.create_polyline(169, "113,125")
-lines.create_polyline(170, "112,110")
-lines.create_polyline(171, "39,38")
-lines.create_polyline(172, "116,217")
-lines.create_polyline(173, "37,153")
-lines.create_polyline(174, "44,6")
-lines.create_polyline(175, "128,130")
-lines.create_polyline(176, "270,255")
-lines.create_polyline(177, "141,391")
-lines.create_polyline(178, "121,34")
-lines.create_polyline(179, "300,38")
-lines.create_polyline(180, "136,4")
-lines.create_polyline(181, "127,136")
-lines.create_polyline(182, "120,16")
-lines.create_polyline(183, "136,56")
-lines.create_polyline(184, "57,137")
-lines.create_polyline(185, "18,270")
-lines.create_polyline(186, "270,84")
-lines.create_polyline(187, "17,86")
-lines.create_polyline(188, "122,14")
-lines.create_polyline(189, "145,271")
-lines.create_polyline(190, "123,143")
-lines.create_polyline(191, "377,171")
-lines.create_polyline(192, "100,274")
-lines.create_polyline(193, "42,44")
-lines.create_polyline(194, "57,50")
-lines.create_polyline(195, "144,121")
-lines.create_polyline(196, "123,124")
-lines.create_polyline(197, "264,129")
-lines.create_polyline(198, "130,92")
-lines.create_polyline(199, "45,291")
-lines.create_polyline(200, "131,85")
-lines.create_polyline(201, "220,154")
-lines.create_polyline(202, "166,275")
-lines.create_polyline(203, "47,138")
-lines.create_polyline(204, "46,76")
-lines.create_polyline(205, "45,46")
-lines.create_polyline(206, "75,259")
-lines.create_polyline(207, "76,112")
-lines.create_polyline(208, "75,76")
-lines.create_polyline(209, "118,125")
-lines.create_polyline(210, "126,133")
-lines.create_polyline(211, "118,207")
-lines.create_polyline(212, "125,133")
-lines.create_polyline(213, "133,168")
-lines.create_polyline(214, "126,168")
-lines.create_polyline(215, "134,14")
-lines.create_polyline(216, "135,13")
-lines.create_polyline(217, "246,58")
-lines.create_polyline(218, "228,58")
-lines.create_polyline(219, "152,303")
-lines.create_polyline(220, "22,23")
-lines.create_polyline(221, "139,10")
-lines.create_polyline(222, "137,139")
-lines.create_polyline(223, "139,57")
-lines.create_polyline(224, "47,166")
-lines.create_polyline(225, "166,138")
-lines.create_polyline(226, "263,268")
-lines.create_polyline(227, "44,263")
-lines.create_polyline(228, "263,26")
-lines.create_polyline(229, "265,48")
-lines.create_polyline(230, "56,265")
-lines.create_polyline(231, "265,49")
-lines.create_polyline(232, "277,6")
-lines.create_polyline(233, "49,277")
-lines.create_polyline(234, "277,44")
-lines.create_polyline(235, "85,167")
-lines.create_polyline(236, "167,97")
-lines.create_polyline(237, "208,79")
-lines.create_polyline(238, "102,78")
-lines.create_polyline(239, "99,162")
-lines.create_polyline(240, "105,103")
-lines.create_polyline(241, "103,220")
-lines.create_polyline(242, "220,131")
-lines.create_polyline(243, "312,314")
-lines.create_polyline(244, "107,315")
-lines.create_polyline(245, "143,140")
-lines.create_polyline(246, "140,159")
-lines.create_polyline(247, "124,140")
-lines.create_polyline(248, "124,159")
-lines.create_polyline(249, "159,142")
-lines.create_polyline(250, "78,164")
-lines.create_polyline(251, "144,27")
-lines.create_polyline(252, "144,403")
-lines.create_polyline(253, "33,147")
-lines.create_polyline(254, "17,77")
-lines.create_polyline(255, "147,148")
-lines.create_polyline(256, "30,148")
-lines.create_polyline(257, "148,149")
-lines.create_polyline(258, "147,149")
-lines.create_polyline(259, "149,150")
-lines.create_polyline(260, "402,143")
-lines.create_polyline(261, "150,35")
-lines.create_polyline(262, "147,124")
-lines.create_polyline(263, "148,140")
-lines.create_polyline(264, "35,142")
-lines.create_polyline(265, "35,151")
-lines.create_polyline(266, "276,42")
-lines.create_polyline(267, "175,247")
-lines.create_polyline(268, "153,43")
-lines.create_polyline(269, "121,33")
-lines.create_polyline(270, "31,356")
-lines.create_polyline(271, "255,129")
-lines.create_polyline(272, "158,160")
-lines.create_polyline(273, "283,284")
-lines.create_polyline(274, "284,285")
-lines.create_polyline(275, "356,32")
-lines.create_polyline(276, "294,398")
-lines.create_polyline(277, "364,294")
-lines.create_polyline(278, "31,145")
-lines.create_polyline(279, "399,364")
-lines.create_polyline(280, "391,27")
-lines.create_polyline(281, "155,99")
-lines.create_polyline(282, "160,409")
-lines.create_polyline(283, "163,390")
-lines.create_polyline(284, "145,77")
-lines.create_polyline(285, "271,122")
-lines.create_polyline(286, "391,352")
-lines.create_polyline(287, "375,377")
-lines.create_polyline(288, "286,123")
-lines.create_polyline(289, "376,163")
-lines.create_polyline(290, "377,352")
-lines.create_polyline(291, "382,385")
-lines.create_polyline(292, "79,156")
-lines.create_polyline(293, "156,155")
-lines.create_polyline(294, "322,14")
-lines.create_polyline(295, "309,91")
-lines.create_polyline(296, "157,165")
-lines.create_polyline(297, "108,185")
-lines.create_polyline(298, "206,184")
-lines.create_polyline(299, "254,187")
-lines.create_polyline(300, "288,186")
-lines.create_polyline(301, "21,146")
-lines.create_polyline(302, "169,171")
-lines.create_polyline(303, "62,56")
-lines.create_polyline(304, "171,382")
-lines.create_polyline(305, "170,172")
-lines.create_polyline(306, "169,383")
-lines.create_polyline(307, "28,173")
-lines.create_polyline(308, "21,174")
-lines.create_polyline(309, "173,170")
-lines.create_polyline(310, "174,172")
-lines.create_polyline(311, "173,41")
-lines.create_polyline(312, "41,174")
-lines.create_polyline(313, "41,176")
-lines.create_polyline(314, "177,209")
-lines.create_polyline(315, "177,178")
-lines.create_polyline(316, "179,180")
-lines.create_polyline(317, "82,181")
-lines.create_polyline(318, "182,183")
-lines.create_polyline(319, "180,188")
-lines.create_polyline(320, "178,201")
-lines.create_polyline(321, "183,181")
-lines.create_polyline(322, "181,202")
-lines.create_polyline(323, "184,190")
-lines.create_polyline(324, "186,192")
-lines.create_polyline(325, "185,187")
-lines.create_polyline(326, "187,203")
-lines.create_polyline(327, "186,184")
-lines.create_polyline(328, "184,200")
-lines.create_polyline(329, "198,195")
-lines.create_polyline(330, "196,199")
-lines.create_polyline(331, "188,189")
-lines.create_polyline(332, "188,198")
-lines.create_polyline(333, "194,195")
-lines.create_polyline(334, "196,194")
-lines.create_polyline(335, "197,198")
-lines.create_polyline(336, "199,197")
-lines.create_polyline(337, "189,195")
-lines.create_polyline(338, "190,197")
-lines.create_polyline(339, "191,194")
-lines.create_polyline(340, "192,199")
-lines.create_polyline(341, "193,196")
-lines.create_polyline(342, "197,194")
-lines.create_polyline(343, "200,180")
-lines.create_polyline(344, "201,185")
-lines.create_polyline(345, "200,201")
-lines.create_polyline(346, "202,186")
-lines.create_polyline(347, "203,183")
-lines.create_polyline(348, "202,203")
-lines.create_polyline(349, "204,91")
-lines.create_polyline(350, "205,89")
-lines.create_polyline(351, "205,310")
-lines.create_polyline(352, "179,177")
-lines.create_polyline(353, "179,155")
-lines.create_polyline(354, "206,288")
-lines.create_polyline(355, "288,82")
-lines.create_polyline(356, "131,167")
-lines.create_polyline(357, "217,211")
-lines.create_polyline(358, "209,156")
-lines.create_polyline(359, "208,209")
-lines.create_polyline(360, "109,301")
-lines.create_polyline(361, "211,212")
-lines.create_polyline(362, "213,157")
-lines.create_polyline(363, "212,213")
-lines.create_polyline(364, "213,214")
-lines.create_polyline(365, "212,254")
-lines.create_polyline(366, "211,216")
-lines.create_polyline(367, "182,216")
-lines.create_polyline(368, "216,254")
-lines.create_polyline(369, "254,214")
-lines.create_polyline(370, "214,108")
-lines.create_polyline(371, "182,82")
-lines.create_polyline(372, "16,367")
-lines.create_polyline(373, "217,182")
-lines.create_polyline(374, "107,210")
-lines.create_polyline(375, "222,115")
-lines.create_polyline(376, "109,219")
-lines.create_polyline(377, "219,293")
-lines.create_polyline(378, "221,222")
-lines.create_polyline(379, "223,224")
-lines.create_polyline(380, "224,222")
-lines.create_polyline(381, "210,219")
-lines.create_polyline(382, "218,106")
-lines.create_polyline(383, "221,223")
-lines.create_polyline(384, "218,316")
-lines.create_polyline(385, "106,312")
-lines.create_polyline(386, "225,223")
-lines.create_polyline(387, "106,225")
-lines.create_polyline(388, "226,218")
-lines.create_polyline(389, "227,109")
-lines.create_polyline(390, "226,227")
-lines.create_polyline(391, "228,88")
-lines.create_polyline(392, "229,351")
-lines.create_polyline(393, "231,94")
-lines.create_polyline(394, "230,363")
-lines.create_polyline(395, "231,248")
-lines.create_polyline(396, "233,79")
-lines.create_polyline(397, "228,229")
-lines.create_polyline(398, "108,165")
-lines.create_polyline(399, "234,233")
-lines.create_polyline(400, "234,236")
-lines.create_polyline(401, "235,247")
-lines.create_polyline(402, "237,245")
-lines.create_polyline(403, "236,238")
-lines.create_polyline(404, "238,240")
-lines.create_polyline(405, "239,361")
-lines.create_polyline(406, "238,243")
-lines.create_polyline(407, "240,237")
-lines.create_polyline(408, "241,359")
-lines.create_polyline(409, "240,244")
-lines.create_polyline(410, "242,243")
-lines.create_polyline(411, "243,244")
-lines.create_polyline(412, "244,245")
-lines.create_polyline(413, "243,239")
-lines.create_polyline(414, "244,241")
-lines.create_polyline(415, "246,232")
-lines.create_polyline(416, "248,249")
-lines.create_polyline(417, "249,232")
-lines.create_polyline(418, "229,234")
-lines.create_polyline(419, "236,242")
-lines.create_polyline(420, "242,230")
-lines.create_polyline(421, "245,231")
-lines.create_polyline(422, "232,235")
-lines.create_polyline(423, "250,290")
-lines.create_polyline(424, "251,113")
-lines.create_polyline(425, "250,251")
-lines.create_polyline(426, "252,250")
-lines.create_polyline(427, "253,251")
-lines.create_polyline(428, "252,253")
-lines.create_polyline(429, "177,185")
-lines.create_polyline(430, "154,95")
-lines.create_polyline(431, "179,184")
-lines.create_polyline(432, "162,204")
-lines.create_polyline(433, "246,86")
-lines.create_polyline(434, "247,85")
-lines.create_polyline(435, "264,78")
-lines.create_polyline(436, "230,92")
-lines.create_polyline(437, "190,191")
-lines.create_polyline(438, "191,185")
-lines.create_polyline(439, "192,193")
-lines.create_polyline(440, "193,187")
-lines.create_polyline(441, "189,178")
-lines.create_polyline(442, "287,25")
-lines.create_polyline(443, "404,406")
-lines.create_polyline(444, "114,45")
-lines.create_polyline(445, "375,141")
-lines.create_polyline(446, "405,20")
-lines.create_polyline(447, "406,397")
-lines.create_polyline(448, "33,257")
-lines.create_polyline(449, "59,62")
-lines.create_polyline(450, "257,123")
-lines.create_polyline(451, "143,257")
-lines.create_polyline(452, "270,262")
-lines.create_polyline(453, "26,42")
-lines.create_polyline(454, "30,257")
-lines.create_polyline(455, "180,126")
-lines.create_polyline(456, "207,111")
-lines.create_polyline(457, "259,110")
-lines.create_polyline(458, "143,28")
-lines.create_polyline(459, "24,25")
-lines.create_polyline(460, "28,21")
-lines.create_polyline(461, "264,5")
-lines.create_polyline(462, "278,51")
-lines.create_polyline(463, "264,266")
-lines.create_polyline(464, "57,278")
-lines.create_polyline(465, "266,267")
-lines.create_polyline(466, "267,268")
-lines.create_polyline(467, "269,270")
-lines.create_polyline(468, "270,272")
-lines.create_polyline(469, "225,316")
-lines.create_polyline(470, "272,273")
-lines.create_polyline(471, "273,100")
-lines.create_polyline(472, "274,275")
-lines.create_polyline(473, "276,26")
-lines.create_polyline(474, "296,276")
-lines.create_polyline(475, "137,62")
-lines.create_polyline(476, "62,127")
-lines.create_polyline(477, "278,50")
-lines.create_polyline(478, "275,138")
-lines.create_polyline(479, "267,281")
-lines.create_polyline(480, "274,282")
-lines.create_polyline(481, "401,399")
-lines.create_polyline(482, "20,388")
-lines.create_polyline(483, "402,401")
-lines.create_polyline(484, "81,22")
-lines.create_polyline(485, "289,252")
-lines.create_polyline(486, "290,111")
-lines.create_polyline(487, "207,290")
-lines.create_polyline(488, "259,289")
-lines.create_polyline(489, "179,178")
-lines.create_polyline(490, "292,114")
-lines.create_polyline(491, "221,224")
-lines.create_polyline(492, "107,219")
-lines.create_polyline(493, "115,210")
-lines.create_polyline(494, "107,115")
-lines.create_polyline(495, "115,221")
-lines.create_polyline(496, "293,224")
-lines.create_polyline(497, "109,293")
-lines.create_polyline(498, "293,223")
-lines.create_polyline(499, "237,235")
-lines.create_polyline(500, "292,105")
-lines.create_polyline(501, "16,264")
-lines.create_polyline(502, "264,3")
-lines.create_polyline(503, "42,138")
-lines.create_polyline(504, "11,218")
-lines.create_polyline(505, "394,285")
-lines.create_polyline(506, "274,12")
-lines.create_polyline(507, "218,175")
-lines.create_polyline(508, "129,270")
-lines.create_polyline(509, "266,296")
-lines.create_polyline(510, "296,273")
-lines.create_polyline(511, "129,296")
-lines.create_polyline(512, "297,255")
-lines.create_polyline(513, "279,12")
-lines.create_polyline(514, "50,279")
-lines.create_polyline(515, "279,47")
-lines.create_polyline(516, "137,59")
-lines.create_polyline(517, "138,276")
-lines.create_polyline(518, "246,313")
-lines.create_polyline(519, "388,394")
-lines.create_polyline(520, "25,286")
-lines.create_polyline(521, "30,403")
-lines.create_polyline(522, "385,400")
-lines.create_polyline(523, "298,84")
-lines.create_polyline(524, "376,379")
-lines.create_polyline(525, "386,390")
-lines.create_polyline(526, "403,27")
-lines.create_polyline(529, "383,386")
-lines.create_polyline(530, "117,182")
-lines.create_polyline(531, "116,117")
-lines.create_polyline(532, "119,81")
-lines.create_polyline(533, "117,318")
-lines.create_polyline(534, "301,83")
-lines.create_polyline(535, "119,319")
-lines.create_polyline(536, "302,87")
-lines.create_polyline(537, "301,302")
-lines.create_polyline(538, "102,116")
-lines.create_polyline(539, "303,102")
-lines.create_polyline(540, "318,119")
-lines.create_polyline(541, "318,82")
-lines.create_polyline(542, "304,317")
-lines.create_polyline(543, "319,305")
-lines.create_polyline(544, "305,320")
-lines.create_polyline(545, "319,317")
-lines.create_polyline(546, "306,353")
-lines.create_polyline(547, "320,301")
-lines.create_polyline(548, "320,109")
-lines.create_polyline(549, "307,84")
-lines.create_polyline(550, "301,307")
-lines.create_polyline(551, "307,302")
-lines.create_polyline(552, "117,217")
-lines.create_polyline(553, "182,211")
-lines.create_polyline(554, "216,212")
-lines.create_polyline(555, "156,208")
-lines.create_polyline(556, "209,157")
-lines.create_polyline(557, "165,213")
-lines.create_polyline(558, "214,212")
-lines.create_polyline(559, "95,104")
-lines.create_polyline(560, "254,288")
-lines.create_polyline(561, "156,98")
-lines.create_polyline(562, "204,309")
-lines.create_polyline(563, "310,204")
-lines.create_polyline(564, "309,310")
-lines.create_polyline(565, "308,346")
-lines.create_polyline(566, "310,98")
-lines.create_polyline(567, "101,99")
-lines.create_polyline(568, "310,101")
-lines.create_polyline(569, "101,204")
-lines.create_polyline(570, "101,156")
-lines.create_polyline(571, "302,315")
-lines.create_polyline(572, "227,316")
-lines.create_polyline(573, "106,314")
-lines.create_polyline(574, "104,167")
-lines.create_polyline(575, "104,97")
-lines.create_polyline(576, "314,96")
-lines.create_polyline(577, "356,287")
-lines.create_polyline(578, "315,87")
-lines.create_polyline(579, "315,227")
-lines.create_polyline(580, "316,221")
-lines.create_polyline(581, "316,106")
-lines.create_polyline(582, "102,318")
-lines.create_polyline(583, "317,306")
-lines.create_polyline(584, "82,319")
-lines.create_polyline(585, "317,320")
-lines.create_polyline(586, "301,315")
-lines.create_polyline(587, "313,355")
-lines.create_polyline(588, "321,348")
-lines.create_polyline(589, "323,347")
-lines.create_polyline(590, "132,350")
-lines.create_polyline(591, "325,326")
-lines.create_polyline(592, "327,328")
-lines.create_polyline(593, "329,330")
-lines.create_polyline(594, "331,332")
-lines.create_polyline(595, "333,334")
-lines.create_polyline(596, "335,336")
-lines.create_polyline(597, "337,338")
-lines.create_polyline(598, "339,340")
-lines.create_polyline(599, "341,342")
-lines.create_polyline(600, "343,344")
-lines.create_polyline(601, "345,346")
-lines.create_polyline(602, "347,348")
-lines.create_polyline(603, "345,341")
-lines.create_polyline(604, "341,337")
-lines.create_polyline(605, "337,333")
-lines.create_polyline(606, "333,329")
-lines.create_polyline(607, "329,325")
-lines.create_polyline(608, "325,132")
-lines.create_polyline(609, "346,342")
-lines.create_polyline(610, "342,338")
-lines.create_polyline(611, "338,334")
-lines.create_polyline(612, "334,330")
-lines.create_polyline(613, "330,326")
-lines.create_polyline(614, "326,228")
-lines.create_polyline(615, "348,344")
-lines.create_polyline(616, "344,340")
-lines.create_polyline(617, "340,336")
-lines.create_polyline(618, "336,332")
-lines.create_polyline(619, "332,328")
-lines.create_polyline(620, "328,313")
-lines.create_polyline(621, "347,343")
-lines.create_polyline(622, "343,339")
-lines.create_polyline(623, "339,335")
-lines.create_polyline(624, "335,331")
-lines.create_polyline(625, "331,327")
-lines.create_polyline(626, "327,246")
-lines.create_polyline(627, "323,321")
-lines.create_polyline(628, "215,308")
-lines.create_polyline(629, "349,230")
-lines.create_polyline(630, "132,349")
-lines.create_polyline(631, "313,248")
-lines.create_polyline(632, "350,228")
-lines.create_polyline(633, "229,350")
-lines.create_polyline(634, "351,349")
-lines.create_polyline(635, "352,169")
-lines.create_polyline(636, "366,367")
-lines.create_polyline(637, "395,408")
-lines.create_polyline(639, "397,395")
-lines.create_polyline(641, "369,366")
-lines.create_polyline(642, "370,369")
-lines.create_polyline(643, "354,132")
-lines.create_polyline(644, "230,354")
-lines.create_polyline(645, "372,370")
-lines.create_polyline(646, "231,355")
-lines.create_polyline(649, "374,372")
-lines.create_polyline(650, "311,67")
-lines.create_polyline(651, "355,354")
-lines.create_polyline(652, "359,231")
-lines.create_polyline(653, "23,366")
-lines.create_polyline(654, "27,372")
-lines.create_polyline(655, "361,241")
-lines.create_polyline(656, "383,382")
-lines.create_polyline(658, "386,385")
-lines.create_polyline(659, "363,239")
-lines.create_polyline(661, "390,379")
-lines.create_polyline(662, "286,362")
-lines.create_polyline(663, "96,131")
-lines.create_polyline(664, "131,312")
-lines.create_polyline(665, "77,271")
-lines.create_polyline(666, "77,322")
-lines.create_polyline(667, "271,322")
-lines.create_polyline(668, "322,122")
-lines.create_polyline(669, "287,286")
-lines.create_polyline(671, "395,388")
-lines.create_polyline(672, "362,389")
-lines.create_polyline(673, "389,392")
-lines.create_polyline(674, "356,123")
-lines.create_polyline(676, "406,405")
-lines.create_polyline(677, "287,31")
-lines.create_polyline(678, "392,408")
-lines.create_polyline(679, "393,15")
-lines.create_polyline(680, "408,294")
-lines.create_polyline(681, "392,364")
-lines.create_polyline(682, "389,399")
-lines.create_polyline(683, "362,401")
-lines.create_polyline(684, "408,394")
-lines.create_polyline(685, "398,400")
-lines.create_polyline(686, "285,379")
-lines.create_polyline(688, "284,146")
-lines.create_polyline(689, "163,23")
-lines.create_polyline(690, "397,20")
-lines.create_polyline(691, "403,33")
-lines.create_polyline(694, "405,393")
-lines.create_polyline(695, "374,144")
-lines.create_polyline(696, "144,372")
-lines.create_polyline(697, "372,158")
-lines.create_polyline(698, "158,369")
-lines.create_polyline(700, "396,16")
-lines.create_polyline(701, "367,396")
-lines.create_polyline(702, "396,366")
-lines.create_polyline(704, "409,22")
-lines.create_polyline(706, "409,366")
-lines.create_polyline(707, "409,369")
+lines.create_polyline(1, "1,2")
+lines.create_polyline(2, "2,3")
+lines.create_polyline(3, "4,5")
+lines.create_polyline(4, "6,7")
+lines.create_polyline(5, "8,9")
+lines.create_polyline(6, "10,11")
+lines.create_polyline(7, "12,13")
+lines.create_polyline(8, "14,15")
+lines.create_polyline(9, "16,17")
+lines.create_polyline(10, "18,19")
+lines.create_polyline(11, "20,21")
+lines.create_polyline(12, "22,23")
+lines.create_polyline(13, "24,25")
+lines.create_polyline(14, "26,27")
+lines.create_polyline(15, "28,29")
+lines.create_polyline(16, "30,31")
+lines.create_polyline(17, "32,33")
+lines.create_polyline(18, "34,35")
+lines.create_polyline(19, "36,37")
+lines.create_polyline(20, "38,39")
+lines.create_polyline(21, "40,41")
+lines.create_polyline(22, "42,43")
+lines.create_polyline(23, "44,45")
+lines.create_polyline(24, "46,47")
+lines.create_polyline(25, "48,49")
 
 
 # Create Members 
-members.create_beam(1, "700", line="1", rotation_angle=-0.7853981633974483)
-members.create_beam(2, "700", line="2", rotation_angle=-2.356194490192345)
-members.create_beam(3, "700", line="3", rotation_angle=1.5707963267948966)
-members.create_beam(4, "700", line="4", rotation_angle=-1.5707963267948966)
-members.create_beam(5, "700", line="5", rotation_angle=-1.5707963267948966)
-members.create_beam(6, "700", line="6", rotation_angle=-1.5707963267948966)
-members.create_beam(7, "700", line="7", rotation_angle=1.5707963267948966)
-members.create_beam(8, "700", line="8", rotation_angle=-1.5707963267948966)
-members.create_beam(9, "350", line="9", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(10, "700", line="10", rotation_angle=1.5707963267948966)
-members.create_beam(11, "250", line="11", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(12, "700", line="12", rotation_angle=1.5707963267948966)
-members.create_beam(13, "168", line="13", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(14, "531", line="14", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(15, "250", line="15", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(16, "460", line="16", rotation_angle=0.0)
-members.create_beam(17, "460", line="17", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(18, "350", line="18", rotation_angle=0.0)
-members.create_beam(19, "700", line="19", rotation_angle=-1.5707963267948966)
-members.create_beam(20, "531", line="20", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(21, "460", line="21", rotation_angle=0.0)
-members.create_beam(22, "140", line="22", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(23, "250", line="23", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(24, "301", line="24", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(25, "531", line="25", rotation_angle=0.0)
-members.create_beam(26, "531", line="26", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(27, "250", line="27", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(28, "460", line="28", rotation_angle=0.0)
-members.create_beam(29, "350", line="29", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(30, "531", line="30", rotation_angle=0.0)
-members.create_beam(31, "531", line="31", rotation_angle=0.0)
-members.create_beam(32, "701", line="32", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(33, "531", line="33", rotation_angle=0.0)
-members.create_beam(34, "251", line="34", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(35, "251", line="35", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(36, "250", line="36", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(37, "531", line="37", rotation_angle=0.0)
-members.create_beam(38, "700", line="38", rotation_angle=-1.5707963267948966)
-members.create_beam(39, "531", line="39", rotation_angle=0.0)
-members.create_beam(40, "203", line="40", rotation_angle=0.0)
-members.create_beam(41, "700", line="41", rotation_angle=-1.5707963267948966)
-members.create_beam(42, "700", line="42", rotation_angle=-1.5707963267948966)
-members.create_beam(43, "700", line="43", rotation_angle=-1.5707963267948966)
-members.create_beam(44, "203", line="44", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(45, "203", line="45", member_hinge_start="1", rotation_angle=1.5707963267948966)
-members.create_beam(46, "203", line="46", rotation_angle=0.0)
-members.create_beam(47, "250", line="47", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(48, "350", line="48", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(49, "531", line="49", rotation_angle=0.0)
-members.create_beam(50, "90", line="50", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(51, "90", line="51", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(52, "700", line="52", rotation_angle=0.0)
-members.create_beam(53, "301", line="53", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(54, "250", line="54", rotation_angle=0.0)
-members.create_beam(55, "700", line="55", rotation_angle=0.0)
-members.create_beam(56, "168", line="56", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(57, "700", line="57", rotation_angle=0.0)
-members.create_beam(58, "250", line="58", rotation_angle=0.0)
-members.create_beam(59, "250", line="59", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(60, "168", line="60", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(61, "114", line="61", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(62, "250", line="62", rotation_angle=0.0)
-members.create_beam(63, "250", line="63", rotation_angle=0.0)
-members.create_beam(64, "250", line="64", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(65, "40", line="65", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(66, "40", line="66", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(67, "40", line="67", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(68, "40", line="68", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(69, "251", line="69", rotation_angle=0.0)
-members.create_beam(70, "251", line="70", rotation_angle=0.0)
-members.create_beam(71, "251", line="71", rotation_angle=0.0)
-members.create_beam(72, "251", line="72", rotation_angle=0.0)
-members.create_beam(73, "250", line="73", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(74, "250", line="74", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(75, "250", line="75", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(76, "250", line="76", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(77, "250", line="77", rotation_angle=0.0)
-members.create_beam(78, "700", line="78", rotation_angle=0.0)
-members.create_beam(79, "700", line="79", rotation_angle=0.0)
-members.create_beam(80, "219", line="80", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(81, "350", line="81", rotation_angle=0.0)
-members.create_beam(82, "301", line="82", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(83, "250", line="83", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(84, "251", line="84", rotation_angle=0.0)
-members.create_beam(85, "251", line="85", rotation_angle=0.0)
-members.create_beam(86, "140", line="86", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(87, "168", line="87", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(88, "140", line="88", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(89, "531", line="89", rotation_angle=0.0)
-members.create_beam(90, "168", line="90", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(91, "250", line="91", rotation_angle=0.0)
-members.create_beam(92, "700", line="92", rotation_angle=1.5707963267948966)
-members.create_beam(93, "530", line="93", member_hinge_end="3", rotation_angle=0.0)
-members.create_beam(94, "530", line="94", member_hinge_end="4", rotation_angle=0.0)
-members.create_beam(95, "530", line="95", rotation_angle=0.0)
-members.create_beam(96, "530", line="96", rotation_angle=0.0)
-members.create_beam(97, "530", line="97", member_hinge_end="4", rotation_angle=0.0)
-members.create_beam(98, "530", line="98", member_hinge_end="3", rotation_angle=0.0)
-members.create_beam(99, "700", line="99", rotation_angle=1.5707963267948966)
-members.create_beam(100, "700", line="100", rotation_angle=-1.5707963267948966)
-members.create_beam(101, "700", line="101", rotation_angle=1.5707963267948966)
-members.create_beam(102, "700", line="102", rotation_angle=-1.5707963267948966)
-members.create_beam(103, "700", line="103", rotation_angle=-1.5707963267948966)
-members.create_beam(104, "1001", line="104", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(105, "1001", line="105", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(106, "1001", line="106", member_hinge_start="2", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(107, "1001", line="107", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(108, "1001", line="108", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(109, "1001", line="109", member_hinge_start="2", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(110, "250", line="110", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(111, "250", line="111", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(112, "301", line="112", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(113, "168", line="113", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(114, "75", line="114", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(115, "250", line="115", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(116, "219", line="116", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(117, "203", line="117", member_hinge_start="1", member_hinge_end="1", rotation_angle=-1.5707963267948966)
-members.create_beam(118, "700", line="118", rotation_angle=1.5707963267948966)
-members.create_beam(119, "700", line="119", rotation_angle=1.5707963267948966)
-members.create_beam(120, "460", line="120", rotation_angle=0.0)
-members.create_beam(121, "531", line="121", rotation_angle=0.0)
-members.create_beam(122, "350", line="122", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(123, "350", line="123", rotation_angle=0.0)
-members.create_beam(124, "401", line="124", rotation_angle=0.0)
-members.create_beam(125, "460", line="125", rotation_angle=0.0)
-members.create_beam(126, "202", line="126", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(127, "102", line="127", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(128, "460", line="128", rotation_angle=0.0)
-members.create_beam(129, "700", line="129", rotation_angle=-1.5707963267948966)
-members.create_beam(130, "460", line="130", rotation_angle=0.0)
-members.create_beam(131, "700", line="131", rotation_angle=-1.5707963267948966)
-members.create_beam(132, "460", line="132", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(133, "700", line="133", rotation_angle=-1.5707963267948966)
-members.create_beam(134, "203", line="134", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(135, "460", line="135", rotation_angle=0.0)
-members.create_beam(136, "530", line="136", rotation_angle=0.0)
-members.create_beam(137, "700", line="137", rotation_angle=1.5707963267948966)
-members.create_beam(138, "460", line="138", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(139, "350", line="139", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(140, "252", line="140", rotation_angle=0.0)
-members.create_beam(141, "250", line="141", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(142, "401", line="142", rotation_angle=0.0)
-members.create_beam(143, "252", line="143", rotation_angle=0.0)
-members.create_beam(144, "252", line="144", rotation_angle=0.0)
-members.create_beam(145, "252", line="145", rotation_angle=0.0)
-members.create_beam(146, "350", line="146", rotation_angle=0.0)
-members.create_beam(147, "301", line="147", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(148, "250", line="148", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(149, "460", line="149", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(150, "203", line="150", rotation_angle=0.0)
-members.create_beam(151, "350", line="151", rotation_angle=0.0)
-members.create_beam(152, "250", line="152", rotation_angle=0.0)
-members.create_beam(153, "202", line="153", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(154, "530", line="154", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(155, "203", line="155", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(156, "460", line="156", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(157, "350", line="157", rotation_angle=0.0)
-members.create_beam(158, "530", line="158", rotation_angle=0.0)
-members.create_beam(159, "350", line="159", rotation_angle=0.0)
-members.create_beam(160, "531", line="160", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(161, "150", line="161", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(162, "150", line="162", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(163, "203", line="163", rotation_angle=0.0)
-members.create_beam(164, "203", line="164", rotation_angle=0.0)
-members.create_beam(165, "531", line="165", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(166, "203", line="166", rotation_angle=0.0)
-members.create_beam(167, "701", line="167", rotation_angle=0.0)
-members.create_beam(168, "203", line="168", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(169, "203", line="169", rotation_angle=0.0)
-members.create_beam(170, "203", line="170", rotation_angle=0.0)
-members.create_beam(171, "701", line="171", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(172, "460", line="172", rotation_angle=0.0)
-members.create_beam(173, "701", line="173", rotation_angle=0.0)
-members.create_beam(174, "700", line="174", rotation_angle=0.0)
-members.create_beam(175, "460", line="175", rotation_angle=0.0)
-members.create_beam(176, "168", line="176", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(177, "531", line="177", rotation_angle=0.0)
-members.create_beam(178, "250", line="178", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(179, "700", line="179", rotation_angle=-1.5707963267948966)
-members.create_beam(180, "250", line="180", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(181, "90", line="181", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(182, "700", line="182", rotation_angle=1.5707963267948966)
-members.create_beam(183, "90", line="183", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(184, "102", line="184", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(185, "168", line="185", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(186, "140", line="186", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(187, "168", line="187", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(188, "350", line="188", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(189, "251", line="189", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(190, "250", line="190", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(191, "203", line="191", rotation_angle=0.0)
-members.create_beam(192, "530", line="192", rotation_angle=-1.5707963267948966)
-members.create_beam(193, "700", line="193", rotation_angle=0.0)
-members.create_beam(194, "250", line="194", rotation_angle=0.0)
-members.create_beam(195, "125", line="195", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(196, "201", line="196", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(197, "140", line="197", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(198, "460", line="198", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(199, "151", line="199", rotation_angle=3.141592653589793)
-members.create_beam(200, "203", line="200", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(201, "350", line="201", rotation_angle=0.0)
-members.create_beam(202, "250", line="202", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(203, "114", line="203", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(204, "203", line="204", rotation_angle=0.0)
-members.create_beam(205, "75", line="205", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(206, "150", line="206", rotation_angle=3.141592653589793)
-members.create_beam(207, "203", line="207", rotation_angle=0.0)
-members.create_beam(208, "75", line="208", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(209, "75", line="209", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(210, "75", line="210", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(211, "150", line="211", rotation_angle=0.0)
-members.create_beam(212, "203", line="212", rotation_angle=0.0)
-members.create_beam(213, "203", line="213", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(214, "151", line="214", rotation_angle=3.141592653589793)
-members.create_beam(215, "700", line="215", rotation_angle=-1.5707963267948966)
-members.create_beam(216, "700", line="216", rotation_angle=1.5707963267948966)
-members.create_beam(217, "219", line="217", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(218, "219", line="218", member_hinge_start="1", member_hinge_end="1", rotation_angle=-3.141592653589793)
-members.create_beam(219, "460", line="219", rotation_angle=0.0)
-members.create_beam(220, "531", line="220", rotation_angle=0.0)
-members.create_beam(221, "250", line="221", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(222, "90", line="222", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(223, "90", line="223", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(224, "90", line="224", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(225, "90", line="225", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(226, "250", line="226", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(227, "90", line="227", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(228, "90", line="228", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(229, "250", line="229", rotation_angle=0.0)
-members.create_beam(230, "90", line="230", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(231, "90", line="231", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(232, "250", line="232", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(233, "90", line="233", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(234, "90", line="234", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(235, "301", line="235", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(236, "301", line="236", rotation_angle=0.0)
-members.create_beam(237, "460", line="237", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(238, "460", line="238", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(239, "401", line="239", rotation_angle=0.0)
-members.create_beam(240, "350", line="240", rotation_angle=0.0)
-members.create_beam(241, "350", line="241", rotation_angle=0.0)
-members.create_beam(242, "75", line="242", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(243, "203", line="243", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(244, "530", line="244", rotation_angle=0.0)
-members.create_beam(245, "201", line="245", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(246, "201", line="246", rotation_angle=0.0)
-members.create_beam(247, "201", line="247", rotation_angle=0.0)
-members.create_beam(248, "201", line="248", rotation_angle=0.0)
-members.create_beam(249, "201", line="249", rotation_angle=0.0)
-members.create_beam(250, "700", line="250", rotation_angle=-3.9269908169872414)
-members.create_beam(251, "531", line="251", rotation_angle=0.0)
-members.create_beam(252, "531", line="252", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(253, "201", line="253", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(254, "250", line="254", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(255, "201", line="255", rotation_angle=0.0)
-members.create_beam(256, "201", line="256", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(257, "201", line="257", rotation_angle=0.0)
-members.create_beam(258, "201", line="258", rotation_angle=0.0)
-members.create_beam(259, "201", line="259", rotation_angle=0.0)
-members.create_beam(260, "531", line="260", rotation_angle=0.0)
-members.create_beam(261, "680", line="261", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(262, "75", line="262", rotation_angle=0.0)
-members.create_beam(263, "75", line="263", rotation_angle=0.0)
-members.create_beam(264, "680", line="264", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(265, "680", line="265", rotation_angle=0.0)
-members.create_beam(266, "114", line="266", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(267, "700", line="267", rotation_angle=-1.5707963267948966)
-members.create_beam(268, "701", line="268", rotation_angle=0.0)
-members.create_beam(269, "125", line="269", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(270, "250", line="270", rotation_angle=0.0)
-members.create_beam(271, "530", line="271", rotation_angle=3.141592653589793)
-members.create_beam(272, "531", line="272", rotation_angle=0.0)
-members.create_beam(273, "460", line="273", rotation_angle=0.0)
-members.create_beam(274, "203", line="274", member_hinge_start="1", member_hinge_end="1", rotation_angle=-1.5707963267948966)
-members.create_beam(275, "250", line="275", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(276, "203", line="276", rotation_angle=0.0)
-members.create_beam(277, "203", line="277", rotation_angle=0.0)
-members.create_beam(278, "125", line="278", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(279, "203", line="279", rotation_angle=0.0)
-members.create_beam(280, "531", line="280", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(281, "401", line="281", rotation_angle=0.0)
-members.create_beam(282, "531", line="282", rotation_angle=0.0)
-members.create_beam(283, "203", line="283", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(284, "90", line="284", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(285, "251", line="285", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(286, "203", line="286", rotation_angle=0.0)
-members.create_beam(287, "203", line="287", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(288, "100", line="288", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(289, "460", line="289", rotation_angle=0.0)
-members.create_beam(290, "203", line="290", rotation_angle=0.0)
-members.create_beam(291, "203", line="291", rotation_angle=0.0)
-members.create_beam(292, "250", line="292", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(293, "250", line="293", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(294, "250", line="294", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(295, "250", line="295", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(296, "203", line="296", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(297, "150", line="297", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(298, "150", line="298", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(299, "150", line="299", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(300, "150", line="300", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(301, "350", line="301", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(302, "203", line="302", rotation_angle=0.0)
-members.create_beam(303, "700", line="303", rotation_angle=0.0)
-members.create_beam(304, "203", line="304", rotation_angle=0.0)
-members.create_beam(305, "350", line="305", rotation_angle=0.0)
-members.create_beam(306, "203", line="306", rotation_angle=0.0)
-members.create_beam(307, "1002", line="307", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(308, "1002", line="308", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(309, "1002", line="309", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(310, "1002", line="310", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(311, "1002", line="311", rotation_angle=0.0)
-members.create_beam(312, "1002", line="312", rotation_angle=0.0)
-members.create_beam(313, "1002", line="313", rotation_angle=0.0)
-members.create_beam(314, "250", line="314", rotation_angle=0.0)
-members.create_beam(315, "203", line="315", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(316, "151", line="316", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(317, "203", line="317", member_hinge_start="1", rotation_angle=1.5707963267948966)
-members.create_beam(318, "203", line="318", member_hinge_start="1", rotation_angle=1.5707963267948966)
-members.create_beam(319, "203", line="319", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(320, "203", line="320", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(321, "203", line="321", rotation_angle=0.0)
-members.create_beam(322, "203", line="322", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(323, "203", line="323", rotation_angle=0.0)
-members.create_beam(324, "203", line="324", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(325, "203", line="325", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(326, "203", line="326", rotation_angle=0.0)
-members.create_beam(327, "203", line="327", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(328, "203", line="328", rotation_angle=0.0)
-members.create_beam(329, "203", line="329", rotation_angle=0.0)
-members.create_beam(330, "203", line="330", rotation_angle=0.0)
-members.create_beam(331, "203", line="331", rotation_angle=0.0)
-members.create_beam(332, "203", line="332", rotation_angle=0.0)
-members.create_beam(333, "203", line="333", rotation_angle=0.0)
-members.create_beam(334, "203", line="334", rotation_angle=0.0)
-members.create_beam(335, "203", line="335", rotation_angle=0.0)
-members.create_beam(336, "203", line="336", rotation_angle=0.0)
-members.create_beam(337, "203", line="337", rotation_angle=0.0)
-members.create_beam(338, "203", line="338", rotation_angle=0.0)
-members.create_beam(339, "203", line="339", rotation_angle=0.0)
-members.create_beam(340, "203", line="340", rotation_angle=0.0)
-members.create_beam(341, "203", line="341", rotation_angle=0.0)
-members.create_beam(342, "203", line="342", rotation_angle=0.0)
-members.create_beam(343, "203", line="343", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(344, "203", line="344", rotation_angle=0.0)
-members.create_beam(345, "203", line="345", rotation_angle=0.0)
-members.create_beam(346, "203", line="346", rotation_angle=0.0)
-members.create_beam(347, "203", line="347", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(348, "203", line="348", rotation_angle=0.0)
-members.create_beam(349, "401", line="349", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(350, "350", line="350", rotation_angle=0.0)
-members.create_beam(351, "203", line="351", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(352, "203", line="352", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(353, "401", line="353", rotation_angle=0.0)
-members.create_beam(354, "401", line="354", rotation_angle=0.0)
-members.create_beam(355, "401", line="355", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(356, "75", line="356", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(357, "460", line="357", rotation_angle=0.0)
-members.create_beam(358, "250", line="358", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(359, "203", line="359", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(360, "202", line="360", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(361, "460", line="361", rotation_angle=0.0)
-members.create_beam(362, "460", line="362", rotation_angle=0.0)
-members.create_beam(363, "460", line="363", rotation_angle=0.0)
-members.create_beam(364, "203", line="364", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(365, "203", line="365", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(366, "203", line="366", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(367, "250", line="367", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(368, "250", line="368", rotation_angle=0.0)
-members.create_beam(369, "250", line="369", rotation_angle=0.0)
-members.create_beam(370, "250", line="370", rotation_angle=0.0)
-members.create_beam(371, "530", line="371", rotation_angle=0.0)
-members.create_beam(372, "250", line="372", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(373, "530", line="373", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(374, "75", line="374", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(375, "152", line="375", rotation_angle=0.0)
-members.create_beam(376, "75", line="376", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(377, "152", line="377", rotation_angle=0.0)
-members.create_beam(378, "75", line="378", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(379, "75", line="379", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(380, "152", line="380", rotation_angle=0.0)
-members.create_beam(381, "152", line="381", rotation_angle=0.0)
-members.create_beam(382, "460", line="382", rotation_angle=0.0)
-members.create_beam(383, "202", line="383", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(384, "202", line="384", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(385, "460", line="385", rotation_angle=0.0)
-members.create_beam(386, "350", line="386", rotation_angle=0.0)
-members.create_beam(387, "203", line="387", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(388, "460", line="388", rotation_angle=0.0)
-members.create_beam(389, "350", line="389", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(390, "203", line="390", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(391, "700", line="391", rotation_angle=1.5707963267948966)
-members.create_beam(392, "401", line="392", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(393, "252", line="393", rotation_angle=0.0)
-members.create_beam(394, "401", line="394", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(395, "250", line="395", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(396, "700", line="396", rotation_angle=1.5707963267948966)
-members.create_beam(397, "401", line="397", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(398, "250", line="398", rotation_angle=0.0)
-members.create_beam(399, "401", line="399", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(400, "401", line="400", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(401, "401", line="401", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(402, "250", line="402", rotation_angle=0.0)
-members.create_beam(403, "401", line="403", rotation_angle=0.0)
-members.create_beam(404, "401", line="404", rotation_angle=0.0)
-members.create_beam(405, "401", line="405", rotation_angle=0.0)
-members.create_beam(406, "250", line="406", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(407, "401", line="407", rotation_angle=0.0)
-members.create_beam(408, "401", line="408", rotation_angle=0.0)
-members.create_beam(409, "250", line="409", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(410, "202", line="410", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(411, "202", line="411", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(412, "202", line="412", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(413, "250", line="413", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(414, "250", line="414", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(415, "401", line="415", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(416, "250", line="416", rotation_angle=0.0)
-members.create_beam(417, "250", line="417", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(418, "401", line="418", rotation_angle=0.0)
-members.create_beam(419, "250", line="419", rotation_angle=0.0)
-members.create_beam(420, "250", line="420", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(421, "250", line="421", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(422, "401", line="422", rotation_angle=0.0)
-members.create_beam(423, "203", line="423", rotation_angle=0.0)
-members.create_beam(424, "203", line="424", rotation_angle=0.0)
-members.create_beam(425, "203", line="425", rotation_angle=0.0)
-members.create_beam(426, "203", line="426", rotation_angle=0.0)
-members.create_beam(427, "203", line="427", rotation_angle=0.0)
-members.create_beam(428, "203", line="428", rotation_angle=0.0)
-members.create_beam(429, "90", line="429", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(430, "350", line="430", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(431, "90", line="431", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(432, "401", line="432", rotation_angle=0.0)
-members.create_beam(433, "700", line="433", rotation_angle=-1.5707963267948966)
-members.create_beam(434, "700", line="434", rotation_angle=-1.5707963267948966)
-members.create_beam(435, "140", line="435", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(436, "252", line="436", rotation_angle=0.0)
-members.create_beam(437, "203", line="437", rotation_angle=0.0)
-members.create_beam(438, "203", line="438", rotation_angle=0.0)
-members.create_beam(439, "203", line="439", rotation_angle=0.0)
-members.create_beam(440, "203", line="440", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(441, "203", line="441", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(442, "531", line="442", rotation_angle=0.0)
-members.create_beam(443, "251", line="443", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(444, "151", line="444", rotation_angle=3.141592653589793)
-members.create_beam(445, "531", line="445", rotation_angle=0.0)
-members.create_beam(446, "250", line="446", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(447, "251", line="447", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(448, "531", line="448", rotation_angle=0.0)
-members.create_beam(449, "102", line="449", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(450, "531", line="450", rotation_angle=0.0)
-members.create_beam(451, "100", line="451", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(452, "168", line="452", member_hinge_start="1", member_hinge_end="1", rotation_angle=-1.5707963267948966)
-members.create_beam(453, "114", line="453", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(454, "100", line="454", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(455, "151", line="455", rotation_angle=3.141592653589793)
-members.create_beam(456, "150", line="456", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(457, "150", line="457", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(458, "350", line="458", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(459, "125", line="459", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(460, "350", line="460", rotation_angle=0.0)
-members.create_beam(461, "530", line="461", rotation_angle=0.7853981633974483)
-members.create_beam(462, "250", line="462", rotation_angle=0.0)
-members.create_beam(463, "530", line="463", rotation_angle=1.5707963267948966)
-members.create_beam(464, "90", line="464", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(465, "530", line="465", rotation_angle=1.5707963267948966)
-members.create_beam(466, "530", line="466", rotation_angle=1.5707963267948966)
-members.create_beam(467, "530", line="467", rotation_angle=-1.5707963267948966)
-members.create_beam(468, "530", line="468", rotation_angle=-1.5707963267948966)
-members.create_beam(469, "75", line="469", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(470, "530", line="470", rotation_angle=-1.5707963267948966)
-members.create_beam(471, "530", line="471", rotation_angle=-1.5707963267948966)
-members.create_beam(472, "530", line="472", rotation_angle=-1.5707963267948966)
-members.create_beam(473, "301", line="473", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(474, "530", line="474", member_hinge_end="3", rotation_angle=3.141592653589793)
-members.create_beam(475, "102", line="475", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(476, "102", line="476", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(477, "90", line="477", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(478, "301", line="478", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(479, "530", line="479", rotation_angle=0.0)
-members.create_beam(480, "530", line="480", rotation_angle=0.0)
-members.create_beam(481, "203", line="481", rotation_angle=0.0)
-members.create_beam(482, "203", line="482", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(483, "203", line="483", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(484, "201", line="484", member_hinge_start="1", member_hinge_end="2", rotation_angle=-1.5707963267948966)
-members.create_beam(485, "203", line="485", rotation_angle=0.0)
-members.create_beam(486, "203", line="486", rotation_angle=0.0)
-members.create_beam(487, "75", line="487", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(488, "75", line="488", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(489, "90", line="489", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(490, "151", line="490", member_hinge_start="1", rotation_angle=3.141592653589793)
-members.create_beam(491, "65", line="491", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(492, "65", line="492", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(493, "152", line="493", rotation_angle=0.0)
-members.create_beam(494, "65", line="494", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(495, "65", line="495", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(496, "152", line="496", rotation_angle=0.0)
-members.create_beam(497, "65", line="497", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(498, "65", line="498", member_hinge_start="1", member_hinge_end="1", rotation_angle=1.5707963267948966)
-members.create_beam(499, "401", line="499", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(500, "350", line="500", rotation_angle=0.0)
-members.create_beam(501, "168", line="501", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(502, "168", line="502", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(503, "114", line="503", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(504, "219", line="504", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(505, "203", line="505", member_hinge_end="5", rotation_angle=0.0)
-members.create_beam(506, "168", line="506", rotation_angle=0.0)
-members.create_beam(507, "219", line="507", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(508, "140", line="508", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(509, "140", line="509", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(510, "140", line="510", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(511, "530", line="511", rotation_angle=3.141592653589793)
-members.create_beam(512, "530", line="512", rotation_angle=3.141592653589793)
-members.create_beam(513, "250", line="513", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(514, "90", line="514", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(515, "90", line="515", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(516, "301", line="516", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(517, "301", line="517", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(518, "460", line="518", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(519, "203", line="519", member_hinge_end="5", rotation_angle=0.0)
-members.create_beam(520, "125", line="520", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(521, "125", line="521", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(522, "203", line="522", rotation_angle=0.0)
-members.create_beam(523, "700", line="523", rotation_angle=-1.5707963267948966)
-members.create_beam(524, "203", line="524", rotation_angle=0.0)
-members.create_beam(525, "203", line="525", rotation_angle=0.0)
-members.create_beam(526, "125", line="526", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(529, "203", line="529", rotation_angle=0.0)
-members.create_beam(530, "202", line="530", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(531, "203", line="531", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(532, "202", line="532", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(533, "203", line="533", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(534, "202", line="534", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(535, "203", line="535", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(536, "460", line="536", rotation_angle=0.0)
-members.create_beam(537, "203", line="537", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(538, "75", line="538", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(539, "460", line="539", rotation_angle=0.0)
-members.create_beam(540, "203", line="540", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(541, "75", line="541", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(542, "460", line="542", rotation_angle=0.0)
-members.create_beam(543, "203", line="543", rotation_angle=0.0)
-members.create_beam(544, "203", line="544", rotation_angle=0.0)
-members.create_beam(545, "75", line="545", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(546, "460", line="546", rotation_angle=0.0)
-members.create_beam(547, "203", line="547", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(548, "75", line="548", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(549, "460", line="549", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(550, "75", line="550", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(551, "75", line="551", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(552, "75", line="552", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(553, "75", line="553", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(554, "75", line="554", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(555, "75", line="555", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(556, "75", line="556", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(557, "75", line="557", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(558, "75", line="558", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(559, "75", line="559", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(560, "203", line="560", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(561, "75", line="561", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(562, "75", line="562", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(563, "203", line="563", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(564, "75", line="564", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(565, "530", line="565", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(566, "75", line="566", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(567, "203", line="567", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(568, "75", line="568", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(569, "75", line="569", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(570, "75", line="570", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(571, "75", line="571", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(572, "75", line="572", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(573, "75", line="573", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(574, "203", line="574", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(575, "75", line="575", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(576, "203", line="576", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(577, "251", line="577", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(578, "530", line="578", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(579, "75", line="579", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(580, "202", line="580", rotation_angle=0.0)
-members.create_beam(581, "75", line="581", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(582, "75", line="582", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(583, "460", line="583", rotation_angle=0.0)
-members.create_beam(584, "75", line="584", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(585, "75", line="585", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(586, "75", line="586", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(587, "460", line="587", rotation_angle=0.0)
-members.create_beam(588, "530", line="588", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(589, "530", line="589", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(590, "460", line="590", rotation_angle=0.0)
-members.create_beam(591, "203", line="591", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(592, "203", line="592", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(593, "203", line="593", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(594, "203", line="594", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(595, "203", line="595", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(596, "203", line="596", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(597, "203", line="597", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(598, "203", line="598", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(599, "203", line="599", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(600, "203", line="600", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(601, "203", line="601", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(602, "203", line="602", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(603, "530", line="603", rotation_angle=0.0)
-members.create_beam(604, "530", line="604", rotation_angle=0.0)
-members.create_beam(605, "530", line="605", rotation_angle=0.0)
-members.create_beam(606, "530", line="606", rotation_angle=0.0)
-members.create_beam(607, "530", line="607", rotation_angle=0.0)
-members.create_beam(608, "530", line="608", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(609, "530", line="609", rotation_angle=0.0)
-members.create_beam(610, "530", line="610", rotation_angle=0.0)
-members.create_beam(611, "530", line="611", rotation_angle=0.0)
-members.create_beam(612, "530", line="612", rotation_angle=0.0)
-members.create_beam(613, "530", line="613", rotation_angle=0.0)
-members.create_beam(614, "530", line="614", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(615, "530", line="615", rotation_angle=0.0)
-members.create_beam(616, "530", line="616", rotation_angle=0.0)
-members.create_beam(617, "530", line="617", rotation_angle=0.0)
-members.create_beam(618, "530", line="618", rotation_angle=0.0)
-members.create_beam(619, "530", line="619", rotation_angle=0.0)
-members.create_beam(620, "530", line="620", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(621, "530", line="621", rotation_angle=0.0)
-members.create_beam(622, "530", line="622", rotation_angle=0.0)
-members.create_beam(623, "530", line="623", rotation_angle=0.0)
-members.create_beam(624, "530", line="624", rotation_angle=0.0)
-members.create_beam(625, "530", line="625", rotation_angle=0.0)
-members.create_beam(626, "530", line="626", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(627, "203", line="627", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(628, "203", line="628", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(629, "401", line="629", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(630, "203", line="630", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(631, "203", line="631", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(632, "460", line="632", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(633, "75", line="633", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(634, "401", line="634", rotation_angle=0.0)
-members.create_beam(635, "203", line="635", rotation_angle=0.0)
-members.create_beam(636, "250", line="636", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(637, "203", line="637", rotation_angle=0.0)
-members.create_beam(639, "203", line="639", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(641, "250", line="641", rotation_angle=0.0)
-members.create_beam(642, "250", line="642", rotation_angle=0.0)
-members.create_beam(643, "460", line="643", rotation_angle=0.0)
-members.create_beam(644, "250", line="644", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(645, "250", line="645", rotation_angle=0.0)
-members.create_beam(646, "250", line="646", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(649, "250", line="649", member_hinge_start="1", rotation_angle=0.0)
-members.create_beam(650, "700", line="650", rotation_angle=1.5707963267948966)
-members.create_beam(651, "460", line="651", rotation_angle=0.0)
-members.create_beam(652, "401", line="652", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(653, "203", line="653", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(654, "203", line="654", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(655, "401", line="655", rotation_angle=0.0)
-members.create_beam(656, "203", line="656", rotation_angle=0.0)
-members.create_beam(658, "203", line="658", rotation_angle=0.0)
-members.create_beam(659, "401", line="659", rotation_angle=0.0)
-members.create_beam(661, "203", line="661", rotation_angle=0.0)
-members.create_beam(662, "203", line="662", member_hinge_start="1", rotation_angle=-1.5707963267948966)
-members.create_beam(663, "75", line="663", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(664, "75", line="664", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(665, "90", line="665", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(666, "250", line="666", rotation_angle=0.0)
-members.create_beam(667, "90", line="667", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(668, "90", line="668", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(669, "251", line="669", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(671, "203", line="671", rotation_angle=0.0)
-members.create_beam(672, "203", line="672", rotation_angle=0.0)
-members.create_beam(673, "203", line="673", rotation_angle=0.0)
-members.create_beam(674, "100", line="674", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(676, "203", line="676", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(677, "125", line="677", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(678, "203", line="678", rotation_angle=0.0)
-members.create_beam(679, "250", line="679", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(680, "203", line="680", rotation_angle=0.0)
-members.create_beam(681, "203", line="681", rotation_angle=0.0)
-members.create_beam(682, "203", line="682", rotation_angle=0.0)
-members.create_beam(683, "203", line="683", rotation_angle=0.0)
-members.create_beam(684, "203", line="684", rotation_angle=0.0)
-members.create_beam(685, "203", line="685", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(686, "203", line="686", member_hinge_start="1", member_hinge_end="6", rotation_angle=0.0)
-members.create_beam(688, "460", line="688", rotation_angle=0.0)
-members.create_beam(689, "460", line="689", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(690, "531", line="690", rotation_angle=0.0)
-members.create_beam(691, "531", line="691", rotation_angle=0.0)
-members.create_beam(694, "203", line="694", member_hinge_start="1", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(695, "75", line="695", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(696, "75", line="696", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(697, "75", line="697", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(698, "75", line="698", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(700, "531", line="700", member_hinge_end="1", rotation_angle=0.0)
-members.create_beam(701, "75", line="701", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(702, "75", line="702", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(704, "531", line="704", rotation_angle=0.0)
-members.create_beam(706, "75", line="706", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
-members.create_beam(707, "75", line="707", member_hinge_start="1", member_hinge_end="1", rotation_angle=3.141592653589793)
+members.create_beam(1, "1", line="1", rotation_angle=-1.5707963267948966)
+members.create_beam(2, "1", line="2", rotation_angle=3.141592653589793)
+members.create_beam(3, "1", line="3", rotation_angle=-2.9146998508305306)
+members.create_beam(4, "1", line="4", rotation_angle=-2.6878070480712677)
+members.create_beam(5, "1", line="5", rotation_angle=-2.4609142453120043)
+members.create_beam(6, "1", line="6", rotation_angle=-2.234021442552742)
+members.create_beam(7, "1", line="7", rotation_angle=-2.007128639793479)
+members.create_beam(8, "1", line="8", rotation_angle=-1.780235837034216)
+members.create_beam(9, "1", line="9", rotation_angle=-1.5533430342749535)
+members.create_beam(10, "1", line="10", rotation_angle=-1.32645023151569)
+members.create_beam(11, "1", line="11", rotation_angle=-1.0995574287564278)
+members.create_beam(12, "1", line="12", rotation_angle=-0.8726646259971635)
+members.create_beam(13, "1", line="13", rotation_angle=-0.6457718232379018)
+members.create_beam(14, "1", line="14", rotation_angle=-0.41887902047863834)
+members.create_beam(15, "1", line="15", rotation_angle=-0.1919862177193767)
+members.create_beam(16, "1", line="16", rotation_angle=0.03490658503988567)
+members.create_beam(17, "1", line="17", rotation_angle=0.26179938779914974)
+members.create_beam(18, "1", line="18", rotation_angle=0.48869219055841384)
+members.create_beam(19, "1", line="19", rotation_angle=0.7155849933176749)
+members.create_beam(20, "1", line="20", rotation_angle=0.9424777960769388)
+members.create_beam(21, "1", line="21", rotation_angle=1.1693705988361995)
+members.create_beam(22, "1", line="22", rotation_angle=1.3962634015954638)
+members.create_beam(23, "1", line="23", rotation_angle=1.6231562043547265)
+members.create_beam(24, "1", line="24", rotation_angle=1.8500490071139897)
+members.create_beam(25, "1", line="25", rotation_angle=2.0769418098732526)
+
+# Create Static Analysis Settings
+static_analysis_settings.create(1)
+static_analysis_settings.create(2, analysis_type="Second-order (P-Δ)")
+
+# Create Load Cases
+load_cases.create(1, name="G(SW) - Structure Self Weight", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(2, name="G(SD) - Structural Dead Loads", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(3, name="G(EQ) - Equipment Dead Loads", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(10, name="Q(rLL) Roof live load", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(11, name="Q(L) - General Floor Loads", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(12, name="Q(S) - Pipe and Elec. Services", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(13, name="Q(SP) - Material Spillage", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(21, name="Q(ML) - Belt Material Load - Operating", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(22, name="Q(FL) - Belt Material Load - Flooded", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(23, name="Q(BTN) - Belt Tension Not Operating", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(24, name="Q(BTO) - Belt Tension Operating", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(25, name="Q(MPT) - Belt Tension Motor Peak Torque", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(31, name="Q(TO) - Tank and Bin Operating", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(32, name="Q(TE) - Tank and Bin Extreme", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(33, name="Q(CH) - Chute Extreme (Blocked)", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(41, name="Q(EO) - Equipment Operating", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(42, name="Q(EE) - Equipment Extreme", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(43, name="Q(CR) - Crane MRC", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(61, name="Q(TH) - Thermal High", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(63, name="Eu(x) Earthquake in +x direction", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(64, name="Eu(z) Earthquake in +y direction", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(71, name="Wu+xD", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(72, name="Wu-xD", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(73, name="Wu+xU", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(74, name="Wu-xU", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(75, name="Wu+yD", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(76, name="Wu-yD", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(77, name="Wu+yU", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(78, name="Wu-yU", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(79, name="Wu+xDi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(80, name="Wu-xDi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(81, name="Wu+xUi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(82, name="Wu-xUi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(83, name="Wu+yDi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(84, name="Wu-yDi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(85, name="Wu+yUi", static_analysis_settings="SA1", to_solve=False)
+load_cases.create(86, name="Wu-yUi", static_analysis_settings="SA1", to_solve=False)
+
+# Create Design Situations
+design_situations.create(1, name="ULS - Strength", design_situation_type="DESIGN_SITUATION_TYPE_ULS_STRENGTH_AS_NZS")
+design_situations.create(2, name="SLS - Serviceability", design_situation_type="DESIGN_SITUATION_TYPE_SLS_SERVICEABILITY_NZS")
+
+# Create Load Combinations Titles
+load_combinations.create(101, design_situation="DS1", user_defined_name_enabled=True, name="Ult Dead Load Extreme", static_analysis_settings="SA2")
+load_combinations[101].items[1].load_case=1
+load_combinations[101].items[1].factor=1.35
+load_combinations[101].items[2].load_case=2
+load_combinations[101].items[2].factor=1.35
+load_combinations[101].items[3].load_case=3
+load_combinations[101].items[3].factor=1.35
+load_combinations[101].items[4].load_case=12
+load_combinations[101].items[4].factor=1.35
+load_combinations[101].items[5].load_case=21
+load_combinations[101].items[5].factor=1.0
+load_combinations[101].items[6].load_case=23
+load_combinations[101].items[6].factor=1.35
+load_combinations.create(111, design_situation="DS1", user_defined_name_enabled=True, name="Ult Live Load Extreme", static_analysis_settings="SA2")
+load_combinations[111].items[1].load_case=1
+load_combinations[111].items[1].factor=1.2
+load_combinations[111].items[2].load_case=2
+load_combinations[111].items[2].factor=1.2
+load_combinations[111].items[3].load_case=3
+load_combinations[111].items[3].factor=1.2
+load_combinations[111].items[4].load_case=11
+load_combinations[111].items[4].factor=1.5
+load_combinations[111].items[5].load_case=12
+load_combinations[111].items[5].factor=0.6
+load_combinations[111].items[6].load_case=21
+load_combinations[111].items[6].factor=1.0
+load_combinations[111].items[7].load_case=24
+load_combinations[111].items[7].factor=1.2
+load_combinations[111].items[8].load_case=33
+load_combinations[111].items[8].factor=0.2
+load_combinations[111].items[9].load_case=41
+load_combinations[111].items[9].factor=1.2
+load_combinations.create(112, design_situation="DS1", user_defined_name_enabled=True, name="Ult Services Extreme", static_analysis_settings="SA2")
+load_combinations[112].items[1].load_case=1
+load_combinations[112].items[1].factor=1.2
+load_combinations[112].items[2].load_case=2
+load_combinations[112].items[2].factor=1.2
+load_combinations[112].items[3].load_case=3
+load_combinations[112].items[3].factor=1.2
+load_combinations[112].items[4].load_case=11
+load_combinations[112].items[4].factor=0.4
+load_combinations[112].items[5].load_case=12
+load_combinations[112].items[5].factor=1.5
+load_combinations[112].items[6].load_case=21
+load_combinations[112].items[6].factor=1.0
+load_combinations[112].items[7].load_case=24
+load_combinations[112].items[7].factor=1.2
+load_combinations[112].items[8].load_case=33
+load_combinations[112].items[8].factor=0.2
+load_combinations[112].items[9].load_case=41
+load_combinations[112].items[9].factor=1.2
+load_combinations.create(113, design_situation="DS1", user_defined_name_enabled=True, name="Ult Roof Live Load Extreme", static_analysis_settings="SA2")
+load_combinations[113].items[1].load_case=1
+load_combinations[113].items[1].factor=1.2
+load_combinations[113].items[2].load_case=2
+load_combinations[113].items[2].factor=1.2
+load_combinations[113].items[3].load_case=3
+load_combinations[113].items[3].factor=1.2
+load_combinations[113].items[4].load_case=10
+load_combinations[113].items[4].factor=1.5
+load_combinations.create(121, design_situation="DS1", user_defined_name_enabled=True, name="Ult Material and Tension Extreme", static_analysis_settings="SA2")
+load_combinations[121].items[1].load_case=1
+load_combinations[121].items[1].factor=1.2
+load_combinations[121].items[2].load_case=2
+load_combinations[121].items[2].factor=1.2
+load_combinations[121].items[3].load_case=3
+load_combinations[121].items[3].factor=1.2
+load_combinations[121].items[4].load_case=11
+load_combinations[121].items[4].factor=0.4
+load_combinations[121].items[5].load_case=12
+load_combinations[121].items[5].factor=0.6
+load_combinations[121].items[6].load_case=22
+load_combinations[121].items[6].factor=1.2
+load_combinations[121].items[7].load_case=25
+load_combinations[121].items[7].factor=1.5
+load_combinations[121].items[8].load_case=33
+load_combinations[121].items[8].factor=1.2
+load_combinations[121].items[9].load_case=41
+load_combinations[121].items[9].factor=1.2
+load_combinations.create(122, design_situation="DS1", user_defined_name_enabled=True, name="Ult Material Extreme", static_analysis_settings="SA2")
+load_combinations[122].items[1].load_case=1
+load_combinations[122].items[1].factor=1.2
+load_combinations[122].items[2].load_case=2
+load_combinations[122].items[2].factor=1.2
+load_combinations[122].items[3].load_case=3
+load_combinations[122].items[3].factor=1.2
+load_combinations[122].items[4].load_case=11
+load_combinations[122].items[4].factor=0.4
+load_combinations[122].items[5].load_case=12
+load_combinations[122].items[5].factor=0.6
+load_combinations[122].items[6].load_case=22
+load_combinations[122].items[6].factor=1.2
+load_combinations[122].items[7].load_case=23
+load_combinations[122].items[7].factor=0.9
+load_combinations[122].items[8].load_case=33
+load_combinations[122].items[8].factor=0.2
+load_combinations[122].items[9].load_case=41
+load_combinations[122].items[9].factor=1.2
+load_combinations.create(123, design_situation="DS1", user_defined_name_enabled=True, name="Ult Belt Tension Extreme - uplift", static_analysis_settings="SA2")
+load_combinations[123].items[1].load_case=1
+load_combinations[123].items[1].factor=0.9
+load_combinations[123].items[2].load_case=2
+load_combinations[123].items[2].factor=0.9
+load_combinations[123].items[3].load_case=3
+load_combinations[123].items[3].factor=0.9
+load_combinations[123].items[4].load_case=25
+load_combinations[123].items[4].factor=1.5
+load_combinations[123].items[5].load_case=41
+load_combinations[123].items[5].factor=1.5
+load_combinations.create(131, design_situation="DS1", user_defined_name_enabled=True, name="Ult Equipment Extreme", static_analysis_settings="SA2")
+load_combinations[131].items[1].load_case=1
+load_combinations[131].items[1].factor=1.2
+load_combinations[131].items[2].load_case=2
+load_combinations[131].items[2].factor=1.2
+load_combinations[131].items[3].load_case=3
+load_combinations[131].items[3].factor=1.2
+load_combinations[131].items[4].load_case=11
+load_combinations[131].items[4].factor=0.4
+load_combinations[131].items[5].load_case=12
+load_combinations[131].items[5].factor=0.6
+load_combinations[131].items[6].load_case=21
+load_combinations[131].items[6].factor=1.0
+load_combinations[131].items[7].load_case=23
+load_combinations[131].items[7].factor=1.2
+load_combinations[131].items[8].load_case=33
+load_combinations[131].items[8].factor=1.2
+load_combinations.create(132, design_situation="DS1", user_defined_name_enabled=True, name="Ult Equipment Extreme - uplift", static_analysis_settings="SA2")
+load_combinations[132].items[1].load_case=1
+load_combinations[132].items[1].factor=0.9
+load_combinations[132].items[2].load_case=2
+load_combinations[132].items[2].factor=0.9
+load_combinations[132].items[3].load_case=3
+load_combinations[132].items[3].factor=0.9
+load_combinations[132].items[4].load_case=23
+load_combinations[132].items[4].factor=0.9
+load_combinations.create(141, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating", static_analysis_settings="SA2")
+load_combinations[141].items[1].load_case=1
+load_combinations[141].items[1].factor=1.2
+load_combinations[141].items[2].load_case=2
+load_combinations[141].items[2].factor=1.2
+load_combinations[141].items[3].load_case=3
+load_combinations[141].items[3].factor=1.2
+load_combinations[141].items[4].load_case=11
+load_combinations[141].items[4].factor=0.4
+load_combinations[141].items[5].load_case=12
+load_combinations[141].items[5].factor=0.6
+load_combinations[141].items[6].load_case=23
+load_combinations[141].items[6].factor=1.2
+load_combinations[141].items[7].load_case=33
+load_combinations[141].items[7].factor=0.2
+load_combinations[141].items[8].load_case=71
+load_combinations[141].items[8].factor=0.17
+load_combinations[141].items[9].load_case=79
+load_combinations[141].items[9].factor=0.17
+load_combinations.create(142, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating", static_analysis_settings="SA2")
+load_combinations[142].items[1].load_case=1
+load_combinations[142].items[1].factor=1.2
+load_combinations[142].items[2].load_case=2
+load_combinations[142].items[2].factor=1.2
+load_combinations[142].items[3].load_case=3
+load_combinations[142].items[3].factor=1.2
+load_combinations[142].items[4].load_case=11
+load_combinations[142].items[4].factor=0.4
+load_combinations[142].items[5].load_case=12
+load_combinations[142].items[5].factor=0.6
+load_combinations[142].items[6].load_case=23
+load_combinations[142].items[6].factor=1.2
+load_combinations[142].items[7].load_case=33
+load_combinations[142].items[7].factor=0.2
+load_combinations[142].items[8].load_case=72
+load_combinations[142].items[8].factor=0.17
+load_combinations[142].items[9].load_case=80
+load_combinations[142].items[9].factor=0.17
+load_combinations.create(143, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating", static_analysis_settings="SA2")
+load_combinations[143].items[1].load_case=1
+load_combinations[143].items[1].factor=1.2
+load_combinations[143].items[2].load_case=2
+load_combinations[143].items[2].factor=1.2
+load_combinations[143].items[3].load_case=3
+load_combinations[143].items[3].factor=1.2
+load_combinations[143].items[4].load_case=11
+load_combinations[143].items[4].factor=0.4
+load_combinations[143].items[5].load_case=12
+load_combinations[143].items[5].factor=0.6
+load_combinations[143].items[6].load_case=23
+load_combinations[143].items[6].factor=1.2
+load_combinations[143].items[7].load_case=33
+load_combinations[143].items[7].factor=0.2
+load_combinations[143].items[8].load_case=75
+load_combinations[143].items[8].factor=0.17
+load_combinations[143].items[9].load_case=83
+load_combinations[143].items[9].factor=0.17
+load_combinations.create(144, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating", static_analysis_settings="SA2")
+load_combinations[144].items[1].load_case=1
+load_combinations[144].items[1].factor=1.2
+load_combinations[144].items[2].load_case=2
+load_combinations[144].items[2].factor=1.2
+load_combinations[144].items[3].load_case=3
+load_combinations[144].items[3].factor=1.2
+load_combinations[144].items[4].load_case=11
+load_combinations[144].items[4].factor=0.4
+load_combinations[144].items[5].load_case=12
+load_combinations[144].items[5].factor=0.6
+load_combinations[144].items[6].load_case=23
+load_combinations[144].items[6].factor=1.2
+load_combinations[144].items[7].load_case=33
+load_combinations[144].items[7].factor=0.2
+load_combinations[144].items[8].load_case=76
+load_combinations[144].items[8].factor=0.17
+load_combinations.create(145, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating, uplift", static_analysis_settings="SA2")
+load_combinations[145].items[1].load_case=1
+load_combinations[145].items[1].factor=0.9
+load_combinations[145].items[2].load_case=2
+load_combinations[145].items[2].factor=0.9
+load_combinations[145].items[3].load_case=3
+load_combinations[145].items[3].factor=0.9
+load_combinations[145].items[4].load_case=23
+load_combinations[145].items[4].factor=0.9
+load_combinations[145].items[5].load_case=41
+load_combinations[145].items[5].factor=1.0
+load_combinations[145].items[6].load_case=73
+load_combinations[145].items[6].factor=0.17
+load_combinations.create(146, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating, uplift", static_analysis_settings="SA2")
+load_combinations[146].items[1].load_case=1
+load_combinations[146].items[1].factor=0.9
+load_combinations[146].items[2].load_case=2
+load_combinations[146].items[2].factor=0.9
+load_combinations[146].items[3].load_case=3
+load_combinations[146].items[3].factor=0.9
+load_combinations[146].items[4].load_case=23
+load_combinations[146].items[4].factor=0.9
+load_combinations[146].items[5].load_case=41
+load_combinations[146].items[5].factor=1.0
+load_combinations[146].items[6].load_case=74
+load_combinations[146].items[6].factor=0.17
+load_combinations.create(147, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating, uplift", static_analysis_settings="SA2")
+load_combinations[147].items[1].load_case=1
+load_combinations[147].items[1].factor=0.9
+load_combinations[147].items[2].load_case=2
+load_combinations[147].items[2].factor=0.9
+load_combinations[147].items[3].load_case=3
+load_combinations[147].items[3].factor=0.9
+load_combinations[147].items[4].load_case=23
+load_combinations[147].items[4].factor=0.9
+load_combinations[147].items[5].load_case=41
+load_combinations[147].items[5].factor=1.0
+load_combinations[147].items[6].load_case=77
+load_combinations[147].items[6].factor=0.17
+load_combinations.create(148, design_situation="DS1", user_defined_name_enabled=True, name="Ult Crane - plant not operating, uplift", static_analysis_settings="SA2")
+load_combinations[148].items[1].load_case=1
+load_combinations[148].items[1].factor=0.9
+load_combinations[148].items[2].load_case=2
+load_combinations[148].items[2].factor=0.9
+load_combinations[148].items[3].load_case=3
+load_combinations[148].items[3].factor=0.9
+load_combinations[148].items[4].load_case=23
+load_combinations[148].items[4].factor=0.9
+load_combinations[148].items[5].load_case=41
+load_combinations[148].items[5].factor=1.0
+load_combinations[148].items[6].load_case=78
+load_combinations[148].items[6].factor=0.17
+load_combinations[148].items[7].load_case=86
+load_combinations[148].items[7].factor=0.17
+load_combinations.create(151, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant + 1.25 Thermal", static_analysis_settings="SA2")
+load_combinations[151].items[1].load_case=1
+load_combinations[151].items[1].factor=1.2
+load_combinations[151].items[2].load_case=2
+load_combinations[151].items[2].factor=1.2
+load_combinations[151].items[3].load_case=3
+load_combinations[151].items[3].factor=1.2
+load_combinations[151].items[4].load_case=11
+load_combinations[151].items[4].factor=0.4
+load_combinations[151].items[5].load_case=12
+load_combinations[151].items[5].factor=0.6
+load_combinations[151].items[6].load_case=21
+load_combinations[151].items[6].factor=1.0
+load_combinations[151].items[7].load_case=24
+load_combinations[151].items[7].factor=1.2
+load_combinations[151].items[8].load_case=33
+load_combinations[151].items[8].factor=0.2
+load_combinations[151].items[9].load_case=41
+load_combinations[151].items[9].factor=1.2
+load_combinations.create(152, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant - 1.25 Thermal", static_analysis_settings="SA2")
+load_combinations[152].items[1].load_case=1
+load_combinations[152].items[1].factor=1.2
+load_combinations[152].items[2].load_case=2
+load_combinations[152].items[2].factor=1.2
+load_combinations[152].items[3].load_case=3
+load_combinations[152].items[3].factor=1.2
+load_combinations[152].items[4].load_case=11
+load_combinations[152].items[4].factor=0.4
+load_combinations[152].items[5].load_case=12
+load_combinations[152].items[5].factor=0.6
+load_combinations[152].items[6].load_case=21
+load_combinations[152].items[6].factor=1.0
+load_combinations[152].items[7].load_case=24
+load_combinations[152].items[7].factor=1.2
+load_combinations[152].items[8].load_case=33
+load_combinations[152].items[8].factor=0.2
+load_combinations[152].items[9].load_case=41
+load_combinations[152].items[9].factor=1.2
+load_combinations.create(153, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant + 1.5 * Wind Wop x+", static_analysis_settings="SA2")
+load_combinations[153].items[1].load_case=1
+load_combinations[153].items[1].factor=1.2
+load_combinations[153].items[2].load_case=2
+load_combinations[153].items[2].factor=1.2
+load_combinations[153].items[3].load_case=3
+load_combinations[153].items[3].factor=1.2
+load_combinations[153].items[4].load_case=11
+load_combinations[153].items[4].factor=0.4
+load_combinations[153].items[5].load_case=12
+load_combinations[153].items[5].factor=0.6
+load_combinations[153].items[6].load_case=21
+load_combinations[153].items[6].factor=1.0
+load_combinations[153].items[7].load_case=24
+load_combinations[153].items[7].factor=1.2
+load_combinations[153].items[8].load_case=33
+load_combinations[153].items[8].factor=0.2
+load_combinations[153].items[9].load_case=41
+load_combinations[153].items[9].factor=1.2
+load_combinations[153].items[10].load_case=71
+load_combinations[153].items[10].factor=0.4
+load_combinations[153].items[11].load_case=79
+load_combinations[153].items[11].factor=0.4
+load_combinations.create(154, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant + 1.5 * Wind Wop x-", static_analysis_settings="SA2")
+load_combinations[154].items[1].load_case=1
+load_combinations[154].items[1].factor=1.2
+load_combinations[154].items[2].load_case=2
+load_combinations[154].items[2].factor=1.2
+load_combinations[154].items[3].load_case=3
+load_combinations[154].items[3].factor=1.2
+load_combinations[154].items[4].load_case=11
+load_combinations[154].items[4].factor=0.4
+load_combinations[154].items[5].load_case=12
+load_combinations[154].items[5].factor=0.6
+load_combinations[154].items[6].load_case=21
+load_combinations[154].items[6].factor=1.0
+load_combinations[154].items[7].load_case=24
+load_combinations[154].items[7].factor=1.2
+load_combinations[154].items[8].load_case=33
+load_combinations[154].items[8].factor=0.2
+load_combinations[154].items[9].load_case=41
+load_combinations[154].items[9].factor=1.2
+load_combinations[154].items[10].load_case=72
+load_combinations[154].items[10].factor=0.4
+load_combinations[154].items[11].load_case=80
+load_combinations[154].items[11].factor=0.4
+load_combinations.create(155, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant + 1.5 * Wind Wop y+", static_analysis_settings="SA2")
+load_combinations[155].items[1].load_case=1
+load_combinations[155].items[1].factor=1.2
+load_combinations[155].items[2].load_case=2
+load_combinations[155].items[2].factor=1.2
+load_combinations[155].items[3].load_case=3
+load_combinations[155].items[3].factor=1.2
+load_combinations[155].items[4].load_case=11
+load_combinations[155].items[4].factor=0.4
+load_combinations[155].items[5].load_case=12
+load_combinations[155].items[5].factor=0.6
+load_combinations[155].items[6].load_case=21
+load_combinations[155].items[6].factor=1.0
+load_combinations[155].items[7].load_case=24
+load_combinations[155].items[7].factor=1.2
+load_combinations[155].items[8].load_case=33
+load_combinations[155].items[8].factor=0.2
+load_combinations[155].items[9].load_case=41
+load_combinations[155].items[9].factor=1.2
+load_combinations[155].items[10].load_case=75
+load_combinations[155].items[10].factor=0.4
+load_combinations[155].items[11].load_case=83
+load_combinations[155].items[11].factor=0.4
+load_combinations.create(156, design_situation="DS1", user_defined_name_enabled=True, name="Ult Operating Plant + 1.5 * Wind Wop y-", static_analysis_settings="SA2")
+load_combinations[156].items[1].load_case=1
+load_combinations[156].items[1].factor=1.2
+load_combinations[156].items[2].load_case=2
+load_combinations[156].items[2].factor=1.2
+load_combinations[156].items[3].load_case=3
+load_combinations[156].items[3].factor=1.2
+load_combinations[156].items[4].load_case=11
+load_combinations[156].items[4].factor=0.4
+load_combinations[156].items[5].load_case=12
+load_combinations[156].items[5].factor=0.6
+load_combinations[156].items[6].load_case=21
+load_combinations[156].items[6].factor=1.0
+load_combinations[156].items[7].load_case=24
+load_combinations[156].items[7].factor=1.2
+load_combinations[156].items[8].load_case=33
+load_combinations[156].items[8].factor=0.2
+load_combinations[156].items[9].load_case=41
+load_combinations[156].items[9].factor=1.2
+load_combinations[156].items[10].load_case=76
+load_combinations[156].items[10].factor=0.4
+load_combinations.create(161, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind x+", static_analysis_settings="SA2")
+load_combinations[161].items[1].load_case=1
+load_combinations[161].items[1].factor=1.2
+load_combinations[161].items[2].load_case=2
+load_combinations[161].items[2].factor=1.2
+load_combinations[161].items[3].load_case=3
+load_combinations[161].items[3].factor=1.2
+load_combinations[161].items[4].load_case=11
+load_combinations[161].items[4].factor=0.4
+load_combinations[161].items[5].load_case=12
+load_combinations[161].items[5].factor=0.6
+load_combinations[161].items[6].load_case=23
+load_combinations[161].items[6].factor=1.2
+load_combinations[161].items[7].load_case=33
+load_combinations[161].items[7].factor=0.2
+load_combinations[161].items[8].load_case=71
+load_combinations[161].items[8].factor=1.0
+load_combinations[161].items[9].load_case=79
+load_combinations[161].items[9].factor=1.0
+load_combinations.create(162, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind x-", static_analysis_settings="SA2")
+load_combinations[162].items[1].load_case=1
+load_combinations[162].items[1].factor=1.2
+load_combinations[162].items[2].load_case=2
+load_combinations[162].items[2].factor=1.2
+load_combinations[162].items[3].load_case=3
+load_combinations[162].items[3].factor=1.2
+load_combinations[162].items[4].load_case=11
+load_combinations[162].items[4].factor=0.4
+load_combinations[162].items[5].load_case=12
+load_combinations[162].items[5].factor=0.6
+load_combinations[162].items[6].load_case=23
+load_combinations[162].items[6].factor=1.2
+load_combinations[162].items[7].load_case=33
+load_combinations[162].items[7].factor=0.2
+load_combinations[162].items[8].load_case=72
+load_combinations[162].items[8].factor=1.0
+load_combinations[162].items[9].load_case=80
+load_combinations[162].items[9].factor=1.0
+load_combinations.create(163, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind x+ uplift", static_analysis_settings="SA2")
+load_combinations[163].items[1].load_case=1
+load_combinations[163].items[1].factor=0.9
+load_combinations[163].items[2].load_case=2
+load_combinations[163].items[2].factor=0.9
+load_combinations[163].items[3].load_case=3
+load_combinations[163].items[3].factor=0.9
+load_combinations[163].items[4].load_case=23
+load_combinations[163].items[4].factor=0.9
+load_combinations[163].items[5].load_case=73
+load_combinations[163].items[5].factor=1.0
+load_combinations.create(164, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind x- uplift", static_analysis_settings="SA2")
+load_combinations[164].items[1].load_case=1
+load_combinations[164].items[1].factor=0.9
+load_combinations[164].items[2].load_case=2
+load_combinations[164].items[2].factor=0.9
+load_combinations[164].items[3].load_case=3
+load_combinations[164].items[3].factor=0.9
+load_combinations[164].items[4].load_case=23
+load_combinations[164].items[4].factor=0.9
+load_combinations[164].items[5].load_case=74
+load_combinations[164].items[5].factor=1.0
+load_combinations.create(165, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind y+", static_analysis_settings="SA2")
+load_combinations[165].items[1].load_case=1
+load_combinations[165].items[1].factor=1.2
+load_combinations[165].items[2].load_case=2
+load_combinations[165].items[2].factor=1.2
+load_combinations[165].items[3].load_case=3
+load_combinations[165].items[3].factor=1.2
+load_combinations[165].items[4].load_case=11
+load_combinations[165].items[4].factor=0.4
+load_combinations[165].items[5].load_case=12
+load_combinations[165].items[5].factor=0.6
+load_combinations[165].items[6].load_case=23
+load_combinations[165].items[6].factor=1.2
+load_combinations[165].items[7].load_case=33
+load_combinations[165].items[7].factor=0.2
+load_combinations[165].items[8].load_case=75
+load_combinations[165].items[8].factor=1.0
+load_combinations[165].items[9].load_case=83
+load_combinations[165].items[9].factor=1.0
+load_combinations.create(166, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind y-", static_analysis_settings="SA2")
+load_combinations[166].items[1].load_case=1
+load_combinations[166].items[1].factor=1.2
+load_combinations[166].items[2].load_case=2
+load_combinations[166].items[2].factor=1.2
+load_combinations[166].items[3].load_case=3
+load_combinations[166].items[3].factor=1.2
+load_combinations[166].items[4].load_case=11
+load_combinations[166].items[4].factor=0.4
+load_combinations[166].items[5].load_case=12
+load_combinations[166].items[5].factor=0.6
+load_combinations[166].items[6].load_case=23
+load_combinations[166].items[6].factor=1.2
+load_combinations[166].items[7].load_case=33
+load_combinations[166].items[7].factor=0.2
+load_combinations[166].items[8].load_case=76
+load_combinations[166].items[8].factor=1.0
+load_combinations.create(167, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind y+ uplift", static_analysis_settings="SA2")
+load_combinations[167].items[1].load_case=1
+load_combinations[167].items[1].factor=0.9
+load_combinations[167].items[2].load_case=2
+load_combinations[167].items[2].factor=0.9
+load_combinations[167].items[3].load_case=3
+load_combinations[167].items[3].factor=0.9
+load_combinations[167].items[4].load_case=23
+load_combinations[167].items[4].factor=0.9
+load_combinations[167].items[5].load_case=77
+load_combinations[167].items[5].factor=1.0
+load_combinations.create(168, design_situation="DS1", user_defined_name_enabled=True, name="Ult Wind y- uplift", static_analysis_settings="SA2")
+load_combinations[168].items[1].load_case=1
+load_combinations[168].items[1].factor=0.9
+load_combinations[168].items[2].load_case=2
+load_combinations[168].items[2].factor=0.9
+load_combinations[168].items[3].load_case=3
+load_combinations[168].items[3].factor=0.9
+load_combinations[168].items[4].load_case=23
+load_combinations[168].items[4].factor=0.9
+load_combinations[168].items[5].load_case=78
+load_combinations[168].items[5].factor=1.0
+load_combinations[168].items[6].load_case=86
+load_combinations[168].items[6].factor=1.0
+load_combinations.create(171, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ x+", static_analysis_settings="SA2")
+load_combinations[171].items[1].load_case=1
+load_combinations[171].items[1].factor=1.0
+load_combinations[171].items[2].load_case=2
+load_combinations[171].items[2].factor=1.0
+load_combinations[171].items[3].load_case=3
+load_combinations[171].items[3].factor=1.0
+load_combinations[171].items[4].load_case=11
+load_combinations[171].items[4].factor=0.3
+load_combinations[171].items[5].load_case=12
+load_combinations[171].items[5].factor=0.6
+load_combinations[171].items[6].load_case=21
+load_combinations[171].items[6].factor=0.7
+load_combinations[171].items[7].load_case=24
+load_combinations[171].items[7].factor=1.0
+load_combinations[171].items[8].load_case=33
+load_combinations[171].items[8].factor=0.2
+load_combinations[171].items[9].load_case=41
+load_combinations[171].items[9].factor=1.0
+load_combinations[171].items[10].load_case=63
+load_combinations[171].items[10].factor=1.0
+load_combinations[171].items[11].load_case=64
+load_combinations[171].items[11].factor=0.3
+load_combinations.create(172, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ x+", static_analysis_settings="SA2")
+load_combinations[172].items[1].load_case=1
+load_combinations[172].items[1].factor=1.0
+load_combinations[172].items[2].load_case=2
+load_combinations[172].items[2].factor=1.0
+load_combinations[172].items[3].load_case=3
+load_combinations[172].items[3].factor=1.0
+load_combinations[172].items[4].load_case=11
+load_combinations[172].items[4].factor=0.3
+load_combinations[172].items[5].load_case=12
+load_combinations[172].items[5].factor=0.6
+load_combinations[172].items[6].load_case=21
+load_combinations[172].items[6].factor=0.7
+load_combinations[172].items[7].load_case=24
+load_combinations[172].items[7].factor=1.0
+load_combinations[172].items[8].load_case=33
+load_combinations[172].items[8].factor=0.2
+load_combinations[172].items[9].load_case=41
+load_combinations[172].items[9].factor=1.0
+load_combinations[172].items[10].load_case=63
+load_combinations[172].items[10].factor=1.0
+load_combinations[172].items[11].load_case=64
+load_combinations[172].items[11].factor=-0.3
+load_combinations.create(173, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ x-", static_analysis_settings="SA2")
+load_combinations[173].items[1].load_case=1
+load_combinations[173].items[1].factor=1.0
+load_combinations[173].items[2].load_case=2
+load_combinations[173].items[2].factor=1.0
+load_combinations[173].items[3].load_case=3
+load_combinations[173].items[3].factor=1.0
+load_combinations[173].items[4].load_case=11
+load_combinations[173].items[4].factor=0.3
+load_combinations[173].items[5].load_case=12
+load_combinations[173].items[5].factor=0.6
+load_combinations[173].items[6].load_case=21
+load_combinations[173].items[6].factor=0.7
+load_combinations[173].items[7].load_case=24
+load_combinations[173].items[7].factor=1.0
+load_combinations[173].items[8].load_case=33
+load_combinations[173].items[8].factor=0.2
+load_combinations[173].items[9].load_case=41
+load_combinations[173].items[9].factor=1.0
+load_combinations[173].items[10].load_case=63
+load_combinations[173].items[10].factor=-1.0
+load_combinations[173].items[11].load_case=64
+load_combinations[173].items[11].factor=0.3
+load_combinations.create(174, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ x-", static_analysis_settings="SA2")
+load_combinations[174].items[1].load_case=1
+load_combinations[174].items[1].factor=1.0
+load_combinations[174].items[2].load_case=2
+load_combinations[174].items[2].factor=1.0
+load_combinations[174].items[3].load_case=3
+load_combinations[174].items[3].factor=1.0
+load_combinations[174].items[4].load_case=11
+load_combinations[174].items[4].factor=0.3
+load_combinations[174].items[5].load_case=12
+load_combinations[174].items[5].factor=0.6
+load_combinations[174].items[6].load_case=21
+load_combinations[174].items[6].factor=0.7
+load_combinations[174].items[7].load_case=24
+load_combinations[174].items[7].factor=1.0
+load_combinations[174].items[8].load_case=33
+load_combinations[174].items[8].factor=0.2
+load_combinations[174].items[9].load_case=41
+load_combinations[174].items[9].factor=1.0
+load_combinations[174].items[10].load_case=63
+load_combinations[174].items[10].factor=-1.0
+load_combinations[174].items[11].load_case=64
+load_combinations[174].items[11].factor=-0.3
+load_combinations.create(175, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ y+", static_analysis_settings="SA2")
+load_combinations[175].items[1].load_case=1
+load_combinations[175].items[1].factor=1.0
+load_combinations[175].items[2].load_case=2
+load_combinations[175].items[2].factor=1.0
+load_combinations[175].items[3].load_case=3
+load_combinations[175].items[3].factor=1.0
+load_combinations[175].items[4].load_case=11
+load_combinations[175].items[4].factor=0.3
+load_combinations[175].items[5].load_case=12
+load_combinations[175].items[5].factor=0.6
+load_combinations[175].items[6].load_case=21
+load_combinations[175].items[6].factor=0.7
+load_combinations[175].items[7].load_case=24
+load_combinations[175].items[7].factor=1.0
+load_combinations[175].items[8].load_case=33
+load_combinations[175].items[8].factor=0.2
+load_combinations[175].items[9].load_case=41
+load_combinations[175].items[9].factor=1.0
+load_combinations[175].items[10].load_case=63
+load_combinations[175].items[10].factor=0.3
+load_combinations[175].items[11].load_case=64
+load_combinations[175].items[11].factor=1.0
+load_combinations.create(176, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ y+", static_analysis_settings="SA2")
+load_combinations[176].items[1].load_case=1
+load_combinations[176].items[1].factor=1.0
+load_combinations[176].items[2].load_case=2
+load_combinations[176].items[2].factor=1.0
+load_combinations[176].items[3].load_case=3
+load_combinations[176].items[3].factor=1.0
+load_combinations[176].items[4].load_case=11
+load_combinations[176].items[4].factor=0.3
+load_combinations[176].items[5].load_case=12
+load_combinations[176].items[5].factor=0.6
+load_combinations[176].items[6].load_case=21
+load_combinations[176].items[6].factor=0.7
+load_combinations[176].items[7].load_case=24
+load_combinations[176].items[7].factor=1.0
+load_combinations[176].items[8].load_case=33
+load_combinations[176].items[8].factor=0.2
+load_combinations[176].items[9].load_case=41
+load_combinations[176].items[9].factor=1.0
+load_combinations[176].items[10].load_case=63
+load_combinations[176].items[10].factor=-0.3
+load_combinations[176].items[11].load_case=64
+load_combinations[176].items[11].factor=1.0
+load_combinations.create(177, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ y-", static_analysis_settings="SA2")
+load_combinations[177].items[1].load_case=1
+load_combinations[177].items[1].factor=1.0
+load_combinations[177].items[2].load_case=2
+load_combinations[177].items[2].factor=1.0
+load_combinations[177].items[3].load_case=3
+load_combinations[177].items[3].factor=1.0
+load_combinations[177].items[4].load_case=11
+load_combinations[177].items[4].factor=0.3
+load_combinations[177].items[5].load_case=12
+load_combinations[177].items[5].factor=0.6
+load_combinations[177].items[6].load_case=21
+load_combinations[177].items[6].factor=0.7
+load_combinations[177].items[7].load_case=24
+load_combinations[177].items[7].factor=1.0
+load_combinations[177].items[8].load_case=33
+load_combinations[177].items[8].factor=0.2
+load_combinations[177].items[9].load_case=41
+load_combinations[177].items[9].factor=1.0
+load_combinations[177].items[10].load_case=63
+load_combinations[177].items[10].factor=0.3
+load_combinations[177].items[11].load_case=64
+load_combinations[177].items[11].factor=-1.0
+load_combinations.create(178, design_situation="DS1", user_defined_name_enabled=True, name="Ult EQ y-", static_analysis_settings="SA2")
+load_combinations[178].items[1].load_case=1
+load_combinations[178].items[1].factor=1.0
+load_combinations[178].items[2].load_case=2
+load_combinations[178].items[2].factor=1.0
+load_combinations[178].items[3].load_case=3
+load_combinations[178].items[3].factor=1.0
+load_combinations[178].items[4].load_case=11
+load_combinations[178].items[4].factor=0.3
+load_combinations[178].items[5].load_case=12
+load_combinations[178].items[5].factor=0.6
+load_combinations[178].items[6].load_case=21
+load_combinations[178].items[6].factor=0.7
+load_combinations[178].items[7].load_case=24
+load_combinations[178].items[7].factor=1.0
+load_combinations[178].items[8].load_case=33
+load_combinations[178].items[8].factor=0.2
+load_combinations[178].items[9].load_case=41
+load_combinations[178].items[9].factor=1.0
+load_combinations[178].items[10].load_case=63
+load_combinations[178].items[10].factor=-0.3
+load_combinations[178].items[11].load_case=64
+load_combinations[178].items[11].factor=-1.0
+load_combinations.create(201, design_situation="DS1", user_defined_name_enabled=True, name="Service - No Crane + Wsx+", static_analysis_settings="SA2")
+load_combinations[201].items[1].load_case=1
+load_combinations[201].items[1].factor=1.0
+load_combinations[201].items[2].load_case=2
+load_combinations[201].items[2].factor=1.0
+load_combinations[201].items[3].load_case=3
+load_combinations[201].items[3].factor=1.0
+load_combinations[201].items[4].load_case=11
+load_combinations[201].items[4].factor=0.4
+load_combinations[201].items[5].load_case=12
+load_combinations[201].items[5].factor=0.6
+load_combinations[201].items[6].load_case=21
+load_combinations[201].items[6].factor=0.7
+load_combinations[201].items[7].load_case=24
+load_combinations[201].items[7].factor=1.0
+load_combinations[201].items[8].load_case=33
+load_combinations[201].items[8].factor=0.2
+load_combinations[201].items[9].load_case=41
+load_combinations[201].items[9].factor=1.0
+load_combinations[201].items[10].load_case=71
+load_combinations[201].items[10].factor=0.69
+load_combinations[201].items[11].load_case=79
+load_combinations[201].items[11].factor=0.69
+load_combinations.create(202, design_situation="DS1", user_defined_name_enabled=True, name="Service - No Crane + Wsx-", static_analysis_settings="SA2")
+load_combinations[202].items[1].load_case=1
+load_combinations[202].items[1].factor=1.0
+load_combinations[202].items[2].load_case=2
+load_combinations[202].items[2].factor=1.0
+load_combinations[202].items[3].load_case=3
+load_combinations[202].items[3].factor=1.0
+load_combinations[202].items[4].load_case=11
+load_combinations[202].items[4].factor=0.4
+load_combinations[202].items[5].load_case=12
+load_combinations[202].items[5].factor=0.6
+load_combinations[202].items[6].load_case=21
+load_combinations[202].items[6].factor=0.7
+load_combinations[202].items[7].load_case=24
+load_combinations[202].items[7].factor=1.0
+load_combinations[202].items[8].load_case=33
+load_combinations[202].items[8].factor=0.2
+load_combinations[202].items[9].load_case=41
+load_combinations[202].items[9].factor=1.0
+load_combinations[202].items[10].load_case=72
+load_combinations[202].items[10].factor=0.69
+load_combinations[202].items[11].load_case=80
+load_combinations[202].items[11].factor=0.69
+load_combinations.create(203, design_situation="DS1", user_defined_name_enabled=True, name="Service - No Crane + Wsy+", static_analysis_settings="SA2")
+load_combinations[203].items[1].load_case=1
+load_combinations[203].items[1].factor=1.0
+load_combinations[203].items[2].load_case=2
+load_combinations[203].items[2].factor=1.0
+load_combinations[203].items[3].load_case=3
+load_combinations[203].items[3].factor=1.0
+load_combinations[203].items[4].load_case=11
+load_combinations[203].items[4].factor=0.4
+load_combinations[203].items[5].load_case=12
+load_combinations[203].items[5].factor=0.6
+load_combinations[203].items[6].load_case=21
+load_combinations[203].items[6].factor=0.7
+load_combinations[203].items[7].load_case=24
+load_combinations[203].items[7].factor=1.0
+load_combinations[203].items[8].load_case=33
+load_combinations[203].items[8].factor=0.2
+load_combinations[203].items[9].load_case=41
+load_combinations[203].items[9].factor=1.0
+load_combinations[203].items[10].load_case=75
+load_combinations[203].items[10].factor=0.69
+load_combinations[203].items[11].load_case=83
+load_combinations[203].items[11].factor=0.69
+load_combinations.create(204, design_situation="DS1", user_defined_name_enabled=True, name="Service - No Crane + Wsy-", static_analysis_settings="SA2")
+load_combinations[204].items[1].load_case=1
+load_combinations[204].items[1].factor=1.0
+load_combinations[204].items[2].load_case=2
+load_combinations[204].items[2].factor=1.0
+load_combinations[204].items[3].load_case=3
+load_combinations[204].items[3].factor=1.0
+load_combinations[204].items[4].load_case=11
+load_combinations[204].items[4].factor=0.4
+load_combinations[204].items[5].load_case=12
+load_combinations[204].items[5].factor=0.6
+load_combinations[204].items[6].load_case=21
+load_combinations[204].items[6].factor=0.7
+load_combinations[204].items[7].load_case=24
+load_combinations[204].items[7].factor=1.0
+load_combinations[204].items[8].load_case=33
+load_combinations[204].items[8].factor=0.2
+load_combinations[204].items[9].load_case=41
+load_combinations[204].items[9].factor=1.0
+load_combinations[204].items[10].load_case=76
+load_combinations[204].items[10].factor=0.69
+load_combinations.create(211, design_situation="DS1", user_defined_name_enabled=True, name="Service - Crane + Wocx+ + thermal", static_analysis_settings="SA2")
+load_combinations[211].items[1].load_case=1
+load_combinations[211].items[1].factor=1.0
+load_combinations[211].items[2].load_case=2
+load_combinations[211].items[2].factor=1.0
+load_combinations[211].items[3].load_case=3
+load_combinations[211].items[3].factor=1.0
+load_combinations[211].items[4].load_case=11
+load_combinations[211].items[4].factor=0.4
+load_combinations[211].items[5].load_case=12
+load_combinations[211].items[5].factor=0.6
+load_combinations[211].items[6].load_case=21
+load_combinations[211].items[6].factor=0.7
+load_combinations[211].items[7].load_case=23
+load_combinations[211].items[7].factor=1.0
+load_combinations[211].items[8].load_case=33
+load_combinations[211].items[8].factor=0.2
+load_combinations[211].items[9].load_case=71
+load_combinations[211].items[9].factor=0.17
+load_combinations[211].items[10].load_case=79
+load_combinations[211].items[10].factor=0.17
+load_combinations.create(213, design_situation="DS1", user_defined_name_enabled=True, name="Service - Crane + Wocx-  + thermal", static_analysis_settings="SA2")
+load_combinations[213].items[1].load_case=1
+load_combinations[213].items[1].factor=1.0
+load_combinations[213].items[2].load_case=2
+load_combinations[213].items[2].factor=1.0
+load_combinations[213].items[3].load_case=3
+load_combinations[213].items[3].factor=1.0
+load_combinations[213].items[4].load_case=11
+load_combinations[213].items[4].factor=0.4
+load_combinations[213].items[5].load_case=12
+load_combinations[213].items[5].factor=0.6
+load_combinations[213].items[6].load_case=21
+load_combinations[213].items[6].factor=0.7
+load_combinations[213].items[7].load_case=23
+load_combinations[213].items[7].factor=1.0
+load_combinations[213].items[8].load_case=33
+load_combinations[213].items[8].factor=0.2
+load_combinations[213].items[9].load_case=72
+load_combinations[213].items[9].factor=0.17
+load_combinations[213].items[10].load_case=80
+load_combinations[213].items[10].factor=0.17
+load_combinations.create(215, design_situation="DS1", user_defined_name_enabled=True, name="Service - Crane + Wocy+ + thermal", static_analysis_settings="SA2")
+load_combinations[215].items[1].load_case=1
+load_combinations[215].items[1].factor=1.0
+load_combinations[215].items[2].load_case=2
+load_combinations[215].items[2].factor=1.0
+load_combinations[215].items[3].load_case=3
+load_combinations[215].items[3].factor=1.0
+load_combinations[215].items[4].load_case=11
+load_combinations[215].items[4].factor=0.4
+load_combinations[215].items[5].load_case=12
+load_combinations[215].items[5].factor=0.6
+load_combinations[215].items[6].load_case=21
+load_combinations[215].items[6].factor=0.7
+load_combinations[215].items[7].load_case=23
+load_combinations[215].items[7].factor=1.0
+load_combinations[215].items[8].load_case=33
+load_combinations[215].items[8].factor=0.2
+load_combinations[215].items[9].load_case=75
+load_combinations[215].items[9].factor=0.17
+load_combinations[215].items[10].load_case=83
+load_combinations[215].items[10].factor=0.17
+load_combinations.create(217, design_situation="DS1", user_defined_name_enabled=True, name="Service - Crane + Wocy- + thermal", static_analysis_settings="SA2")
+load_combinations[217].items[1].load_case=1
+load_combinations[217].items[1].factor=1.0
+load_combinations[217].items[2].load_case=2
+load_combinations[217].items[2].factor=1.0
+load_combinations[217].items[3].load_case=3
+load_combinations[217].items[3].factor=1.0
+load_combinations[217].items[4].load_case=11
+load_combinations[217].items[4].factor=0.4
+load_combinations[217].items[5].load_case=12
+load_combinations[217].items[5].factor=0.6
+load_combinations[217].items[6].load_case=21
+load_combinations[217].items[6].factor=0.7
+load_combinations[217].items[7].load_case=23
+load_combinations[217].items[7].factor=1.0
+load_combinations[217].items[8].load_case=33
+load_combinations[217].items[8].factor=0.2
+load_combinations[217].items[9].load_case=76
+load_combinations[217].items[9].factor=0.17
+load_combinations.create(991, design_situation="DS1", user_defined_name_enabled=True, name="EQ All G", static_analysis_settings="SA2")
+load_combinations[991].items[1].load_case=1
+load_combinations[991].items[1].factor=1.0
+load_combinations[991].items[2].load_case=2
+load_combinations[991].items[2].factor=1.0
+load_combinations[991].items[3].load_case=3
+load_combinations[991].items[3].factor=1.0
+load_combinations.create(992, design_situation="DS1", user_defined_name_enabled=True, name="EQ All Q", static_analysis_settings="SA2")
+load_combinations[992].items[1].load_case=11
+load_combinations[992].items[1].factor=0.3
+load_combinations[992].items[2].load_case=12
+load_combinations[992].items[2].factor=0.6
+load_combinations[992].items[3].load_case=21
+load_combinations[992].items[3].factor=0.7
+load_combinations[992].items[4].load_case=24
+load_combinations[992].items[4].factor=1.0
+load_combinations[992].items[5].load_case=33
+load_combinations[992].items[5].factor=0.2
+load_combinations[992].items[6].load_case=41
+load_combinations[992].items[6].factor=1.0
+load_combinations.create(993, design_situation="DS1", user_defined_name_enabled=True, name="EQ mass", static_analysis_settings="SA2")
+load_combinations[993].items[1].load_case=1
+load_combinations[993].items[1].factor=1.0
+load_combinations[993].items[2].load_case=2
+load_combinations[993].items[2].factor=1.0
+load_combinations[993].items[3].load_case=3
+load_combinations[993].items[3].factor=1.0
+load_combinations[993].items[4].load_case=11
+load_combinations[993].items[4].factor=0.3
+load_combinations[993].items[5].load_case=12
+load_combinations[993].items[5].factor=0.6
+load_combinations[993].items[6].load_case=21
+load_combinations[993].items[6].factor=0.7
+load_combinations[993].items[7].load_case=33
+load_combinations[993].items[7].factor=0.2
+load_combinations[993].items[8].load_case=41
+load_combinations[993].items[8].factor=1.0
 

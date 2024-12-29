@@ -52,10 +52,16 @@ push!(pyscript, create_beam(df_members, parse_dir_angle(df_members, df_nodes)))
 
 
 # CREATE NODAL RESTRAITNS
-query_nodal_restraints = DBInterface.execute(dbconn, "SELECT * FROM `Node Restraints`");
-df_node_restraints = DataFrame(query_nodal_restraints)
 
-push!(pyscript, create_nodal_supports(df_node_restraints))
+# Using the check:
+table_name = "Node Restraints"
+if table_exists(dbconn, table_name)
+    query_nodal_restraints = DBInterface.execute(dbconn, "SELECT * FROM `$table_name`")
+    df_node_restraints = DataFrame(query_nodal_restraints)
+    push!(pyscript, create_nodal_supports(df_node_restraints))
+
+end
+
 
 # CREATE ANALYSIS SETTINGS
 push!(pyscript, create_analysis_settings())
@@ -75,20 +81,29 @@ push!(pyscript, create_load_combinations(df_lc_titles, df_LC_table))
 
 
 # CREATE NODAL LOADS
-query_nodal_loads = DBInterface.execute(dbconn, "SELECT * FROM `Node Loads`");
-df_nodal_loads = DataFrame(query_nodal_loads)
-push!(pyscript, create_nodal_loads(df_nodal_loads))
+table_name = "Node Loads"
+if table_exists(dbconn, table_name)
+    query_nodal_loads = DBInterface.execute(dbconn, "SELECT * FROM `$table_name`")
+    df_nodal_loads = DataFrame(query_nodal_loads)
+    push!(pyscript, create_nodal_loads(df_nodal_loads))
+end
 
 
 
 # CREATE MEMBER LOADS - CONCENTRATED
-df_member_loads = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Member Concentrated Loads`"))
-push!(pyscript, create_member_load_concentrated(df_member_loads))
+table_name = "Member Concentrated Loads"
+if table_exists(dbconn, table_name)
+    df_member_loads = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`"))
+    push!(pyscript, create_member_load_concentrated(df_member_loads))
+end
 
 
 # CREATE MEMBER LOADS - DISTRIBUTED
-df_member_forces = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Member Distributed Forces`"))
-push!(pyscript, create_member_load_distributed(df_member_forces))
+table_name = "Member Distributed Forces"
+if table_exists(dbconn, table_name)
+    df_member_forces = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`"))
+    push!(pyscript, create_member_load_distributed(df_member_forces))
+end
 
 # write to file
 write("sg2rfem.py", join(pyscript, ""))

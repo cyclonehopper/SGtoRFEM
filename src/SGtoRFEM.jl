@@ -4,6 +4,18 @@ using DataFrames
 using LinearAlgebra
 # BUILD DICTIONA
 
+export table_exists
+# Helper function for Access databases
+function table_exists(dbconn, table_name)
+    try
+        # This will try to get table info - if table doesn't exist, it will throw an error
+        DBInterface.execute(dbconn, "SELECT TOP 1 * FROM `$table_name`")
+        return true
+    catch e
+        return false
+    end
+end
+
 export set_global_model_settings
 function set_global_model_settings()
 
