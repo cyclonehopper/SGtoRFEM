@@ -54,10 +54,20 @@ function create_materials(vMatName::Vector{String})
 end
 
 export create_sections
-function create_sections(dfSections::DataFrame)
+function create_sections(dfSections::DataFrame, dfMembers::DataFrame)
     vs = ["# Create Sections\n"]
+
+    # Create a dictionary for quick lookup of Material by Section
+    material_lookup = Dict(dfMembers.Section .=> dfMembers.Material)
+
     for i in eachrow(dfSections)
-        push!(vs, "sections.create_standardized_steel($(i.Section), \"$(i.Name)\")")
+        # Get the corresponding material number using the Section
+        matnum = get(material_lookup, i.Section, 0) # Default to "Unknown Material" if not found
+        if matnum == 0
+            push!(vs, "sections.create_standardized_steel($(i.Section), \"$(i.Name)\")")
+        else
+            push!(vs, "sections.create_standardized_steel($(i.Section), \"$(i.Name)\", \"$matnum\")")
+        end
     end
     push!(vs, "\n")
 
@@ -933,7 +943,11 @@ function fWritePyScript(sg_db_source_filepathname)
     query_secprop = DBInterface.execute(dbconn, "SELECT * FROM `Section Properties`")
     df_secprop = DataFrame(query_secprop)
 
-    push!(pyscript, create_sections(df_secprop))
+    query_members = DBInterface.execute(dbconn, "SELECT * FROM Members")
+    df_members = DataFrame(query_members)
+
+
+    push!(pyscript, create_sections(df_secprop, df_members))
 
 
     # CREATE NODES
@@ -944,8 +958,7 @@ function fWritePyScript(sg_db_source_filepathname)
 
 
     # CREATE UNIQUE HINGES
-    query_members = DBInterface.execute(dbconn, "SELECT * FROM Members")
-    df_members = DataFrame(query_members)
+
 
 
     # parse_hinge(df_members[43,:])
