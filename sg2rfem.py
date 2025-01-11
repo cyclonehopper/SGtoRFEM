@@ -1559,5 +1559,1840 @@ load_combinations[53].items[6].factor=1.0
 load_combinations[53].items[7].load_case=25
 load_combinations[53].items[7].factor=1.0
 load_combinations.create(101, design_situation="DS1", user_defined_name_enabled=True, name="+1.35G", static_analysis_settings="SA2")
-load_combinations[101].items[1].load_case=4
-load_combinations[101].items[1].factor=1.35
+load_combinations[101].items[1].load_case=1
+load_combinations[101].items[1].factor=1.350000023841858
+load_combinations[101].items[2].load_case=2
+load_combinations[101].items[2].factor=1.350000023841858
+load_combinations[101].items[3].load_case=3
+load_combinations[101].items[3].factor=1.350000023841858
+load_combinations.create(102, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.25Qbc", static_analysis_settings="SA2")
+load_combinations[102].items[1].load_case=1
+load_combinations[102].items[1].factor=1.2000000476837158
+load_combinations[102].items[2].load_case=2
+load_combinations[102].items[2].factor=1.2000000476837158
+load_combinations[102].items[3].load_case=3
+load_combinations[102].items[3].factor=1.2000000476837158
+load_combinations[102].items[4].load_case=11
+load_combinations[102].items[4].factor=1.5
+load_combinations[102].items[5].load_case=12
+load_combinations[102].items[5].factor=1.2
+load_combinations[102].items[6].load_case=13
+load_combinations[102].items[6].factor=1.5
+load_combinations[102].items[7].load_case=21
+load_combinations[102].items[7].factor=1.2
+load_combinations[102].items[8].load_case=23
+load_combinations[102].items[8].factor=1.5
+load_combinations[102].items[9].load_case=24
+load_combinations[102].items[9].factor=1.25
+load_combinations.create(103, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2Wuex+0.2Wuix", static_analysis_settings="SA2")
+load_combinations[103].items[1].load_case=1
+load_combinations[103].items[1].factor=1.2000000476837158
+load_combinations[103].items[2].load_case=2
+load_combinations[103].items[2].factor=1.2000000476837158
+load_combinations[103].items[3].load_case=3
+load_combinations[103].items[3].factor=1.2000000476837158
+load_combinations[103].items[4].load_case=11
+load_combinations[103].items[4].factor=1.5
+load_combinations[103].items[5].load_case=12
+load_combinations[103].items[5].factor=1.2
+load_combinations[103].items[6].load_case=13
+load_combinations[103].items[6].factor=1.5
+load_combinations[103].items[7].load_case=21
+load_combinations[103].items[7].factor=1.2
+load_combinations[103].items[8].load_case=23
+load_combinations[103].items[8].factor=1.5
+load_combinations[103].items[9].load_case=25
+load_combinations[103].items[9].factor=1.5
+load_combinations[103].items[10].load_case=31
+load_combinations[103].items[10].factor=0.2
+load_combinations[103].items[11].load_case=32
+load_combinations[103].items[11].factor=0.2
+load_combinations.create(104, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2Wdex+0.2Wdix", static_analysis_settings="SA2")
+load_combinations[104].items[1].load_case=1
+load_combinations[104].items[1].factor=1.2000000476837158
+load_combinations[104].items[2].load_case=2
+load_combinations[104].items[2].factor=1.2000000476837158
+load_combinations[104].items[3].load_case=3
+load_combinations[104].items[3].factor=1.2000000476837158
+load_combinations[104].items[4].load_case=11
+load_combinations[104].items[4].factor=1.5
+load_combinations[104].items[5].load_case=12
+load_combinations[104].items[5].factor=1.2
+load_combinations[104].items[6].load_case=13
+load_combinations[104].items[6].factor=1.5
+load_combinations[104].items[7].load_case=21
+load_combinations[104].items[7].factor=1.2
+load_combinations[104].items[8].load_case=23
+load_combinations[104].items[8].factor=1.5
+load_combinations[104].items[9].load_case=25
+load_combinations[104].items[9].factor=1.5
+load_combinations[104].items[10].load_case=33
+load_combinations[104].items[10].factor=0.2
+load_combinations[104].items[11].load_case=34
+load_combinations[104].items[11].factor=0.2
+load_combinations.create(105, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2Wuey+0.2Wuiy", static_analysis_settings="SA2")
+load_combinations[105].items[1].load_case=1
+load_combinations[105].items[1].factor=1.2000000476837158
+load_combinations[105].items[2].load_case=2
+load_combinations[105].items[2].factor=1.2000000476837158
+load_combinations[105].items[3].load_case=3
+load_combinations[105].items[3].factor=1.2000000476837158
+load_combinations[105].items[4].load_case=11
+load_combinations[105].items[4].factor=1.5
+load_combinations[105].items[5].load_case=12
+load_combinations[105].items[5].factor=1.2
+load_combinations[105].items[6].load_case=13
+load_combinations[105].items[6].factor=1.5
+load_combinations[105].items[7].load_case=21
+load_combinations[105].items[7].factor=1.2
+load_combinations[105].items[8].load_case=23
+load_combinations[105].items[8].factor=1.5
+load_combinations[105].items[9].load_case=25
+load_combinations[105].items[9].factor=1.5
+load_combinations[105].items[10].load_case=35
+load_combinations[105].items[10].factor=0.2
+load_combinations[105].items[11].load_case=36
+load_combinations[105].items[11].factor=0.2
+load_combinations.create(106, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2Wdey+0.2Wdiy", static_analysis_settings="SA2")
+load_combinations[106].items[1].load_case=1
+load_combinations[106].items[1].factor=1.2000000476837158
+load_combinations[106].items[2].load_case=2
+load_combinations[106].items[2].factor=1.2000000476837158
+load_combinations[106].items[3].load_case=3
+load_combinations[106].items[3].factor=1.2000000476837158
+load_combinations[106].items[4].load_case=11
+load_combinations[106].items[4].factor=1.5
+load_combinations[106].items[5].load_case=12
+load_combinations[106].items[5].factor=1.2
+load_combinations[106].items[6].load_case=13
+load_combinations[106].items[6].factor=1.5
+load_combinations[106].items[7].load_case=21
+load_combinations[106].items[7].factor=1.2
+load_combinations[106].items[8].load_case=23
+load_combinations[106].items[8].factor=1.5
+load_combinations[106].items[9].load_case=25
+load_combinations[106].items[9].factor=1.5
+load_combinations[106].items[10].load_case=37
+load_combinations[106].items[10].factor=0.2
+load_combinations[106].items[11].load_case=38
+load_combinations[106].items[11].factor=0.2
+load_combinations.create(107, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2-Wuex+0.2-Wuix", static_analysis_settings="SA2")
+load_combinations[107].items[1].load_case=1
+load_combinations[107].items[1].factor=1.2000000476837158
+load_combinations[107].items[2].load_case=2
+load_combinations[107].items[2].factor=1.2000000476837158
+load_combinations[107].items[3].load_case=3
+load_combinations[107].items[3].factor=1.2000000476837158
+load_combinations[107].items[4].load_case=11
+load_combinations[107].items[4].factor=1.5
+load_combinations[107].items[5].load_case=12
+load_combinations[107].items[5].factor=1.2
+load_combinations[107].items[6].load_case=13
+load_combinations[107].items[6].factor=1.5
+load_combinations[107].items[7].load_case=21
+load_combinations[107].items[7].factor=1.2
+load_combinations[107].items[8].load_case=23
+load_combinations[107].items[8].factor=1.5
+load_combinations[107].items[9].load_case=25
+load_combinations[107].items[9].factor=1.5
+load_combinations[107].items[10].load_case=39
+load_combinations[107].items[10].factor=0.2
+load_combinations[107].items[11].load_case=40
+load_combinations[107].items[11].factor=0.2
+load_combinations.create(108, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2-Wdex+0.2-Wdix", static_analysis_settings="SA2")
+load_combinations[108].items[1].load_case=1
+load_combinations[108].items[1].factor=1.2000000476837158
+load_combinations[108].items[2].load_case=2
+load_combinations[108].items[2].factor=1.2000000476837158
+load_combinations[108].items[3].load_case=3
+load_combinations[108].items[3].factor=1.2000000476837158
+load_combinations[108].items[4].load_case=11
+load_combinations[108].items[4].factor=1.5
+load_combinations[108].items[5].load_case=12
+load_combinations[108].items[5].factor=1.2
+load_combinations[108].items[6].load_case=13
+load_combinations[108].items[6].factor=1.5
+load_combinations[108].items[7].load_case=21
+load_combinations[108].items[7].factor=1.2
+load_combinations[108].items[8].load_case=23
+load_combinations[108].items[8].factor=1.5
+load_combinations[108].items[9].load_case=25
+load_combinations[108].items[9].factor=1.5
+load_combinations[108].items[10].load_case=41
+load_combinations[108].items[10].factor=0.2
+load_combinations[108].items[11].load_case=42
+load_combinations[108].items[11].factor=0.2
+load_combinations.create(109, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2-Wuey+0.2-Wuiy", static_analysis_settings="SA2")
+load_combinations[109].items[1].load_case=1
+load_combinations[109].items[1].factor=1.2000000476837158
+load_combinations[109].items[2].load_case=2
+load_combinations[109].items[2].factor=1.2000000476837158
+load_combinations[109].items[3].load_case=3
+load_combinations[109].items[3].factor=1.2000000476837158
+load_combinations[109].items[4].load_case=11
+load_combinations[109].items[4].factor=1.5
+load_combinations[109].items[5].load_case=12
+load_combinations[109].items[5].factor=1.2
+load_combinations[109].items[6].load_case=13
+load_combinations[109].items[6].factor=1.5
+load_combinations[109].items[7].load_case=21
+load_combinations[109].items[7].factor=1.2
+load_combinations[109].items[8].load_case=23
+load_combinations[109].items[8].factor=1.5
+load_combinations[109].items[9].load_case=25
+load_combinations[109].items[9].factor=1.5
+load_combinations[109].items[10].load_case=43
+load_combinations[109].items[10].factor=0.2
+load_combinations[109].items[11].load_case=44
+load_combinations[109].items[11].factor=0.2
+load_combinations.create(110, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.2QMS+1.5QV+1.5Qbo+0.2-Wdey+0.2-Wdiy", static_analysis_settings="SA2")
+load_combinations[110].items[1].load_case=1
+load_combinations[110].items[1].factor=1.2000000476837158
+load_combinations[110].items[2].load_case=2
+load_combinations[110].items[2].factor=1.2000000476837158
+load_combinations[110].items[3].load_case=3
+load_combinations[110].items[3].factor=1.2000000476837158
+load_combinations[110].items[4].load_case=11
+load_combinations[110].items[4].factor=1.5
+load_combinations[110].items[5].load_case=12
+load_combinations[110].items[5].factor=1.2
+load_combinations[110].items[6].load_case=13
+load_combinations[110].items[6].factor=1.5
+load_combinations[110].items[7].load_case=21
+load_combinations[110].items[7].factor=1.2
+load_combinations[110].items[8].load_case=23
+load_combinations[110].items[8].factor=1.5
+load_combinations[110].items[9].load_case=25
+load_combinations[110].items[9].factor=1.5
+load_combinations[110].items[10].load_case=45
+load_combinations[110].items[10].factor=0.2
+load_combinations[110].items[11].load_case=46
+load_combinations[110].items[11].factor=0.2
+load_combinations.create(111, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+1.5QL+1.2QS +1.5QML1+1.9QCpt1+1.2QMS+1.5QV+1.5Qbo", static_analysis_settings="SA2")
+load_combinations[111].items[1].load_case=1
+load_combinations[111].items[1].factor=1.2000000476837158
+load_combinations[111].items[2].load_case=2
+load_combinations[111].items[2].factor=1.2000000476837158
+load_combinations[111].items[3].load_case=3
+load_combinations[111].items[3].factor=1.2000000476837158
+load_combinations[111].items[4].load_case=11
+load_combinations[111].items[4].factor=1.5
+load_combinations[111].items[5].load_case=12
+load_combinations[111].items[5].factor=1.2
+load_combinations[111].items[6].load_case=13
+load_combinations[111].items[6].factor=1.5
+load_combinations[111].items[7].load_case=16
+load_combinations[111].items[7].factor=1.9
+load_combinations[111].items[8].load_case=21
+load_combinations[111].items[8].factor=1.2
+load_combinations[111].items[9].load_case=23
+load_combinations[111].items[9].factor=1.5
+load_combinations[111].items[10].load_case=25
+load_combinations[111].items[10].factor=1.5
+load_combinations.create(112, design_situation="DS1", user_defined_name_enabled=True, name="+1.9QCpt2", static_analysis_settings="SA2")
+load_combinations[112].items[1].load_case=26
+load_combinations[112].items[1].factor=1.9
+load_combinations.create(121, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+Wuex+Wuix", static_analysis_settings="SA2")
+load_combinations[121].items[1].load_case=1
+load_combinations[121].items[1].factor=1.2000000476837158
+load_combinations[121].items[2].load_case=2
+load_combinations[121].items[2].factor=1.2000000476837158
+load_combinations[121].items[3].load_case=3
+load_combinations[121].items[3].factor=1.2000000476837158
+load_combinations[121].items[4].load_case=11
+load_combinations[121].items[4].factor=0.6
+load_combinations[121].items[5].load_case=12
+load_combinations[121].items[5].factor=1.2
+load_combinations[121].items[6].load_case=13
+load_combinations[121].items[6].factor=1.5
+load_combinations[121].items[7].load_case=19
+load_combinations[121].items[7].factor=1.5
+load_combinations[121].items[8].load_case=21
+load_combinations[121].items[8].factor=0.6
+load_combinations[121].items[9].load_case=25
+load_combinations[121].items[9].factor=1.0
+load_combinations[121].items[10].load_case=31
+load_combinations[121].items[10].factor=1.0
+load_combinations[121].items[11].load_case=32
+load_combinations[121].items[11].factor=1.0
+load_combinations.create(122, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+Wdex+Wdix", static_analysis_settings="SA2")
+load_combinations[122].items[1].load_case=1
+load_combinations[122].items[1].factor=1.2000000476837158
+load_combinations[122].items[2].load_case=2
+load_combinations[122].items[2].factor=1.2000000476837158
+load_combinations[122].items[3].load_case=3
+load_combinations[122].items[3].factor=1.2000000476837158
+load_combinations[122].items[4].load_case=11
+load_combinations[122].items[4].factor=0.6
+load_combinations[122].items[5].load_case=12
+load_combinations[122].items[5].factor=1.2
+load_combinations[122].items[6].load_case=13
+load_combinations[122].items[6].factor=1.5
+load_combinations[122].items[7].load_case=19
+load_combinations[122].items[7].factor=1.5
+load_combinations[122].items[8].load_case=21
+load_combinations[122].items[8].factor=0.6
+load_combinations[122].items[9].load_case=25
+load_combinations[122].items[9].factor=1.0
+load_combinations[122].items[10].load_case=33
+load_combinations[122].items[10].factor=1.0
+load_combinations[122].items[11].load_case=34
+load_combinations[122].items[11].factor=1.0
+load_combinations.create(123, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+Wuey+Wuiy", static_analysis_settings="SA2")
+load_combinations[123].items[1].load_case=1
+load_combinations[123].items[1].factor=1.2000000476837158
+load_combinations[123].items[2].load_case=2
+load_combinations[123].items[2].factor=1.2000000476837158
+load_combinations[123].items[3].load_case=3
+load_combinations[123].items[3].factor=1.2000000476837158
+load_combinations[123].items[4].load_case=11
+load_combinations[123].items[4].factor=0.6
+load_combinations[123].items[5].load_case=12
+load_combinations[123].items[5].factor=1.2
+load_combinations[123].items[6].load_case=13
+load_combinations[123].items[6].factor=1.5
+load_combinations[123].items[7].load_case=19
+load_combinations[123].items[7].factor=1.5
+load_combinations[123].items[8].load_case=21
+load_combinations[123].items[8].factor=0.6
+load_combinations[123].items[9].load_case=25
+load_combinations[123].items[9].factor=1.0
+load_combinations[123].items[10].load_case=35
+load_combinations[123].items[10].factor=1.0
+load_combinations[123].items[11].load_case=36
+load_combinations[123].items[11].factor=1.0
+load_combinations.create(124, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+Wdey+Wdiy", static_analysis_settings="SA2")
+load_combinations[124].items[1].load_case=1
+load_combinations[124].items[1].factor=1.2000000476837158
+load_combinations[124].items[2].load_case=2
+load_combinations[124].items[2].factor=1.2000000476837158
+load_combinations[124].items[3].load_case=3
+load_combinations[124].items[3].factor=1.2000000476837158
+load_combinations[124].items[4].load_case=11
+load_combinations[124].items[4].factor=0.6
+load_combinations[124].items[5].load_case=12
+load_combinations[124].items[5].factor=1.2
+load_combinations[124].items[6].load_case=13
+load_combinations[124].items[6].factor=1.5
+load_combinations[124].items[7].load_case=19
+load_combinations[124].items[7].factor=1.5
+load_combinations[124].items[8].load_case=21
+load_combinations[124].items[8].factor=0.6
+load_combinations[124].items[9].load_case=25
+load_combinations[124].items[9].factor=1.0
+load_combinations[124].items[10].load_case=37
+load_combinations[124].items[10].factor=1.0
+load_combinations[124].items[11].load_case=38
+load_combinations[124].items[11].factor=1.0
+load_combinations.create(125, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+-Wuex+-Wuix", static_analysis_settings="SA2")
+load_combinations[125].items[1].load_case=1
+load_combinations[125].items[1].factor=1.2000000476837158
+load_combinations[125].items[2].load_case=2
+load_combinations[125].items[2].factor=1.2000000476837158
+load_combinations[125].items[3].load_case=3
+load_combinations[125].items[3].factor=1.2000000476837158
+load_combinations[125].items[4].load_case=11
+load_combinations[125].items[4].factor=0.6
+load_combinations[125].items[5].load_case=12
+load_combinations[125].items[5].factor=1.2
+load_combinations[125].items[6].load_case=13
+load_combinations[125].items[6].factor=1.5
+load_combinations[125].items[7].load_case=19
+load_combinations[125].items[7].factor=1.5
+load_combinations[125].items[8].load_case=21
+load_combinations[125].items[8].factor=0.6
+load_combinations[125].items[9].load_case=25
+load_combinations[125].items[9].factor=1.0
+load_combinations[125].items[10].load_case=39
+load_combinations[125].items[10].factor=1.0
+load_combinations[125].items[11].load_case=40
+load_combinations[125].items[11].factor=1.0
+load_combinations.create(126, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+-Wdex+-Wdix", static_analysis_settings="SA2")
+load_combinations[126].items[1].load_case=1
+load_combinations[126].items[1].factor=1.2000000476837158
+load_combinations[126].items[2].load_case=2
+load_combinations[126].items[2].factor=1.2000000476837158
+load_combinations[126].items[3].load_case=3
+load_combinations[126].items[3].factor=1.2000000476837158
+load_combinations[126].items[4].load_case=11
+load_combinations[126].items[4].factor=0.6
+load_combinations[126].items[5].load_case=12
+load_combinations[126].items[5].factor=1.2
+load_combinations[126].items[6].load_case=13
+load_combinations[126].items[6].factor=1.5
+load_combinations[126].items[7].load_case=19
+load_combinations[126].items[7].factor=1.5
+load_combinations[126].items[8].load_case=21
+load_combinations[126].items[8].factor=0.6
+load_combinations[126].items[9].load_case=25
+load_combinations[126].items[9].factor=1.0
+load_combinations[126].items[10].load_case=41
+load_combinations[126].items[10].factor=1.0
+load_combinations[126].items[11].load_case=42
+load_combinations[126].items[11].factor=1.0
+load_combinations.create(127, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+-Wuey+-Wuiy", static_analysis_settings="SA2")
+load_combinations[127].items[1].load_case=1
+load_combinations[127].items[1].factor=1.2000000476837158
+load_combinations[127].items[2].load_case=2
+load_combinations[127].items[2].factor=1.2000000476837158
+load_combinations[127].items[3].load_case=3
+load_combinations[127].items[3].factor=1.2000000476837158
+load_combinations[127].items[4].load_case=11
+load_combinations[127].items[4].factor=0.6
+load_combinations[127].items[5].load_case=12
+load_combinations[127].items[5].factor=1.2
+load_combinations[127].items[6].load_case=13
+load_combinations[127].items[6].factor=1.5
+load_combinations[127].items[7].load_case=19
+load_combinations[127].items[7].factor=1.5
+load_combinations[127].items[8].load_case=21
+load_combinations[127].items[8].factor=0.6
+load_combinations[127].items[9].load_case=25
+load_combinations[127].items[9].factor=1.0
+load_combinations[127].items[10].load_case=43
+load_combinations[127].items[10].factor=1.0
+load_combinations[127].items[11].load_case=44
+load_combinations[127].items[11].factor=1.0
+load_combinations.create(128, design_situation="DS1", user_defined_name_enabled=True, name="+1.2G+0.6QL+1.2QS +1.5QML1+1.5QBTn+0.6QMS+Qbo+-Wdey+-Wdiy", static_analysis_settings="SA2")
+load_combinations[128].items[1].load_case=1
+load_combinations[128].items[1].factor=1.2000000476837158
+load_combinations[128].items[2].load_case=2
+load_combinations[128].items[2].factor=1.2000000476837158
+load_combinations[128].items[3].load_case=3
+load_combinations[128].items[3].factor=1.2000000476837158
+load_combinations[128].items[4].load_case=11
+load_combinations[128].items[4].factor=0.6
+load_combinations[128].items[5].load_case=12
+load_combinations[128].items[5].factor=1.2
+load_combinations[128].items[6].load_case=13
+load_combinations[128].items[6].factor=1.5
+load_combinations[128].items[7].load_case=19
+load_combinations[128].items[7].factor=1.5
+load_combinations[128].items[8].load_case=21
+load_combinations[128].items[8].factor=0.6
+load_combinations[128].items[9].load_case=25
+load_combinations[128].items[9].factor=1.0
+load_combinations[128].items[10].load_case=45
+load_combinations[128].items[10].factor=1.0
+load_combinations[128].items[11].load_case=46
+load_combinations[128].items[11].factor=1.0
+load_combinations.create(129, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+Wuex+Wuix", static_analysis_settings="SA2")
+load_combinations[129].items[1].load_case=1
+load_combinations[129].items[1].factor=0.8999999761581421
+load_combinations[129].items[2].load_case=2
+load_combinations[129].items[2].factor=0.8999999761581421
+load_combinations[129].items[3].load_case=3
+load_combinations[129].items[3].factor=0.8999999761581421
+load_combinations[129].items[4].load_case=19
+load_combinations[129].items[4].factor=1.5
+load_combinations[129].items[5].load_case=31
+load_combinations[129].items[5].factor=1.0
+load_combinations[129].items[6].load_case=32
+load_combinations[129].items[6].factor=1.0
+load_combinations.create(130, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+Wdex+Wdix", static_analysis_settings="SA2")
+load_combinations[130].items[1].load_case=1
+load_combinations[130].items[1].factor=0.8999999761581421
+load_combinations[130].items[2].load_case=2
+load_combinations[130].items[2].factor=0.8999999761581421
+load_combinations[130].items[3].load_case=3
+load_combinations[130].items[3].factor=0.8999999761581421
+load_combinations[130].items[4].load_case=19
+load_combinations[130].items[4].factor=1.5
+load_combinations[130].items[5].load_case=33
+load_combinations[130].items[5].factor=1.0
+load_combinations[130].items[6].load_case=34
+load_combinations[130].items[6].factor=1.0
+load_combinations.create(131, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+Wuey+Wuiy", static_analysis_settings="SA2")
+load_combinations[131].items[1].load_case=1
+load_combinations[131].items[1].factor=0.8999999761581421
+load_combinations[131].items[2].load_case=2
+load_combinations[131].items[2].factor=0.8999999761581421
+load_combinations[131].items[3].load_case=3
+load_combinations[131].items[3].factor=0.8999999761581421
+load_combinations[131].items[4].load_case=19
+load_combinations[131].items[4].factor=1.5
+load_combinations[131].items[5].load_case=35
+load_combinations[131].items[5].factor=1.0
+load_combinations[131].items[6].load_case=36
+load_combinations[131].items[6].factor=1.0
+load_combinations.create(132, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+Wdey+Wdiy", static_analysis_settings="SA2")
+load_combinations[132].items[1].load_case=1
+load_combinations[132].items[1].factor=0.8999999761581421
+load_combinations[132].items[2].load_case=2
+load_combinations[132].items[2].factor=0.8999999761581421
+load_combinations[132].items[3].load_case=3
+load_combinations[132].items[3].factor=0.8999999761581421
+load_combinations[132].items[4].load_case=19
+load_combinations[132].items[4].factor=1.5
+load_combinations[132].items[5].load_case=37
+load_combinations[132].items[5].factor=1.0
+load_combinations[132].items[6].load_case=38
+load_combinations[132].items[6].factor=1.0
+load_combinations.create(133, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+-Wuex+-Wuix", static_analysis_settings="SA2")
+load_combinations[133].items[1].load_case=1
+load_combinations[133].items[1].factor=0.8999999761581421
+load_combinations[133].items[2].load_case=2
+load_combinations[133].items[2].factor=0.8999999761581421
+load_combinations[133].items[3].load_case=3
+load_combinations[133].items[3].factor=0.8999999761581421
+load_combinations[133].items[4].load_case=19
+load_combinations[133].items[4].factor=1.5
+load_combinations[133].items[5].load_case=39
+load_combinations[133].items[5].factor=1.0
+load_combinations[133].items[6].load_case=40
+load_combinations[133].items[6].factor=1.0
+load_combinations.create(134, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+-Wdex+-Wdix", static_analysis_settings="SA2")
+load_combinations[134].items[1].load_case=1
+load_combinations[134].items[1].factor=0.8999999761581421
+load_combinations[134].items[2].load_case=2
+load_combinations[134].items[2].factor=0.8999999761581421
+load_combinations[134].items[3].load_case=3
+load_combinations[134].items[3].factor=0.8999999761581421
+load_combinations[134].items[4].load_case=19
+load_combinations[134].items[4].factor=1.5
+load_combinations[134].items[5].load_case=41
+load_combinations[134].items[5].factor=1.0
+load_combinations[134].items[6].load_case=42
+load_combinations[134].items[6].factor=1.0
+load_combinations.create(135, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+-Wuey+-Wuiy", static_analysis_settings="SA2")
+load_combinations[135].items[1].load_case=1
+load_combinations[135].items[1].factor=0.8999999761581421
+load_combinations[135].items[2].load_case=2
+load_combinations[135].items[2].factor=0.8999999761581421
+load_combinations[135].items[3].load_case=3
+load_combinations[135].items[3].factor=0.8999999761581421
+load_combinations[135].items[4].load_case=19
+load_combinations[135].items[4].factor=1.5
+load_combinations[135].items[5].load_case=43
+load_combinations[135].items[5].factor=1.0
+load_combinations[135].items[6].load_case=44
+load_combinations[135].items[6].factor=1.0
+load_combinations.create(136, design_situation="DS1", user_defined_name_enabled=True, name="+0.9G+1.5QBTn+-Wdey+-Wdiy", static_analysis_settings="SA2")
+load_combinations[136].items[1].load_case=1
+load_combinations[136].items[1].factor=0.8999999761581421
+load_combinations[136].items[2].load_case=2
+load_combinations[136].items[2].factor=0.8999999761581421
+load_combinations[136].items[3].load_case=3
+load_combinations[136].items[3].factor=0.8999999761581421
+load_combinations[136].items[4].load_case=19
+load_combinations[136].items[4].factor=1.5
+load_combinations[136].items[5].load_case=45
+load_combinations[136].items[5].factor=1.0
+load_combinations[136].items[6].load_case=46
+load_combinations[136].items[6].factor=1.0
+load_combinations.create(141, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo+Eqx+0.3Eqy", static_analysis_settings="SA2")
+load_combinations[141].items[1].load_case=1
+load_combinations[141].items[1].factor=1.0
+load_combinations[141].items[2].load_case=2
+load_combinations[141].items[2].factor=1.0
+load_combinations[141].items[3].load_case=3
+load_combinations[141].items[3].factor=1.0
+load_combinations[141].items[4].load_case=11
+load_combinations[141].items[4].factor=0.6
+load_combinations[141].items[5].load_case=12
+load_combinations[141].items[5].factor=1.0
+load_combinations[141].items[6].load_case=13
+load_combinations[141].items[6].factor=1.0
+load_combinations[141].items[7].load_case=17
+load_combinations[141].items[7].factor=1.5
+load_combinations[141].items[8].load_case=21
+load_combinations[141].items[8].factor=0.6
+load_combinations[141].items[9].load_case=23
+load_combinations[141].items[9].factor=1.0
+load_combinations[141].items[10].load_case=25
+load_combinations[141].items[10].factor=1.0
+load_combinations[141].items[11].load_case=51
+load_combinations[141].items[11].factor=1.0
+load_combinations[141].items[12].load_case=52
+load_combinations[141].items[12].factor=0.3
+load_combinations.create(142, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo+Eqx-0.3Eqy", static_analysis_settings="SA2")
+load_combinations[142].items[1].load_case=1
+load_combinations[142].items[1].factor=1.0
+load_combinations[142].items[2].load_case=2
+load_combinations[142].items[2].factor=1.0
+load_combinations[142].items[3].load_case=3
+load_combinations[142].items[3].factor=1.0
+load_combinations[142].items[4].load_case=11
+load_combinations[142].items[4].factor=0.6
+load_combinations[142].items[5].load_case=12
+load_combinations[142].items[5].factor=1.0
+load_combinations[142].items[6].load_case=13
+load_combinations[142].items[6].factor=1.0
+load_combinations[142].items[7].load_case=17
+load_combinations[142].items[7].factor=1.5
+load_combinations[142].items[8].load_case=21
+load_combinations[142].items[8].factor=0.6
+load_combinations[142].items[9].load_case=23
+load_combinations[142].items[9].factor=1.0
+load_combinations[142].items[10].load_case=25
+load_combinations[142].items[10].factor=1.0
+load_combinations[142].items[11].load_case=51
+load_combinations[142].items[11].factor=1.0
+load_combinations[142].items[12].load_case=52
+load_combinations[142].items[12].factor=-0.3
+load_combinations.create(143, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo-Eqx+0.3Eqy", static_analysis_settings="SA2")
+load_combinations[143].items[1].load_case=1
+load_combinations[143].items[1].factor=1.0
+load_combinations[143].items[2].load_case=2
+load_combinations[143].items[2].factor=1.0
+load_combinations[143].items[3].load_case=3
+load_combinations[143].items[3].factor=1.0
+load_combinations[143].items[4].load_case=11
+load_combinations[143].items[4].factor=0.6
+load_combinations[143].items[5].load_case=12
+load_combinations[143].items[5].factor=1.0
+load_combinations[143].items[6].load_case=13
+load_combinations[143].items[6].factor=1.0
+load_combinations[143].items[7].load_case=17
+load_combinations[143].items[7].factor=1.5
+load_combinations[143].items[8].load_case=21
+load_combinations[143].items[8].factor=0.6
+load_combinations[143].items[9].load_case=23
+load_combinations[143].items[9].factor=1.0
+load_combinations[143].items[10].load_case=25
+load_combinations[143].items[10].factor=1.0
+load_combinations[143].items[11].load_case=51
+load_combinations[143].items[11].factor=-1.0
+load_combinations[143].items[12].load_case=52
+load_combinations[143].items[12].factor=0.3
+load_combinations.create(144, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo-Eqx-0.3Eqy", static_analysis_settings="SA2")
+load_combinations[144].items[1].load_case=1
+load_combinations[144].items[1].factor=1.0
+load_combinations[144].items[2].load_case=2
+load_combinations[144].items[2].factor=1.0
+load_combinations[144].items[3].load_case=3
+load_combinations[144].items[3].factor=1.0
+load_combinations[144].items[4].load_case=11
+load_combinations[144].items[4].factor=0.6
+load_combinations[144].items[5].load_case=12
+load_combinations[144].items[5].factor=1.0
+load_combinations[144].items[6].load_case=13
+load_combinations[144].items[6].factor=1.0
+load_combinations[144].items[7].load_case=17
+load_combinations[144].items[7].factor=1.5
+load_combinations[144].items[8].load_case=21
+load_combinations[144].items[8].factor=0.6
+load_combinations[144].items[9].load_case=23
+load_combinations[144].items[9].factor=1.0
+load_combinations[144].items[10].load_case=25
+load_combinations[144].items[10].factor=1.0
+load_combinations[144].items[11].load_case=51
+load_combinations[144].items[11].factor=-1.0
+load_combinations[144].items[12].load_case=52
+load_combinations[144].items[12].factor=-0.3
+load_combinations.create(145, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo+0.3Eqx+Eqy", static_analysis_settings="SA2")
+load_combinations[145].items[1].load_case=1
+load_combinations[145].items[1].factor=1.0
+load_combinations[145].items[2].load_case=2
+load_combinations[145].items[2].factor=1.0
+load_combinations[145].items[3].load_case=3
+load_combinations[145].items[3].factor=1.0
+load_combinations[145].items[4].load_case=11
+load_combinations[145].items[4].factor=0.6
+load_combinations[145].items[5].load_case=12
+load_combinations[145].items[5].factor=1.0
+load_combinations[145].items[6].load_case=13
+load_combinations[145].items[6].factor=1.0
+load_combinations[145].items[7].load_case=17
+load_combinations[145].items[7].factor=1.5
+load_combinations[145].items[8].load_case=21
+load_combinations[145].items[8].factor=0.6
+load_combinations[145].items[9].load_case=23
+load_combinations[145].items[9].factor=1.0
+load_combinations[145].items[10].load_case=25
+load_combinations[145].items[10].factor=1.0
+load_combinations[145].items[11].load_case=51
+load_combinations[145].items[11].factor=0.3
+load_combinations[145].items[12].load_case=52
+load_combinations[145].items[12].factor=1.0
+load_combinations.create(146, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo-0.3Eqx+Eqy", static_analysis_settings="SA2")
+load_combinations[146].items[1].load_case=1
+load_combinations[146].items[1].factor=1.0
+load_combinations[146].items[2].load_case=2
+load_combinations[146].items[2].factor=1.0
+load_combinations[146].items[3].load_case=3
+load_combinations[146].items[3].factor=1.0
+load_combinations[146].items[4].load_case=11
+load_combinations[146].items[4].factor=0.6
+load_combinations[146].items[5].load_case=12
+load_combinations[146].items[5].factor=1.0
+load_combinations[146].items[6].load_case=13
+load_combinations[146].items[6].factor=1.0
+load_combinations[146].items[7].load_case=17
+load_combinations[146].items[7].factor=1.5
+load_combinations[146].items[8].load_case=21
+load_combinations[146].items[8].factor=0.6
+load_combinations[146].items[9].load_case=23
+load_combinations[146].items[9].factor=1.0
+load_combinations[146].items[10].load_case=25
+load_combinations[146].items[10].factor=1.0
+load_combinations[146].items[11].load_case=51
+load_combinations[146].items[11].factor=-0.3
+load_combinations[146].items[12].load_case=52
+load_combinations[146].items[12].factor=1.0
+load_combinations.create(147, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo+0.3Eqx-Eqy", static_analysis_settings="SA2")
+load_combinations[147].items[1].load_case=1
+load_combinations[147].items[1].factor=1.0
+load_combinations[147].items[2].load_case=2
+load_combinations[147].items[2].factor=1.0
+load_combinations[147].items[3].load_case=3
+load_combinations[147].items[3].factor=1.0
+load_combinations[147].items[4].load_case=11
+load_combinations[147].items[4].factor=0.6
+load_combinations[147].items[5].load_case=12
+load_combinations[147].items[5].factor=1.0
+load_combinations[147].items[6].load_case=13
+load_combinations[147].items[6].factor=1.0
+load_combinations[147].items[7].load_case=17
+load_combinations[147].items[7].factor=1.5
+load_combinations[147].items[8].load_case=21
+load_combinations[147].items[8].factor=0.6
+load_combinations[147].items[9].load_case=23
+load_combinations[147].items[9].factor=1.0
+load_combinations[147].items[10].load_case=25
+load_combinations[147].items[10].factor=1.0
+load_combinations[147].items[11].load_case=51
+load_combinations[147].items[11].factor=0.3
+load_combinations[147].items[12].load_case=52
+load_combinations[147].items[12].factor=-1.0
+load_combinations.create(148, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.6QL+QS +QML1+1.5QBTo+0.6QMS+QV+Qbo-0.3Eqx-Eqy", static_analysis_settings="SA2")
+load_combinations[148].items[1].load_case=1
+load_combinations[148].items[1].factor=1.0
+load_combinations[148].items[2].load_case=2
+load_combinations[148].items[2].factor=1.0
+load_combinations[148].items[3].load_case=3
+load_combinations[148].items[3].factor=1.0
+load_combinations[148].items[4].load_case=11
+load_combinations[148].items[4].factor=0.6
+load_combinations[148].items[5].load_case=12
+load_combinations[148].items[5].factor=1.0
+load_combinations[148].items[6].load_case=13
+load_combinations[148].items[6].factor=1.0
+load_combinations[148].items[7].load_case=17
+load_combinations[148].items[7].factor=1.5
+load_combinations[148].items[8].load_case=21
+load_combinations[148].items[8].factor=0.6
+load_combinations[148].items[9].load_case=23
+load_combinations[148].items[9].factor=1.0
+load_combinations[148].items[10].load_case=25
+load_combinations[148].items[10].factor=1.0
+load_combinations[148].items[11].load_case=51
+load_combinations[148].items[11].factor=-0.3
+load_combinations[148].items[12].load_case=52
+load_combinations[148].items[12].factor=-1.0
+load_combinations.create(301, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo", static_analysis_settings="SA2")
+load_combinations[301].items[1].load_case=1
+load_combinations[301].items[1].factor=1.0
+load_combinations[301].items[2].load_case=2
+load_combinations[301].items[2].factor=1.0
+load_combinations[301].items[3].load_case=3
+load_combinations[301].items[3].factor=1.0
+load_combinations[301].items[4].load_case=11
+load_combinations[301].items[4].factor=0.5
+load_combinations[301].items[5].load_case=12
+load_combinations[301].items[5].factor=1.0
+load_combinations[301].items[6].load_case=13
+load_combinations[301].items[6].factor=1.0
+load_combinations[301].items[7].load_case=17
+load_combinations[301].items[7].factor=1.0
+load_combinations[301].items[8].load_case=21
+load_combinations[301].items[8].factor=1.0
+load_combinations[301].items[9].load_case=25
+load_combinations[301].items[9].factor=1.0
+load_combinations.create(302, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48Wuex+0.48Wuix", static_analysis_settings="SA2")
+load_combinations[302].items[1].load_case=1
+load_combinations[302].items[1].factor=1.0
+load_combinations[302].items[2].load_case=2
+load_combinations[302].items[2].factor=1.0
+load_combinations[302].items[3].load_case=3
+load_combinations[302].items[3].factor=1.0
+load_combinations[302].items[4].load_case=11
+load_combinations[302].items[4].factor=0.5
+load_combinations[302].items[5].load_case=12
+load_combinations[302].items[5].factor=1.0
+load_combinations[302].items[6].load_case=13
+load_combinations[302].items[6].factor=1.0
+load_combinations[302].items[7].load_case=17
+load_combinations[302].items[7].factor=1.0
+load_combinations[302].items[8].load_case=21
+load_combinations[302].items[8].factor=1.0
+load_combinations[302].items[9].load_case=25
+load_combinations[302].items[9].factor=1.0
+load_combinations[302].items[10].load_case=31
+load_combinations[302].items[10].factor=0.48
+load_combinations[302].items[11].load_case=32
+load_combinations[302].items[11].factor=0.48
+load_combinations.create(303, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48Wdex+0.48Wdix", static_analysis_settings="SA2")
+load_combinations[303].items[1].load_case=1
+load_combinations[303].items[1].factor=1.0
+load_combinations[303].items[2].load_case=2
+load_combinations[303].items[2].factor=1.0
+load_combinations[303].items[3].load_case=3
+load_combinations[303].items[3].factor=1.0
+load_combinations[303].items[4].load_case=11
+load_combinations[303].items[4].factor=0.5
+load_combinations[303].items[5].load_case=12
+load_combinations[303].items[5].factor=1.0
+load_combinations[303].items[6].load_case=13
+load_combinations[303].items[6].factor=1.0
+load_combinations[303].items[7].load_case=17
+load_combinations[303].items[7].factor=1.0
+load_combinations[303].items[8].load_case=21
+load_combinations[303].items[8].factor=1.0
+load_combinations[303].items[9].load_case=25
+load_combinations[303].items[9].factor=1.0
+load_combinations[303].items[10].load_case=33
+load_combinations[303].items[10].factor=0.48
+load_combinations[303].items[11].load_case=34
+load_combinations[303].items[11].factor=0.48
+load_combinations.create(304, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48Wuey+0.48Wuiy", static_analysis_settings="SA2")
+load_combinations[304].items[1].load_case=1
+load_combinations[304].items[1].factor=1.0
+load_combinations[304].items[2].load_case=2
+load_combinations[304].items[2].factor=1.0
+load_combinations[304].items[3].load_case=3
+load_combinations[304].items[3].factor=1.0
+load_combinations[304].items[4].load_case=11
+load_combinations[304].items[4].factor=0.5
+load_combinations[304].items[5].load_case=12
+load_combinations[304].items[5].factor=1.0
+load_combinations[304].items[6].load_case=13
+load_combinations[304].items[6].factor=1.0
+load_combinations[304].items[7].load_case=17
+load_combinations[304].items[7].factor=1.0
+load_combinations[304].items[8].load_case=21
+load_combinations[304].items[8].factor=1.0
+load_combinations[304].items[9].load_case=25
+load_combinations[304].items[9].factor=1.0
+load_combinations[304].items[10].load_case=35
+load_combinations[304].items[10].factor=0.48
+load_combinations[304].items[11].load_case=36
+load_combinations[304].items[11].factor=0.48
+load_combinations.create(305, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48Wdey+0.48Wdiy", static_analysis_settings="SA2")
+load_combinations[305].items[1].load_case=1
+load_combinations[305].items[1].factor=1.0
+load_combinations[305].items[2].load_case=2
+load_combinations[305].items[2].factor=1.0
+load_combinations[305].items[3].load_case=3
+load_combinations[305].items[3].factor=1.0
+load_combinations[305].items[4].load_case=11
+load_combinations[305].items[4].factor=0.5
+load_combinations[305].items[5].load_case=12
+load_combinations[305].items[5].factor=1.0
+load_combinations[305].items[6].load_case=13
+load_combinations[305].items[6].factor=1.0
+load_combinations[305].items[7].load_case=17
+load_combinations[305].items[7].factor=1.0
+load_combinations[305].items[8].load_case=21
+load_combinations[305].items[8].factor=1.0
+load_combinations[305].items[9].load_case=25
+load_combinations[305].items[9].factor=1.0
+load_combinations[305].items[10].load_case=37
+load_combinations[305].items[10].factor=0.48
+load_combinations[305].items[11].load_case=38
+load_combinations[305].items[11].factor=0.48
+load_combinations.create(306, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48-Wuex+0.48-Wuix", static_analysis_settings="SA2")
+load_combinations[306].items[1].load_case=1
+load_combinations[306].items[1].factor=1.0
+load_combinations[306].items[2].load_case=2
+load_combinations[306].items[2].factor=1.0
+load_combinations[306].items[3].load_case=3
+load_combinations[306].items[3].factor=1.0
+load_combinations[306].items[4].load_case=11
+load_combinations[306].items[4].factor=0.5
+load_combinations[306].items[5].load_case=12
+load_combinations[306].items[5].factor=1.0
+load_combinations[306].items[6].load_case=13
+load_combinations[306].items[6].factor=1.0
+load_combinations[306].items[7].load_case=17
+load_combinations[306].items[7].factor=1.0
+load_combinations[306].items[8].load_case=21
+load_combinations[306].items[8].factor=1.0
+load_combinations[306].items[9].load_case=25
+load_combinations[306].items[9].factor=1.0
+load_combinations[306].items[10].load_case=39
+load_combinations[306].items[10].factor=0.48
+load_combinations[306].items[11].load_case=40
+load_combinations[306].items[11].factor=0.48
+load_combinations.create(307, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48-Wdex+0.48-Wdix", static_analysis_settings="SA2")
+load_combinations[307].items[1].load_case=1
+load_combinations[307].items[1].factor=1.0
+load_combinations[307].items[2].load_case=2
+load_combinations[307].items[2].factor=1.0
+load_combinations[307].items[3].load_case=3
+load_combinations[307].items[3].factor=1.0
+load_combinations[307].items[4].load_case=11
+load_combinations[307].items[4].factor=0.5
+load_combinations[307].items[5].load_case=12
+load_combinations[307].items[5].factor=1.0
+load_combinations[307].items[6].load_case=13
+load_combinations[307].items[6].factor=1.0
+load_combinations[307].items[7].load_case=17
+load_combinations[307].items[7].factor=1.0
+load_combinations[307].items[8].load_case=21
+load_combinations[307].items[8].factor=1.0
+load_combinations[307].items[9].load_case=25
+load_combinations[307].items[9].factor=1.0
+load_combinations[307].items[10].load_case=41
+load_combinations[307].items[10].factor=0.48
+load_combinations[307].items[11].load_case=42
+load_combinations[307].items[11].factor=0.48
+load_combinations.create(308, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48-Wuey+0.48-Wuiy", static_analysis_settings="SA2")
+load_combinations[308].items[1].load_case=1
+load_combinations[308].items[1].factor=1.0
+load_combinations[308].items[2].load_case=2
+load_combinations[308].items[2].factor=1.0
+load_combinations[308].items[3].load_case=3
+load_combinations[308].items[3].factor=1.0
+load_combinations[308].items[4].load_case=11
+load_combinations[308].items[4].factor=0.5
+load_combinations[308].items[5].load_case=12
+load_combinations[308].items[5].factor=1.0
+load_combinations[308].items[6].load_case=13
+load_combinations[308].items[6].factor=1.0
+load_combinations[308].items[7].load_case=17
+load_combinations[308].items[7].factor=1.0
+load_combinations[308].items[8].load_case=21
+load_combinations[308].items[8].factor=1.0
+load_combinations[308].items[9].load_case=25
+load_combinations[308].items[9].factor=1.0
+load_combinations[308].items[10].load_case=43
+load_combinations[308].items[10].factor=0.48
+load_combinations[308].items[11].load_case=44
+load_combinations[308].items[11].factor=0.48
+load_combinations.create(309, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QBTo+QMS+Qbo+0.48-Wdey+0.48-Wdiy", static_analysis_settings="SA2")
+load_combinations[309].items[1].load_case=1
+load_combinations[309].items[1].factor=1.0
+load_combinations[309].items[2].load_case=2
+load_combinations[309].items[2].factor=1.0
+load_combinations[309].items[3].load_case=3
+load_combinations[309].items[3].factor=1.0
+load_combinations[309].items[4].load_case=11
+load_combinations[309].items[4].factor=0.5
+load_combinations[309].items[5].load_case=12
+load_combinations[309].items[5].factor=1.0
+load_combinations[309].items[6].load_case=13
+load_combinations[309].items[6].factor=1.0
+load_combinations[309].items[7].load_case=17
+load_combinations[309].items[7].factor=1.0
+load_combinations[309].items[8].load_case=21
+load_combinations[309].items[8].factor=1.0
+load_combinations[309].items[9].load_case=25
+load_combinations[309].items[9].factor=1.0
+load_combinations[309].items[10].load_case=45
+load_combinations[309].items[10].factor=0.48
+load_combinations[309].items[11].load_case=46
+load_combinations[309].items[11].factor=0.48
+load_combinations.create(310, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2Wuex+0.2Wuix", static_analysis_settings="SA2")
+load_combinations[310].items[1].load_case=1
+load_combinations[310].items[1].factor=1.0
+load_combinations[310].items[2].load_case=2
+load_combinations[310].items[2].factor=1.0
+load_combinations[310].items[3].load_case=3
+load_combinations[310].items[3].factor=1.0
+load_combinations[310].items[4].load_case=11
+load_combinations[310].items[4].factor=0.5
+load_combinations[310].items[5].load_case=12
+load_combinations[310].items[5].factor=1.0
+load_combinations[310].items[6].load_case=13
+load_combinations[310].items[6].factor=1.0
+load_combinations[310].items[7].load_case=16
+load_combinations[310].items[7].factor=1.0
+load_combinations[310].items[8].load_case=17
+load_combinations[310].items[8].factor=1.0
+load_combinations[310].items[9].load_case=21
+load_combinations[310].items[9].factor=1.0
+load_combinations[310].items[10].load_case=25
+load_combinations[310].items[10].factor=1.0
+load_combinations[310].items[11].load_case=31
+load_combinations[310].items[11].factor=0.2
+load_combinations[310].items[12].load_case=32
+load_combinations[310].items[12].factor=0.2
+load_combinations.create(311, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2Wdex+0.2Wdix", static_analysis_settings="SA2")
+load_combinations[311].items[1].load_case=1
+load_combinations[311].items[1].factor=1.0
+load_combinations[311].items[2].load_case=2
+load_combinations[311].items[2].factor=1.0
+load_combinations[311].items[3].load_case=3
+load_combinations[311].items[3].factor=1.0
+load_combinations[311].items[4].load_case=11
+load_combinations[311].items[4].factor=0.5
+load_combinations[311].items[5].load_case=12
+load_combinations[311].items[5].factor=1.0
+load_combinations[311].items[6].load_case=13
+load_combinations[311].items[6].factor=1.0
+load_combinations[311].items[7].load_case=16
+load_combinations[311].items[7].factor=1.0
+load_combinations[311].items[8].load_case=17
+load_combinations[311].items[8].factor=1.0
+load_combinations[311].items[9].load_case=21
+load_combinations[311].items[9].factor=1.0
+load_combinations[311].items[10].load_case=25
+load_combinations[311].items[10].factor=1.0
+load_combinations[311].items[11].load_case=33
+load_combinations[311].items[11].factor=0.2
+load_combinations[311].items[12].load_case=34
+load_combinations[311].items[12].factor=0.2
+load_combinations.create(312, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2Wuey+0.2Wuiy", static_analysis_settings="SA2")
+load_combinations[312].items[1].load_case=1
+load_combinations[312].items[1].factor=1.0
+load_combinations[312].items[2].load_case=2
+load_combinations[312].items[2].factor=1.0
+load_combinations[312].items[3].load_case=3
+load_combinations[312].items[3].factor=1.0
+load_combinations[312].items[4].load_case=11
+load_combinations[312].items[4].factor=0.5
+load_combinations[312].items[5].load_case=12
+load_combinations[312].items[5].factor=1.0
+load_combinations[312].items[6].load_case=13
+load_combinations[312].items[6].factor=1.0
+load_combinations[312].items[7].load_case=16
+load_combinations[312].items[7].factor=1.0
+load_combinations[312].items[8].load_case=17
+load_combinations[312].items[8].factor=1.0
+load_combinations[312].items[9].load_case=21
+load_combinations[312].items[9].factor=1.0
+load_combinations[312].items[10].load_case=25
+load_combinations[312].items[10].factor=1.0
+load_combinations[312].items[11].load_case=35
+load_combinations[312].items[11].factor=0.2
+load_combinations[312].items[12].load_case=36
+load_combinations[312].items[12].factor=0.2
+load_combinations.create(313, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2Wdey+0.2Wdiy", static_analysis_settings="SA2")
+load_combinations[313].items[1].load_case=1
+load_combinations[313].items[1].factor=1.0
+load_combinations[313].items[2].load_case=2
+load_combinations[313].items[2].factor=1.0
+load_combinations[313].items[3].load_case=3
+load_combinations[313].items[3].factor=1.0
+load_combinations[313].items[4].load_case=11
+load_combinations[313].items[4].factor=0.5
+load_combinations[313].items[5].load_case=12
+load_combinations[313].items[5].factor=1.0
+load_combinations[313].items[6].load_case=13
+load_combinations[313].items[6].factor=1.0
+load_combinations[313].items[7].load_case=16
+load_combinations[313].items[7].factor=1.0
+load_combinations[313].items[8].load_case=17
+load_combinations[313].items[8].factor=1.0
+load_combinations[313].items[9].load_case=21
+load_combinations[313].items[9].factor=1.0
+load_combinations[313].items[10].load_case=25
+load_combinations[313].items[10].factor=1.0
+load_combinations[313].items[11].load_case=37
+load_combinations[313].items[11].factor=0.2
+load_combinations[313].items[12].load_case=38
+load_combinations[313].items[12].factor=0.2
+load_combinations.create(314, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2-Wuex+0.2-Wuix", static_analysis_settings="SA2")
+load_combinations[314].items[1].load_case=1
+load_combinations[314].items[1].factor=1.0
+load_combinations[314].items[2].load_case=2
+load_combinations[314].items[2].factor=1.0
+load_combinations[314].items[3].load_case=3
+load_combinations[314].items[3].factor=1.0
+load_combinations[314].items[4].load_case=11
+load_combinations[314].items[4].factor=0.5
+load_combinations[314].items[5].load_case=12
+load_combinations[314].items[5].factor=1.0
+load_combinations[314].items[6].load_case=13
+load_combinations[314].items[6].factor=1.0
+load_combinations[314].items[7].load_case=16
+load_combinations[314].items[7].factor=1.0
+load_combinations[314].items[8].load_case=17
+load_combinations[314].items[8].factor=1.0
+load_combinations[314].items[9].load_case=21
+load_combinations[314].items[9].factor=1.0
+load_combinations[314].items[10].load_case=25
+load_combinations[314].items[10].factor=1.0
+load_combinations[314].items[11].load_case=39
+load_combinations[314].items[11].factor=0.2
+load_combinations[314].items[12].load_case=40
+load_combinations[314].items[12].factor=0.2
+load_combinations.create(315, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2-Wdex+0.2-Wdix", static_analysis_settings="SA2")
+load_combinations[315].items[1].load_case=1
+load_combinations[315].items[1].factor=1.0
+load_combinations[315].items[2].load_case=2
+load_combinations[315].items[2].factor=1.0
+load_combinations[315].items[3].load_case=3
+load_combinations[315].items[3].factor=1.0
+load_combinations[315].items[4].load_case=11
+load_combinations[315].items[4].factor=0.5
+load_combinations[315].items[5].load_case=12
+load_combinations[315].items[5].factor=1.0
+load_combinations[315].items[6].load_case=13
+load_combinations[315].items[6].factor=1.0
+load_combinations[315].items[7].load_case=16
+load_combinations[315].items[7].factor=1.0
+load_combinations[315].items[8].load_case=17
+load_combinations[315].items[8].factor=1.0
+load_combinations[315].items[9].load_case=21
+load_combinations[315].items[9].factor=1.0
+load_combinations[315].items[10].load_case=25
+load_combinations[315].items[10].factor=1.0
+load_combinations[315].items[11].load_case=41
+load_combinations[315].items[11].factor=0.2
+load_combinations[315].items[12].load_case=42
+load_combinations[315].items[12].factor=0.2
+load_combinations.create(316, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2-Wuey+0.2-Wuiy", static_analysis_settings="SA2")
+load_combinations[316].items[1].load_case=1
+load_combinations[316].items[1].factor=1.0
+load_combinations[316].items[2].load_case=2
+load_combinations[316].items[2].factor=1.0
+load_combinations[316].items[3].load_case=3
+load_combinations[316].items[3].factor=1.0
+load_combinations[316].items[4].load_case=11
+load_combinations[316].items[4].factor=0.5
+load_combinations[316].items[5].load_case=12
+load_combinations[316].items[5].factor=1.0
+load_combinations[316].items[6].load_case=13
+load_combinations[316].items[6].factor=1.0
+load_combinations[316].items[7].load_case=16
+load_combinations[316].items[7].factor=1.0
+load_combinations[316].items[8].load_case=17
+load_combinations[316].items[8].factor=1.0
+load_combinations[316].items[9].load_case=21
+load_combinations[316].items[9].factor=1.0
+load_combinations[316].items[10].load_case=25
+load_combinations[316].items[10].factor=1.0
+load_combinations[316].items[11].load_case=43
+load_combinations[316].items[11].factor=0.2
+load_combinations[316].items[12].load_case=44
+load_combinations[316].items[12].factor=0.2
+load_combinations.create(317, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt1+QBTo+QMS+Qbo+0.2-Wdey+0.2-Wdiy", static_analysis_settings="SA2")
+load_combinations[317].items[1].load_case=1
+load_combinations[317].items[1].factor=1.0
+load_combinations[317].items[2].load_case=2
+load_combinations[317].items[2].factor=1.0
+load_combinations[317].items[3].load_case=3
+load_combinations[317].items[3].factor=1.0
+load_combinations[317].items[4].load_case=11
+load_combinations[317].items[4].factor=0.5
+load_combinations[317].items[5].load_case=12
+load_combinations[317].items[5].factor=1.0
+load_combinations[317].items[6].load_case=13
+load_combinations[317].items[6].factor=1.0
+load_combinations[317].items[7].load_case=16
+load_combinations[317].items[7].factor=1.0
+load_combinations[317].items[8].load_case=17
+load_combinations[317].items[8].factor=1.0
+load_combinations[317].items[9].load_case=21
+load_combinations[317].items[9].factor=1.0
+load_combinations[317].items[10].load_case=25
+load_combinations[317].items[10].factor=1.0
+load_combinations[317].items[11].load_case=45
+load_combinations[317].items[11].factor=0.2
+load_combinations[317].items[12].load_case=46
+load_combinations[317].items[12].factor=0.2
+load_combinations.create(318, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2Wuex+0.2Wuix", static_analysis_settings="SA2")
+load_combinations[318].items[1].load_case=1
+load_combinations[318].items[1].factor=1.0
+load_combinations[318].items[2].load_case=2
+load_combinations[318].items[2].factor=1.0
+load_combinations[318].items[3].load_case=3
+load_combinations[318].items[3].factor=1.0
+load_combinations[318].items[4].load_case=11
+load_combinations[318].items[4].factor=0.5
+load_combinations[318].items[5].load_case=12
+load_combinations[318].items[5].factor=1.0
+load_combinations[318].items[6].load_case=13
+load_combinations[318].items[6].factor=1.0
+load_combinations[318].items[7].load_case=17
+load_combinations[318].items[7].factor=1.0
+load_combinations[318].items[8].load_case=21
+load_combinations[318].items[8].factor=1.0
+load_combinations[318].items[9].load_case=25
+load_combinations[318].items[9].factor=1.0
+load_combinations[318].items[10].load_case=26
+load_combinations[318].items[10].factor=1.0
+load_combinations[318].items[11].load_case=31
+load_combinations[318].items[11].factor=0.2
+load_combinations[318].items[12].load_case=32
+load_combinations[318].items[12].factor=0.2
+load_combinations.create(319, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2Wdex+0.2Wdix", static_analysis_settings="SA2")
+load_combinations[319].items[1].load_case=1
+load_combinations[319].items[1].factor=1.0
+load_combinations[319].items[2].load_case=2
+load_combinations[319].items[2].factor=1.0
+load_combinations[319].items[3].load_case=3
+load_combinations[319].items[3].factor=1.0
+load_combinations[319].items[4].load_case=11
+load_combinations[319].items[4].factor=0.5
+load_combinations[319].items[5].load_case=12
+load_combinations[319].items[5].factor=1.0
+load_combinations[319].items[6].load_case=13
+load_combinations[319].items[6].factor=1.0
+load_combinations[319].items[7].load_case=17
+load_combinations[319].items[7].factor=1.0
+load_combinations[319].items[8].load_case=21
+load_combinations[319].items[8].factor=1.0
+load_combinations[319].items[9].load_case=25
+load_combinations[319].items[9].factor=1.0
+load_combinations[319].items[10].load_case=26
+load_combinations[319].items[10].factor=1.0
+load_combinations[319].items[11].load_case=33
+load_combinations[319].items[11].factor=0.2
+load_combinations[319].items[12].load_case=34
+load_combinations[319].items[12].factor=0.2
+load_combinations.create(320, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2Wuey+0.2Wuiy", static_analysis_settings="SA2")
+load_combinations[320].items[1].load_case=1
+load_combinations[320].items[1].factor=1.0
+load_combinations[320].items[2].load_case=2
+load_combinations[320].items[2].factor=1.0
+load_combinations[320].items[3].load_case=3
+load_combinations[320].items[3].factor=1.0
+load_combinations[320].items[4].load_case=11
+load_combinations[320].items[4].factor=0.5
+load_combinations[320].items[5].load_case=12
+load_combinations[320].items[5].factor=1.0
+load_combinations[320].items[6].load_case=13
+load_combinations[320].items[6].factor=1.0
+load_combinations[320].items[7].load_case=17
+load_combinations[320].items[7].factor=1.0
+load_combinations[320].items[8].load_case=21
+load_combinations[320].items[8].factor=1.0
+load_combinations[320].items[9].load_case=25
+load_combinations[320].items[9].factor=1.0
+load_combinations[320].items[10].load_case=26
+load_combinations[320].items[10].factor=1.0
+load_combinations[320].items[11].load_case=35
+load_combinations[320].items[11].factor=0.2
+load_combinations[320].items[12].load_case=36
+load_combinations[320].items[12].factor=0.2
+load_combinations.create(321, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2Wdey+0.2Wdiy", static_analysis_settings="SA2")
+load_combinations[321].items[1].load_case=1
+load_combinations[321].items[1].factor=1.0
+load_combinations[321].items[2].load_case=2
+load_combinations[321].items[2].factor=1.0
+load_combinations[321].items[3].load_case=3
+load_combinations[321].items[3].factor=1.0
+load_combinations[321].items[4].load_case=11
+load_combinations[321].items[4].factor=0.5
+load_combinations[321].items[5].load_case=12
+load_combinations[321].items[5].factor=1.0
+load_combinations[321].items[6].load_case=13
+load_combinations[321].items[6].factor=1.0
+load_combinations[321].items[7].load_case=17
+load_combinations[321].items[7].factor=1.0
+load_combinations[321].items[8].load_case=21
+load_combinations[321].items[8].factor=1.0
+load_combinations[321].items[9].load_case=25
+load_combinations[321].items[9].factor=1.0
+load_combinations[321].items[10].load_case=26
+load_combinations[321].items[10].factor=1.0
+load_combinations[321].items[11].load_case=37
+load_combinations[321].items[11].factor=0.2
+load_combinations[321].items[12].load_case=38
+load_combinations[321].items[12].factor=0.2
+load_combinations.create(322, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2-Wuex+0.2-Wuix", static_analysis_settings="SA2")
+load_combinations[322].items[1].load_case=1
+load_combinations[322].items[1].factor=1.0
+load_combinations[322].items[2].load_case=2
+load_combinations[322].items[2].factor=1.0
+load_combinations[322].items[3].load_case=3
+load_combinations[322].items[3].factor=1.0
+load_combinations[322].items[4].load_case=11
+load_combinations[322].items[4].factor=0.5
+load_combinations[322].items[5].load_case=12
+load_combinations[322].items[5].factor=1.0
+load_combinations[322].items[6].load_case=13
+load_combinations[322].items[6].factor=1.0
+load_combinations[322].items[7].load_case=17
+load_combinations[322].items[7].factor=1.0
+load_combinations[322].items[8].load_case=21
+load_combinations[322].items[8].factor=1.0
+load_combinations[322].items[9].load_case=25
+load_combinations[322].items[9].factor=1.0
+load_combinations[322].items[10].load_case=26
+load_combinations[322].items[10].factor=1.0
+load_combinations[322].items[11].load_case=39
+load_combinations[322].items[11].factor=0.2
+load_combinations[322].items[12].load_case=40
+load_combinations[322].items[12].factor=0.2
+load_combinations.create(323, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2-Wdex+0.2-Wdix", static_analysis_settings="SA2")
+load_combinations[323].items[1].load_case=1
+load_combinations[323].items[1].factor=1.0
+load_combinations[323].items[2].load_case=2
+load_combinations[323].items[2].factor=1.0
+load_combinations[323].items[3].load_case=3
+load_combinations[323].items[3].factor=1.0
+load_combinations[323].items[4].load_case=11
+load_combinations[323].items[4].factor=0.5
+load_combinations[323].items[5].load_case=12
+load_combinations[323].items[5].factor=1.0
+load_combinations[323].items[6].load_case=13
+load_combinations[323].items[6].factor=1.0
+load_combinations[323].items[7].load_case=17
+load_combinations[323].items[7].factor=1.0
+load_combinations[323].items[8].load_case=21
+load_combinations[323].items[8].factor=1.0
+load_combinations[323].items[9].load_case=25
+load_combinations[323].items[9].factor=1.0
+load_combinations[323].items[10].load_case=26
+load_combinations[323].items[10].factor=1.0
+load_combinations[323].items[11].load_case=41
+load_combinations[323].items[11].factor=0.2
+load_combinations[323].items[12].load_case=42
+load_combinations[323].items[12].factor=0.2
+load_combinations.create(324, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2-Wuey+0.2-Wuiy", static_analysis_settings="SA2")
+load_combinations[324].items[1].load_case=1
+load_combinations[324].items[1].factor=1.0
+load_combinations[324].items[2].load_case=2
+load_combinations[324].items[2].factor=1.0
+load_combinations[324].items[3].load_case=3
+load_combinations[324].items[3].factor=1.0
+load_combinations[324].items[4].load_case=11
+load_combinations[324].items[4].factor=0.5
+load_combinations[324].items[5].load_case=12
+load_combinations[324].items[5].factor=1.0
+load_combinations[324].items[6].load_case=13
+load_combinations[324].items[6].factor=1.0
+load_combinations[324].items[7].load_case=17
+load_combinations[324].items[7].factor=1.0
+load_combinations[324].items[8].load_case=21
+load_combinations[324].items[8].factor=1.0
+load_combinations[324].items[9].load_case=25
+load_combinations[324].items[9].factor=1.0
+load_combinations[324].items[10].load_case=26
+load_combinations[324].items[10].factor=1.0
+load_combinations[324].items[11].load_case=43
+load_combinations[324].items[11].factor=0.2
+load_combinations[324].items[12].load_case=44
+load_combinations[324].items[12].factor=0.2
+load_combinations.create(325, design_situation="DS1", user_defined_name_enabled=True, name="+G+0.5QL+QS +QML1+QCpt2+QBTo+QMS+Qbo+0.2-Wdey+0.2-Wdiy", static_analysis_settings="SA2")
+load_combinations[325].items[1].load_case=1
+load_combinations[325].items[1].factor=1.0
+load_combinations[325].items[2].load_case=2
+load_combinations[325].items[2].factor=1.0
+load_combinations[325].items[3].load_case=3
+load_combinations[325].items[3].factor=1.0
+load_combinations[325].items[4].load_case=11
+load_combinations[325].items[4].factor=0.5
+load_combinations[325].items[5].load_case=12
+load_combinations[325].items[5].factor=1.0
+load_combinations[325].items[6].load_case=13
+load_combinations[325].items[6].factor=1.0
+load_combinations[325].items[7].load_case=17
+load_combinations[325].items[7].factor=1.0
+load_combinations[325].items[8].load_case=21
+load_combinations[325].items[8].factor=1.0
+load_combinations[325].items[9].load_case=25
+load_combinations[325].items[9].factor=1.0
+load_combinations[325].items[10].load_case=26
+load_combinations[325].items[10].factor=1.0
+load_combinations[325].items[11].load_case=45
+load_combinations[325].items[11].factor=0.2
+load_combinations[325].items[12].load_case=46
+load_combinations[325].items[12].factor=0.2
+
+# Create Nodal Loads
+load_cases[3].nodal_loads.create_force(1, "110,126", -25000.0, load_direction="W", load_case=3)
+load_cases[3].nodal_loads.create_force(2, "141,142,145,146", -45000.0, load_direction="W", load_case=3)
+load_cases[3].nodal_loads.create_force(3, "175,176,205,209,271,276,277,303", -2500.0, load_direction="W", load_case=3)
+load_cases[16].nodal_loads.create_force(1, "72", -600.0, load_case=16)
+load_cases[16].nodal_loads.create_force(2, "72", -16500.0, load_direction="W", load_case=16)
+load_cases[25].nodal_loads.create_force(1, "110,126", -138000.0, load_direction="W", load_case=25)
+load_cases[25].nodal_loads.create_force(2, "141,142,145,146", -3000.0, load_direction="W", load_case=25)
+load_cases[31].nodal_loads.create_force(1, "141,142,145,146", 5600.0, load_case=31)
+load_cases[31].nodal_loads.create_force(2, "338,347", 5740.0, load_case=31)
+load_cases[33].nodal_loads.create_force(1, "141,142,145,146", 5600.0, load_case=33)
+load_cases[33].nodal_loads.create_force(2, "338,347", 5740.0, load_case=33)
+load_cases[35].nodal_loads.create_force(1, "338,347", 11000.0, load_direction="V", load_case=35)
+load_cases[37].nodal_loads.create_force(1, "338,347", 11000.0, load_direction="V", load_case=37)
+load_cases[39].nodal_loads.create_force(1, "338,347", -5740.0, load_case=39)
+load_cases[41].nodal_loads.create_force(1, "338,347", -5740.0, load_case=41)
+load_cases[43].nodal_loads.create_force(1, "338,347", -11000.0, load_direction="V", load_case=43)
+load_cases[45].nodal_loads.create_force(1, "338,347", -11000.0, load_direction="V", load_case=45)
+load_cases[51].nodal_loads.create_force(1, "2,4", 35.18, load_case=51)
+load_cases[51].nodal_loads.create_force(2, "6,8", 91.04, load_case=51)
+load_cases[51].nodal_loads.create_force(3, "14,16,227,330", 19.67, load_case=51)
+load_cases[51].nodal_loads.create_force(4, "17", 89.479996, load_case=51)
+load_cases[51].nodal_loads.create_force(5, "18", 244.66, load_case=51)
+load_cases[51].nodal_loads.create_force(6, "19", 217.23001, load_case=51)
+load_cases[51].nodal_loads.create_force(7, "20,259,262", 319.38998, load_case=51)
+load_cases[51].nodal_loads.create_force(8, "21", 165.0, load_case=51)
+load_cases[51].nodal_loads.create_force(9, "22", 276.16, load_case=51)
+load_cases[51].nodal_loads.create_force(10, "23", 73.48, load_case=51)
+load_cases[51].nodal_loads.create_force(11, "24", 127.49, load_case=51)
+load_cases[51].nodal_loads.create_force(12, "25", 137.15001, load_case=51)
+load_cases[51].nodal_loads.create_force(13, "26", 311.34, load_case=51)
+load_cases[51].nodal_loads.create_force(14, "27", 338.77, load_case=51)
+load_cases[51].nodal_loads.create_force(15, "28", 164.58, load_case=51)
+load_cases[51].nodal_loads.create_force(16, "29", 92.15, load_case=51)
+load_cases[51].nodal_loads.create_force(17, "30", 209.18, load_case=51)
+load_cases[51].nodal_loads.create_force(18, "31", 227.61, load_case=51)
+load_cases[51].nodal_loads.create_force(19, "32", 110.579994, load_case=51)
+load_cases[51].nodal_loads.create_force(20, "33,34,35,37,43", 368.6, load_case=51)
+load_cases[51].nodal_loads.create_force(21, "36,38,39,42,44,165", 180.01001, load_case=51)
+load_cases[51].nodal_loads.create_force(22, "40", 278.59, load_case=51)
+load_cases[51].nodal_loads.create_force(23, "41,161", 90.01, load_case=51)
+load_cases[51].nodal_loads.create_force(24, "45,46,50", 442.31998, load_case=51)
+load_cases[51].nodal_loads.create_force(25, "47", 334.31, load_case=51)
+load_cases[51].nodal_loads.create_force(26, "48,163", 108.01, load_case=51)
+load_cases[51].nodal_loads.create_force(27, "49,51,52,167", 216.01001, load_case=51)
+load_cases[51].nodal_loads.create_force(28, "53,55,56,57,63", 468.12, load_case=51)
+load_cases[51].nodal_loads.create_force(29, "54,60", 234.06, load_case=51)
+load_cases[51].nodal_loads.create_force(30, "58,59,64,65,67,138,152,162", 228.62, load_case=51)
+load_cases[51].nodal_loads.create_force(31, "61,62,68", 114.31, load_case=51)
+load_cases[51].nodal_loads.create_force(32, "66", 353.81, load_case=51)
+load_cases[51].nodal_loads.create_force(33, "73", 59.16, load_case=51)
+load_cases[51].nodal_loads.create_force(34, "74", 153.08, load_case=51)
+load_cases[51].nodal_loads.create_force(35, "75,189,218,328", 25.78, load_case=51)
+load_cases[51].nodal_loads.create_force(36, "77", 382.47998, load_case=51)
+load_cases[51].nodal_loads.create_force(37, "78", 318.77, load_case=51)
+load_cases[51].nodal_loads.create_force(38, "80", 203.74, load_case=51)
+load_cases[51].nodal_loads.create_force(39, "81", 105.88, load_case=51)
+load_cases[51].nodal_loads.create_force(40, "83", 131.39, load_case=51)
+load_cases[51].nodal_loads.create_force(41, "84", 142.18999, load_case=51)
+load_cases[51].nodal_loads.create_force(42, "85", 4433.0903, load_case=51)
+load_cases[51].nodal_loads.create_force(43, "86", 165.94, load_case=51)
+load_cases[51].nodal_loads.create_force(44, "92,93", 358.43, load_case=51)
+load_cases[51].nodal_loads.create_force(45, "94", 46.829998, load_case=51)
+load_cases[51].nodal_loads.create_force(46, "95", 63.150005, load_case=51)
+load_cases[51].nodal_loads.create_force(47, "96,204", 63.129997, load_case=51)
+load_cases[51].nodal_loads.create_force(48, "110,126", 29081.05, load_case=51)
+load_cases[51].nodal_loads.create_force(49, "124", 56.95, load_case=51)
+load_cases[51].nodal_loads.create_force(50, "128", 133.0, load_case=51)
+load_cases[51].nodal_loads.create_force(51, "129", 159.51, load_case=51)
+load_cases[51].nodal_loads.create_force(52, "135", 113.15, load_case=51)
+load_cases[51].nodal_loads.create_force(53, "140", 169.54001, load_case=51)
+load_cases[51].nodal_loads.create_force(54, "141,142,145,146", 4150.04, load_case=51)
+load_cases[51].nodal_loads.create_force(55, "149", 239.5, load_case=51)
+load_cases[51].nodal_loads.create_force(56, "151", 32.25, load_case=51)
+load_cases[51].nodal_loads.create_force(57, "153", 28.279999, load_case=51)
+load_cases[51].nodal_loads.create_force(58, "155", 62.28, load_case=51)
+load_cases[51].nodal_loads.create_force(59, "156", 61.59, load_case=51)
+load_cases[51].nodal_loads.create_force(60, "164", 204.31, load_case=51)
+load_cases[51].nodal_loads.create_force(61, "166", 222.32, load_case=51)
+load_cases[51].nodal_loads.create_force(62, "169", 38.34, load_case=51)
+load_cases[51].nodal_loads.create_force(63, "170", 205.86, load_case=51)
+load_cases[51].nodal_loads.create_force(64, "171,185", 29.73, load_case=51)
+load_cases[51].nodal_loads.create_force(65, "172", 232.9, load_case=51)
+load_cases[51].nodal_loads.create_force(66, "173", 214.04, load_case=51)
+load_cases[51].nodal_loads.create_force(67, "174,207", 176.12, load_case=51)
+load_cases[51].nodal_loads.create_force(68, "175", 783.52997, load_case=51)
+load_cases[51].nodal_loads.create_force(69, "176,205", 718.84, load_case=51)
+load_cases[51].nodal_loads.create_force(70, "177", 360.49, load_case=51)
+load_cases[51].nodal_loads.create_force(71, "178", 121.72, load_case=51)
+load_cases[51].nodal_loads.create_force(72, "179,206", 9.01, load_case=51)
+load_cases[51].nodal_loads.create_force(73, "181,226", 28.06, load_case=51)
+load_cases[51].nodal_loads.create_force(74, "182", 94.29, load_case=51)
+load_cases[51].nodal_loads.create_force(75, "183", 260.95, load_case=51)
+load_cases[51].nodal_loads.create_force(76, "184", 49.03, load_case=51)
+load_cases[51].nodal_loads.create_force(77, "186,187", 51.690002, load_case=51)
+load_cases[51].nodal_loads.create_force(78, "188,191", 133.76001, load_case=51)
+load_cases[51].nodal_loads.create_force(79, "192,329", 28.2, load_case=51)
+load_cases[51].nodal_loads.create_force(80, "194", 176.81, load_case=51)
+load_cases[51].nodal_loads.create_force(81, "195", 188.19, load_case=51)
+load_cases[51].nodal_loads.create_force(82, "196", 205.3, load_case=51)
+load_cases[51].nodal_loads.create_force(83, "197", 180.87, load_case=51)
+load_cases[51].nodal_loads.create_force(84, "198", 86.51, load_case=51)
+load_cases[51].nodal_loads.create_force(85, "199", 79.29, load_case=51)
+load_cases[51].nodal_loads.create_force(86, "200", 92.01, load_case=51)
+load_cases[51].nodal_loads.create_force(87, "201", 85.380005, load_case=51)
+load_cases[51].nodal_loads.create_force(88, "202", 162.92, load_case=51)
+load_cases[51].nodal_loads.create_force(89, "203", 206.5, load_case=51)
+load_cases[51].nodal_loads.create_force(90, "208", 38.120003, load_case=51)
+load_cases[51].nodal_loads.create_force(91, "209", 781.87, load_case=51)
+load_cases[51].nodal_loads.create_force(92, "210", 11.55, load_case=51)
+load_cases[51].nodal_loads.create_force(93, "211,214", 303.19, load_case=51)
+load_cases[51].nodal_loads.create_force(94, "212,215", 800.94, load_case=51)
+load_cases[51].nodal_loads.create_force(95, "213", 205.1, load_case=51)
+load_cases[51].nodal_loads.create_force(96, "216", 168.54001, load_case=51)
+load_cases[51].nodal_loads.create_force(97, "222", 310.07, load_case=51)
+load_cases[51].nodal_loads.create_force(98, "223", 313.67, load_case=51)
+load_cases[51].nodal_loads.create_force(99, "224", 35.51, load_case=51)
+load_cases[51].nodal_loads.create_force(100, "225", 2.56, load_case=51)
+load_cases[51].nodal_loads.create_force(101, "228,231", 235.59, load_case=51)
+load_cases[51].nodal_loads.create_force(102, "229", 166.14, load_case=51)
+load_cases[51].nodal_loads.create_force(103, "230", 282.54, load_case=51)
+load_cases[51].nodal_loads.create_force(104, "232,299", 9.0199995, load_case=51)
+load_cases[51].nodal_loads.create_force(105, "233,273", 300.06, load_case=51)
+load_cases[51].nodal_loads.create_force(106, "235,290", 260.69, load_case=51)
+load_cases[51].nodal_loads.create_force(107, "237", 281.33, load_case=51)
+load_cases[51].nodal_loads.create_force(108, "251", 179.22, load_case=51)
+load_cases[51].nodal_loads.create_force(109, "253,255", 193.21, load_case=51)
+load_cases[51].nodal_loads.create_force(110, "254", 197.16, load_case=51)
+load_cases[51].nodal_loads.create_force(111, "256,261", 187.48, load_case=51)
+load_cases[51].nodal_loads.create_force(112, "257", 201.62, load_case=51)
+load_cases[51].nodal_loads.create_force(113, "264", 207.65001, load_case=51)
+load_cases[51].nodal_loads.create_force(114, "265,275,279,288", 108.11, load_case=51)
+load_cases[51].nodal_loads.create_force(115, "266,278", 139.41, load_case=51)
+load_cases[51].nodal_loads.create_force(116, "267,268,272,274", 181.19, load_case=51)
+load_cases[51].nodal_loads.create_force(117, "269,287", 138.61, load_case=51)
+load_cases[51].nodal_loads.create_force(118, "270,322", 104.27, load_case=51)
+load_cases[51].nodal_loads.create_force(119, "271", 925.42, load_case=51)
+load_cases[51].nodal_loads.create_force(120, "276,303", 873.32, load_case=51)
+load_cases[51].nodal_loads.create_force(121, "277", 926.79, load_case=51)
+load_cases[51].nodal_loads.create_force(122, "280", 11.62, load_case=51)
+load_cases[51].nodal_loads.create_force(123, "282,284", 270.43, load_case=51)
+load_cases[51].nodal_loads.create_force(124, "286", 126.880005, load_case=51)
+load_cases[51].nodal_loads.create_force(125, "301,302", 16.310001, load_case=51)
+load_cases[51].nodal_loads.create_force(126, "304", 8.16, load_case=51)
+load_cases[51].nodal_loads.create_force(127, "306,310", 72.729996, load_case=51)
+load_cases[51].nodal_loads.create_force(128, "307", 79.56, load_case=51)
+load_cases[51].nodal_loads.create_force(129, "308", 100.149994, load_case=51)
+load_cases[51].nodal_loads.create_force(130, "309,312", 55.5, load_case=51)
+load_cases[51].nodal_loads.create_force(131, "311", 79.159996, load_case=51)
+load_cases[51].nodal_loads.create_force(132, "313", 74.74, load_case=51)
+load_cases[51].nodal_loads.create_force(133, "314,319", 269.80002, load_case=51)
+load_cases[51].nodal_loads.create_force(134, "315", 138.17, load_case=51)
+load_cases[51].nodal_loads.create_force(135, "317", 11.34, load_case=51)
+load_cases[51].nodal_loads.create_force(136, "336", 134.48, load_case=51)
+load_cases[52].nodal_loads.create_force(1, "2,4", 35.18429, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(2, "6,8", 91.03932, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(3, "14,16,227,330", 19.66771, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(4, "17", 89.47763, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(5, "18", 244.6556, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(6, "19", 217.2349, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(7, "20", 319.392, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(8, "21", 164.9981, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(9, "22", 276.1558, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(10, "23", 73.48368, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(11, "24", 127.487404, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(12, "25", 137.1524, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(13, "26", 311.33588, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(14, "27", 338.76648, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(15, "28", 164.58281, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(16, "29", 92.14925, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(17, "30", 209.1788, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(18, "31", 227.60869, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(19, "32", 110.5791, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(20, "33,34,35,37,43", 368.59702, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(21, "36,38,39,42,44,165", 180.0125, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(22, "40", 278.5907, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(23, "41,161", 90.00625, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(24, "45,46,50", 442.3164, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(25, "47", 334.3089, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(26, "48,163", 108.0075, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(27, "49,51,52,167", 216.015, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(28, "53,55,56,57,63", 468.1184, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(29, "54,60", 234.0591, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(30, "58,59,64,65,67,138,152,162", 228.61589, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(31, "61,62,68", 114.3079, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(32, "66", 353.8104, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(33, "73", 59.16043, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(34, "74", 153.0776, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(35, "75,218", 25.7822, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(36, "77", 382.47888, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(37, "78", 318.77368, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(38, "80", 203.74051, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(39, "81", 105.8769, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(40, "83", 131.3934, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(41, "84", 142.1911, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(42, "85", 4433.0923, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(43, "86", 165.94159, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(44, "92,93", 358.431, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(45, "94", 46.83378, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(46, "95", 63.14649, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(47, "96,204", 63.13019, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(48, "110,126", 29081.05, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(49, "124", 56.95211, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(50, "128", 133.0036, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(51, "129", 159.5074, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(52, "135", 113.1507, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(53, "140", 169.54149, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(54, "141,142,145,146", 4150.042, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(55, "149", 239.50229, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(56, "151", 32.24749, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(57, "153", 28.27998, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(58, "155", 62.280552, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(59, "156", 61.58854, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(60, "164", 204.31421, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(61, "166", 222.3154, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(62, "169", 38.337772, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(63, "170", 205.8603, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(64, "171,185", 29.73017, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(65, "172", 232.9019, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(66, "173", 214.0434, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(67, "174,207", 176.1249, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(68, "175", 783.5303, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(69, "176,205", 718.8429, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(70, "177", 360.4896, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(71, "178", 121.723694, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(72, "179,206", 9.009143, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(73, "181,226", 28.0604, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(74, "182", 94.29225, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(75, "183", 260.9479, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(76, "184", 49.03441, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(77, "186,187", 51.69338, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(78, "188,191", 133.75659, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(79, "189,328", 25.78472, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(80, "192,329", 28.202839, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(81, "194", 176.8112, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(82, "195", 188.1875, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(83, "196", 205.2954, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(84, "197", 180.869, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(85, "198", 86.51173, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(86, "199", 79.28518, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(87, "200", 92.00639, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(88, "201", 85.384254, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(89, "202", 162.9232, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(90, "203", 206.5026, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(91, "208", 38.11707, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(92, "209", 781.8717, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(93, "210", 11.550631, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(94, "211,214", 303.1947, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(95, "212,215", 800.93933, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(96, "213", 205.0979, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(97, "216", 168.5406, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(98, "222", 310.0709, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(99, "223", 313.6727, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(100, "224", 35.51323, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(101, "225", 2.556533, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(102, "228,231", 235.5853, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(103, "229", 166.1414, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(104, "230", 282.5358, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(105, "232,299", 9.016573, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(106, "233,273", 300.0643, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(107, "235,290", 260.69, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(108, "237", 281.3319, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(109, "251", 179.2155, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(110, "253,255", 193.2123, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(111, "254", 197.1595, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(112, "256,261", 187.4754, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(113, "257", 201.62439, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(114, "259,262", 319.3877, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(115, "264", 207.6499, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(116, "265,275,279,288", 108.109695, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(117, "266,278", 139.4101, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(118, "267,268,272,274", 181.1948, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(119, "269,287", 138.6075, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(120, "270,322", 104.272095, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(121, "271", 925.4164, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(122, "276,303", 873.316, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(123, "277", 926.78735, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(124, "280", 11.61751, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(125, "282,284", 270.4252, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(126, "286", 126.8798, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(127, "301,302", 16.31116, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(128, "304", 8.156355, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(129, "306", 72.73326, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(130, "307", 79.56338, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(131, "308", 100.151596, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(132, "309,312", 55.50051, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(133, "310", 72.72632, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(134, "311", 79.161545, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(135, "313", 74.736664, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(136, "314,319", 269.80402, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(137, "315", 138.1713, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(138, "317", 11.33791, load_direction="V", load_case=52)
+load_cases[52].nodal_loads.create_force(139, "336", 134.4808, load_direction="V", load_case=52)
+
+# Create Member Loads - Concentrated
+load_cases[3].member_loads.create_force(13, "129", "Concentrated - 1", load_case=3, magnitude=-6000.0, distance_a_is_defined_as_relative=True, distance_a_relative=1.0)
+load_cases[3].member_loads.create_force(14, "149,390,433", "Concentrated - 1", load_case=3, magnitude=-1500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[3].member_loads.create_force(15, "438,440", "Concentrated - 1", load_case=3, magnitude=-2100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[12].member_loads.create_force(29, "418,420", "Concentrated - 1", load_case=12, magnitude=-1600.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[24].member_loads.create_force(9, "149,390,433", "Concentrated - 1", load_case=24, magnitude=-4500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[24].member_loads.create_force(10, "438,440", "Concentrated - 1", load_case=24, magnitude=-5000.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[25].member_loads.create_force(13, "129", "Concentrated - 1", load_case=25, magnitude=-33350.0, distance_a_is_defined_as_relative=True, distance_a_relative=1.0)
+load_cases[25].member_loads.create_force(14, "149,390,433", "Concentrated - 1", load_case=25, magnitude=-450.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[25].member_loads.create_force(15, "438,440", "Concentrated - 1", load_case=25, magnitude=-500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[26].member_loads.create_force(9, "108", "Concentrated - 1", load_case=26, load_direction="X_L (U_L )", magnitude=-600.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+load_cases[26].member_loads.create_force(10, "108", "Concentrated - 1", load_case=26, magnitude=-16500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.5)
+
+# Create Member Loads - Distributed
+load_cases[2].member_loads.create_force(97, "9,10,111,112,343,350,585,589", "Trapezoidal", load_case=2, load_direction="Z_L (W_L )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(98, "11,12,113,114,351,352,579,580", "Trapezoidal", load_case=2, load_direction="Z_L (W_L )", magnitude_1=-517.5, magnitude_2=-517.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(99, "13,14,383,510,566,567,568,569,570,571,572,573,578", "Trapezoidal", load_case=2, load_direction="Z_L (W_L )", magnitude_1=-497.5, magnitude_2=-497.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(100, "15,16,115,116,118,234,280,290,334,335,339,340,348,349,353,363", "Trapezoidal", load_case=2, load_direction="Z_L (W_L )", magnitude_1=-180.0, magnitude_2=-180.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(101, "17,27,34,305,361", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(102, "24,28,35,294,323", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-454.0, magnitude_2=-454.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(103, "25,29,36,310,333", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-494.0, magnitude_2=-494.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(104, "26,30,37,244,312", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-240.0, magnitude_2=-240.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(105, "44,45,46,47,48,49,50,51,52,320", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-400.0, magnitude_2=-400.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(106, "55,56,57,58,59,60,311", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-480.0, magnitude_2=-480.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(107, "70,71,72,73,74,75,76,77,78,79,80,81,296,299,302,308", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-508.00003, magnitude_2=-508.00003, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(108, "128,138,198,201,202,240,242,251,338,345,467,501,549", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-300.0, magnitude_2=-300.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(109, "129,146,148,376,377", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-175.0, magnitude_2=-175.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(110, "146,368,377,489", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-192.5, magnitude_2=-192.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(111, "153,156,380,488", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-385.0, magnitude_2=-385.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(112, "158,192,194,372,375,379,381,462,465,472", "Trapezoidal", load_case=2, load_direction="Z_L (W_L )", magnitude_1=-150.0, magnitude_2=-150.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(113, "159,161,439,450,458,459,460,461", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-350.0, magnitude_2=-350.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(114, "214,216,415,432,434,479,487", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-472.5, magnitude_2=-472.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(115, "215,217,256,257,258,259,413,424,431,435,446,456,480,481", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-404.25, magnitude_2=-404.25, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(116, "219,421,492", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-245.0, magnitude_2=-245.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(117, "260,276,277,430,447,468,482", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-470.75, magnitude_2=-470.75, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(118, "283,337,395,423", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-243.25, magnitude_2=-243.25, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(119, "364,506,507", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-125.6579, magnitude_2=-125.6579, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[2].member_loads.create_force(120, "370", "Trapezoidal", load_case=2, load_direction="Z_P (W_P )", magnitude_1=-210.0, magnitude_2=-210.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(69, "17,27,34,129,148,159,161,305,361,376", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-2500.0, magnitude_2=-2500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(70, "24,28,35,294,323", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-5675.0, magnitude_2=-5675.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(71, "25,29,36,310,333", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-6175.0, magnitude_2=-6175.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(72, "26,30,37,244,312,370", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-3000.0, magnitude_2=-3000.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(73, "44,45,46,47,48,49,50,51,52,320", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-5000.0, magnitude_2=-5000.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(74, "55,56,57,58,59,60,311", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-6000.0, magnitude_2=-6000.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(75, "70,71,72,73,74,75,76,77,78,79,80,81,296,299,302,308", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-6350.0, magnitude_2=-6350.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(76, "128,138,198,201,202,240,242,251,338,345,467,501,549", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1500.0, magnitude_2=-1500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(77, "146,148,376,377", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1250.0, magnitude_2=-1250.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(78, "146,368,377,489", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-2750.0, magnitude_2=-2750.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(79, "153,156,380,488", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-5500.0, magnitude_2=-5500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(80, "214,216,219,415,421,432,434,479,487,492", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1750.0, magnitude_2=-1750.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(81, "215,217,256,257,258,259,413,424,431,435,446,456,480,481", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1262.5, magnitude_2=-1262.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(82, "260,276,277,283,337,423,430,447,468,482", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1737.5, magnitude_2=-1737.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(83, "364,506,507", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1375.0, magnitude_2=-1375.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(84, "450,458,460,461", "Trapezoidal", load_case=11, load_direction="Y_P (V_P )", magnitude_1=-1000.0, magnitude_2=-1000.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[11].member_loads.create_force(85, "479,480,481,482", "Trapezoidal", load_case=11, load_direction="Z_P (W_P )", magnitude_1=-1625.0, magnitude_2=-1625.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(30, "332", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-5100.0, magnitude_2=-5100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(31, "398", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-3272.5, magnitude_2=-3272.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(32, "398", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-10200.0, magnitude_2=-10200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(33, "410", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-3153.5, magnitude_2=-3153.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(34, "411", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-5440.0, magnitude_2=-5440.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[12].member_loads.create_force(35, "412", "Trapezoidal", load_case=12, load_direction="Z_P (W_P )", magnitude_1=-3391.5, magnitude_2=-3391.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(85, "1,2,3,4,5,6,7,8,9,10,11,12,13,14,123,125,132,133,134,220,221,223,224,225,229,231,355,383,414,452,466,493,510,544,545,572,573,578,579,580,585,589", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=1100.0, magnitude_2=1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(86, "9,10,585,589", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=1980.0, magnitude_2=1980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(87, "11,12,13,14,383,510,572,573,578,579,580", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=4565.0, magnitude_2=4565.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(88, "15,16,234,363", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=7392.0, magnitude_2=7392.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(89, "15,16,234,363", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=2090.0, magnitude_2=2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(90, "24,25,28,29,35,36,294,310,323,333", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=2332.0, magnitude_2=2332.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(91, "44,45,46,47,48,49,50,51,52,55,56,57,58,59,60,70,71,72,73,74,75,76,77,78,79,80,81,296,299,302,308,311,320", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=176.0, magnitude_2=176.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(92, "111,112,113,114,115,116,118,280,290,334,335,339,340,343,348,349,350,351,352,353,566,567,568,569,570,571", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=1364.0, magnitude_2=1364.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(93, "111,112,343,350", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=3190.0, magnitude_2=3190.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(94, "113,114,351,352", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=7700.0, magnitude_2=7700.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(95, "115,116,118,280,290,334,335,339,340,348,349,353", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=2420.0, magnitude_2=2420.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(96, "182,190,212,213", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=4840.0, magnitude_2=4840.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(97, "218,250,278,279,287,366,388,390,392", "Trapezoidal", load_case=31, load_direction="Y_L (V_L )", magnitude_1=200.0, magnitude_2=200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(98, "254,255,288,289,330,332,398,504,511", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=500.0, magnitude_2=500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(99, "291,292,328,329,331,397,399,401,402,403,404,405,406,441,484", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=1800.0, magnitude_2=1800.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(100, "309,315,317,322,425,426,427,428,455,483,490,491,495,496,499,500,563,564,586,587", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=352.0, magnitude_2=352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(101, "416,417,418,419,420,422", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=390.0, magnitude_2=390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(102, "450,458", "Trapezoidal", load_case=31, load_direction="X_P (U_P )", magnitude_1=858.0, magnitude_2=858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(103, "457,469,470", "Trapezoidal", load_case=31, load_direction="X_P (U_P )", magnitude_1=960.0, magnitude_2=960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(104, "485,486,497,498,561,562,565,588", "Trapezoidal", load_case=31, load_direction="X_L (U_L )", magnitude_1=980.0, magnitude_2=980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[31].member_loads.create_force(105, "566,567,568,569,570,571", "Trapezoidal", load_case=31, coordinate_system="Local", load_direction="y", magnitude_1=5896.0, magnitude_2=5896.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(81, "1,2,3,4,5,6,7,8,9,10,11,12,13,14,123,125,132,133,134,220,221,223,224,225,229,231,355,383,414,452,466,493,510,544,545,572,573,578,579,580,585,589", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=1100.0, magnitude_2=1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(82, "9,10,15,16,234,363,585,589", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=1980.0, magnitude_2=1980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(83, "11,12,13,14,383,510,572,573,578,579,580", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=4565.0, magnitude_2=4565.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(84, "15,16,234,363", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=7084.0, magnitude_2=7084.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(85, "24,25,28,29,35,36,294,310,323,333", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=2332.0, magnitude_2=2332.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(86, "44,45,46,47,48,49,50,51,52,55,56,57,58,59,60,70,71,72,73,74,75,76,77,78,79,80,81,296,299,302,308,311,320", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=176.0, magnitude_2=176.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(87, "111,112,113,114,115,116,118,280,290,334,335,339,340,343,348,349,350,351,352,353,566,567,568,569,570,571", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=1364.0, magnitude_2=1364.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(88, "111,112,343,350", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=1496.0, magnitude_2=1496.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(89, "113,114,351,352", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=3520.0, magnitude_2=3520.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(90, "115,116,118,280,290,334,335,339,340,348,349,353", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=1056.0, magnitude_2=1056.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(91, "182,190,212,213", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=4840.0, magnitude_2=4840.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(92, "218,250,278,279,287,366,388,390,392", "Trapezoidal", load_case=33, load_direction="Y_L (V_L )", magnitude_1=200.0, magnitude_2=200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(93, "254,255,288,289,330,332,398,504,511", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=500.0, magnitude_2=500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(94, "291,292,328,329,331,397,399,401,402,403,404,405,406,441,484", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=1800.0, magnitude_2=1800.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(95, "309,315,317,322,425,426,427,428,455,483,490,491,495,496,499,500,563,564,586,587", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=352.0, magnitude_2=352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(96, "416,417,418,419,420,422", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=390.0, magnitude_2=390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(97, "450,458", "Trapezoidal", load_case=33, load_direction="X_P (U_P )", magnitude_1=858.0, magnitude_2=858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(98, "457,469,470", "Trapezoidal", load_case=33, load_direction="X_P (U_P )", magnitude_1=960.0, magnitude_2=960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(99, "485,486,497,498,561,562,565,588", "Trapezoidal", load_case=33, load_direction="X_L (U_L )", magnitude_1=980.0, magnitude_2=980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[33].member_loads.create_force(100, "566,567,568,569,570,571", "Trapezoidal", load_case=33, coordinate_system="Local", load_direction="y", magnitude_1=2585.0, magnitude_2=2585.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[34].member_loads.create_force(9, "9,10,15,16,111,112,115,116,118,123,125,234,280,290,334,335,339,340,343,348,349,350,353,363,585,589", "Trapezoidal", load_case=34, coordinate_system="Local", load_direction="y", magnitude_1=-1133.0, magnitude_2=-1133.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[34].member_loads.create_force(10, "11,12,13,14,113,114,351,352,383,510,566,567,568,569,570,571,572,573,578,579,580", "Trapezoidal", load_case=34, coordinate_system="Local", load_direction="y", magnitude_1=-2937.0, magnitude_2=-2937.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(73, "1,2,3,4,5,6,7,8,132,133,134,220,221,223,224,225,229,231,355,414,452,466,493,544,545", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=1100.0, magnitude_2=1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(74, "9,15,16,234,363,585", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=2090.0, magnitude_2=2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(75, "10,589", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=1683.0, magnitude_2=1683.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(76, "11,13,383,510,573,580", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=5170.0, magnitude_2=5170.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(77, "12,14,572,578,579", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=3905.0, magnitude_2=3905.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(78, "15,16,234,363", "Trapezoidal", load_case=35, load_direction="X_L (U_L )", magnitude_1=3014.0, magnitude_2=3014.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(79, "111,112,115,116,118,280,290,334,335,339,343,348,349", "Trapezoidal", load_case=35, coordinate_system="Local", load_direction="y", magnitude_1=3850.0, magnitude_2=3850.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(80, "113,114,351,566,567,569,570,571", "Trapezoidal", load_case=35, coordinate_system="Local", load_direction="y", magnitude_1=9020.0, magnitude_2=9020.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(81, "182,190,212,213", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=2420.0, magnitude_2=2420.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(82, "214,215,216,217,256,257,258,259,260,276,277,413,415,424,430,431,432,456,468,479,480,481,482,487", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=720.0, magnitude_2=720.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(83, "219,230,232,283,337,394,395,410,412,421,423,492,532,537", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=980.0, magnitude_2=980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(84, "241,243", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=352.0, magnitude_2=352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(85, "340,350,353", "Trapezoidal", load_case=35, coordinate_system="Local", load_direction="y", magnitude_1=2079.0, magnitude_2=2079.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(86, "352,568", "Trapezoidal", load_case=35, coordinate_system="Local", load_direction="y", magnitude_1=4862.0, magnitude_2=4862.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(87, "416,417,419,422", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=390.0, magnitude_2=390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(88, "429,434,435,446,447", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=200.0, magnitude_2=200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(89, "450,458,460,461", "Trapezoidal", load_case=35, load_direction="Y_L (V_L )", magnitude_1=858.0, magnitude_2=858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[35].member_loads.create_force(90, "457,469,470", "Trapezoidal", load_case=35, load_direction="Y_P (V_P )", magnitude_1=960.0, magnitude_2=960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(41, "111,112,115,116,118,280,290,334,335,339,343,348,349", "Trapezoidal", load_case=37, coordinate_system="Local", load_direction="y", magnitude_1=1782.0, magnitude_2=1782.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(42, "113,114,351,566,567,569,570,571", "Trapezoidal", load_case=37, coordinate_system="Local", load_direction="y", magnitude_1=4180.0, magnitude_2=4180.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(43, "182,190,212,213", "Trapezoidal", load_case=37, load_direction="Y_L (V_L )", magnitude_1=2420.0, magnitude_2=2420.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(44, "214,215,216,217,256,257,258,259,260,276,277,413,415,424,430,431,432,456,468,479,480,481,482,487", "Trapezoidal", load_case=37, load_direction="Y_L (V_L )", magnitude_1=720.0, magnitude_2=720.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(45, "219,230,232,283,337,394,395,410,412,421,423,492,532,537", "Trapezoidal", load_case=37, load_direction="Y_L (V_L )", magnitude_1=980.0, magnitude_2=980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(46, "340,350,353", "Trapezoidal", load_case=37, coordinate_system="Local", load_direction="y", magnitude_1=891.0, magnitude_2=891.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(47, "352,568", "Trapezoidal", load_case=37, coordinate_system="Local", load_direction="y", magnitude_1=2079.0, magnitude_2=2079.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(48, "416,417,419,422", "Trapezoidal", load_case=37, load_direction="Y_L (V_L )", magnitude_1=390.0, magnitude_2=390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(49, "429,434,435,446,447", "Trapezoidal", load_case=37, load_direction="Y_L (V_L )", magnitude_1=200.0, magnitude_2=200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[37].member_loads.create_force(50, "457,469,470", "Trapezoidal", load_case=37, load_direction="Y_P (V_P )", magnitude_1=960.0, magnitude_2=960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[38].member_loads.create_force(9, "9,10,15,16,111,112,115,116,118,123,125,234,280,290,334,335,339,340,343,348,349,350,353,363,585,589", "Trapezoidal", load_case=38, coordinate_system="Local", load_direction="y", magnitude_1=-1133.0, magnitude_2=-1133.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[38].member_loads.create_force(10, "11,12,13,14,113,114,351,352,383,510,566,567,568,569,570,571,572,573,578,579,580", "Trapezoidal", load_case=38, coordinate_system="Local", load_direction="y", magnitude_1=-2937.0, magnitude_2=-2937.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(73, "1,2,3,4,5,6,7,8,123,125,132,133,134,220,221,223,224,225,229,231,355,414,452,466,493,544,545", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-1100.0, magnitude_2=-1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(74, "9,10,15,16,234,363,585,589", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=2090.0, magnitude_2=2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(75, "11,12,13,14,383,510,572,573,578,579,580", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=4752.0, magnitude_2=4752.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(76, "15,16,234,363", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-7392.0, magnitude_2=-7392.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(77, "111,112,343,350", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=2530.0, magnitude_2=2530.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(78, "113,114,351,352", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=5940.0, magnitude_2=5940.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(79, "115,116,118,280,290,334,335,339,340,348,349,353", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=3190.0, magnitude_2=3190.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(80, "182,190,212,213", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-4840.0, magnitude_2=-4840.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(81, "218,250,278,279,287,366,388,390,392", "Trapezoidal", load_case=39, load_direction="Y_L (V_L )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(82, "254,330,332,398", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-500.0, magnitude_2=-500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(83, "255,288,289,504,511", "Trapezoidal", load_case=39, load_direction="X_P (U_P )", magnitude_1=-500.0, magnitude_2=-500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(84, "291,292,328,329,331,397,399,401,402,403,404,405,406,441,484", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-1800.0, magnitude_2=-1800.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(85, "309,315,317,322,425,426,427,428,455,483,490,491,495,496,499,500,563,564,586,587", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-352.0, magnitude_2=-352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(86, "416,417,418,419,420,422", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-390.0, magnitude_2=-390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(87, "439,450,458,459", "Trapezoidal", load_case=39, load_direction="X_P (U_P )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(88, "457,470", "Trapezoidal", load_case=39, load_direction="X_P (U_P )", magnitude_1=-960.0, magnitude_2=-960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(89, "485,486,497,498,561,562,565,588", "Trapezoidal", load_case=39, load_direction="X_L (U_L )", magnitude_1=-980.0, magnitude_2=-980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[39].member_loads.create_force(90, "566,567,568,569,570,571", "Trapezoidal", load_case=39, coordinate_system="Local", load_direction="y", magnitude_1=7700.0, magnitude_2=7700.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(73, "1,2,3,4,5,6,7,8,123,125,132,133,134,220,221,223,224,225,229,231,355,414,452,466,493,544,545", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-1100.0, magnitude_2=-1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(74, "9,10,15,16,234,363,585,589", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=2090.0, magnitude_2=2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(75, "11,12,13,14,383,510,572,573,578,579,580", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=4752.0, magnitude_2=4752.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(76, "15,16,234,363", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-7392.0, magnitude_2=-7392.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(77, "111,112,343,350", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=2530.0, magnitude_2=2530.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(78, "113,114,351,352", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=5940.0, magnitude_2=5940.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(79, "115,116,118,280,290,334,335,339,340,348,349,353", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=3190.0, magnitude_2=3190.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(80, "182,190,212,213", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-4840.0, magnitude_2=-4840.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(81, "218,250,278,279,287,366,388,390,392", "Trapezoidal", load_case=41, load_direction="Y_L (V_L )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(82, "254,330,332,398", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-500.0, magnitude_2=-500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(83, "255,288,289,504,511", "Trapezoidal", load_case=41, load_direction="X_P (U_P )", magnitude_1=-500.0, magnitude_2=-500.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(84, "291,292,328,329,331,397,399,401,402,403,404,405,406,441,484", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-1800.0, magnitude_2=-1800.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(85, "309,315,317,322,425,426,427,428,455,483,490,491,495,496,499,500,563,564,586,587", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-352.0, magnitude_2=-352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(86, "416,417,418,419,420,422", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-390.0, magnitude_2=-390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(87, "439,450,458,459", "Trapezoidal", load_case=41, load_direction="X_P (U_P )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(88, "457,470", "Trapezoidal", load_case=41, load_direction="X_P (U_P )", magnitude_1=-960.0, magnitude_2=-960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(89, "485,486,497,498,561,562,565,588", "Trapezoidal", load_case=41, load_direction="X_L (U_L )", magnitude_1=-980.0, magnitude_2=-980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[41].member_loads.create_force(90, "566,567,568,569,570,571", "Trapezoidal", load_case=41, coordinate_system="Local", load_direction="y", magnitude_1=7700.0, magnitude_2=7700.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[42].member_loads.create_force(9, "9,10,15,16,111,112,115,116,118,123,125,234,280,290,334,335,339,340,343,348,349,350,353,363,585,589", "Trapezoidal", load_case=42, coordinate_system="Local", load_direction="y", magnitude_1=-1133.0, magnitude_2=-1133.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[42].member_loads.create_force(10, "11,12,13,14,113,114,351,352,383,510,566,567,568,569,570,571,572,573,578,579,580", "Trapezoidal", load_case=42, coordinate_system="Local", load_direction="y", magnitude_1=-2937.0, magnitude_2=-2937.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(89, "1,2,3,4,5,6,7,8,132,133,134,220,221,223,224,225,229,231,355,414,452,466,493,544,545", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-1100.0, magnitude_2=-1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(90, "9", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-1518.0, magnitude_2=-1507.583, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(91, "10,16,363,589", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-2090.0, magnitude_2=-2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(92, "11,13,383,510,573,580", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-3905.0, magnitude_2=-3905.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(93, "12,14,572,578,579", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-5170.0, magnitude_2=-5170.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(94, "15", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-1518.0, magnitude_2=-1512.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(95, "15,16,234,363", "Trapezoidal", load_case=43, load_direction="X_L (U_L )", magnitude_1=3014.0, magnitude_2=3014.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(96, "111,118,334", "Trapezoidal", load_case=43, coordinate_system="Local", load_direction="y", magnitude_1=2079.0, magnitude_2=2079.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(97, "112,115,116,280,290,335,339,340,343,348,349,350,353", "Trapezoidal", load_case=43, coordinate_system="Local", load_direction="y", magnitude_1=3850.0, magnitude_2=3850.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(98, "113,351,352,566,567,568,569,570", "Trapezoidal", load_case=43, coordinate_system="Local", load_direction="y", magnitude_1=9020.0, magnitude_2=9020.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(99, "114,571", "Trapezoidal", load_case=43, coordinate_system="Local", load_direction="y", magnitude_1=4862.0, magnitude_2=4862.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(100, "182,190,212,213", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-2420.0, magnitude_2=-2420.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(101, "214,215,216,217,256,257,258,259,260,276,277,413,415,424,430,431,432,456,468,479,480,481,482,487", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-720.0, magnitude_2=-720.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(102, "219,230,232,283,337,394,395,410,412,421,423,492,532,537", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-980.0, magnitude_2=-980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(103, "234", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-1512.5, magnitude_2=-1508.69, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(104, "241,243", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-352.0, magnitude_2=-352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(105, "416,417,419,422", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-390.0, magnitude_2=-390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(106, "429,434,435,446,447", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(107, "439,459", "Trapezoidal", load_case=43, load_direction="Y_P (V_P )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(108, "450,458,460,461", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(109, "457,470", "Trapezoidal", load_case=43, load_direction="Y_P (V_P )", magnitude_1=-960.0, magnitude_2=-960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[43].member_loads.create_force(110, "585", "Trapezoidal", load_case=43, load_direction="Y_L (V_L )", magnitude_1=-1507.583, magnitude_2=-1507.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(85, "1,2,3,4,5,6,7,8,132,133,134,220,221,223,224,225,229,231,355,414,452,466,493,544,545", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-1100.0, magnitude_2=-1100.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(86, "9", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-1518.0, magnitude_2=-1507.583, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(87, "10,16,363,589", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-2090.0, magnitude_2=-2090.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(88, "11,13,383,510,573,580", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-3905.0, magnitude_2=-3905.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(89, "12,14,572,578,579", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-5170.0, magnitude_2=-5170.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(90, "15", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-1518.0, magnitude_2=-1512.5, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(91, "111,118,334", "Trapezoidal", load_case=45, coordinate_system="Local", load_direction="y", magnitude_1=891.0, magnitude_2=891.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(92, "112,115,116,280,290,335,339,340,343,348,349,350,353", "Trapezoidal", load_case=45, coordinate_system="Local", load_direction="y", magnitude_1=1782.0, magnitude_2=1782.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(93, "113,351,352,566,567,568,569,570", "Trapezoidal", load_case=45, coordinate_system="Local", load_direction="y", magnitude_1=4180.0, magnitude_2=4180.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(94, "114,571", "Trapezoidal", load_case=45, coordinate_system="Local", load_direction="y", magnitude_1=2079.0, magnitude_2=2079.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(95, "182,190,212,213", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-2420.0, magnitude_2=-2420.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(96, "214,215,216,217,256,257,258,259,260,276,277,413,415,424,430,431,432,456,468,479,480,481,482,487", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-720.0, magnitude_2=-720.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(97, "219,230,232,283,337,394,395,410,412,421,423,492,532,537", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-980.0, magnitude_2=-980.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(98, "234", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-1512.5, magnitude_2=-1508.69, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(99, "241,243", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-352.0, magnitude_2=-352.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(100, "416,417,419,422", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-390.0, magnitude_2=-390.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(101, "429,434,435,446,447", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-200.0, magnitude_2=-200.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(102, "439,459", "Trapezoidal", load_case=45, load_direction="Y_P (V_P )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(103, "450,458,460,461", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-858.0, magnitude_2=-858.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(104, "457,470", "Trapezoidal", load_case=45, load_direction="Y_P (V_P )", magnitude_1=-960.0, magnitude_2=-960.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[45].member_loads.create_force(105, "585", "Trapezoidal", load_case=45, load_direction="Y_L (V_L )", magnitude_1=-1507.583, magnitude_2=-1507.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[46].member_loads.create_force(9, "9,10,15,16,111,112,115,116,118,123,125,234,280,290,334,335,339,340,343,348,349,350,353,363,585,589", "Trapezoidal", load_case=46, coordinate_system="Local", load_direction="y", magnitude_1=-1133.0, magnitude_2=-1133.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+load_cases[46].member_loads.create_force(10, "11,12,13,14,113,114,351,352,383,510,566,567,568,569,570,571,572,573,578,579,580", "Trapezoidal", load_case=46, coordinate_system="Local", load_direction="y", magnitude_1=-2937.0, magnitude_2=-2937.0, distance_a_is_defined_as_relative=True, distance_a_relative=0.0, distance_b_is_defined_as_relative=True, distance_b_relative=1.0)
+

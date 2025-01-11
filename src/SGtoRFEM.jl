@@ -589,8 +589,48 @@ end
 
 
 export create_load_combinations
+# function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFrame)
+#     vs = ["# Create Load Combinations Titles"]
+
+#     # Iterate over each unique value in the first column
+#     unique_LC = unique(df_LC_table[:, 1])
+
+#     for LComb in unique_LC
+#         # Filter rows for the current LComb
+#         subset = filter(x -> x[1] == LComb, df_LC_table)
+
+#         # print name
+#         comb_name = filter(t -> t[1] == LComb, df_lc_titles).Title[1]
+#         push!(vs, "load_combinations.create($LComb, design_situation=\"DS1\", user_defined_name_enabled=True, name=\"$comb_name\", static_analysis_settings=\"SA2\")")
+
+
+#         # print combination factors
+#         for (i, row) in enumerate(eachrow(subset))
+#             # println("Row: Combination=$(row.Combination), Case=$(row.Case), MultiplyingFactor=$(row.MultiplyingFactor)")
+
+#             push!(vs, "load_combinations[$LComb].items[$i].load_case=$(row[2])")
+#             push!(vs, "load_combinations[$LComb].items[$i].factor=$(row[3])")
+
+#         end
+#     end
+
+#     push!(vs, "\n")
+#     return join(vs, "\n")
+
+# end 
+
 function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFrame)
     vs = ["# Create Load Combinations Titles"]
+
+    # Create a mapping of combinations to their load cases
+    combination_map = Dict{Int, Vector{Tuple{Int, Float64}}}()
+    for row in eachrow(df_LC_table)
+        comb = row[1]
+        if !haskey(combination_map, comb)
+            combination_map[comb] = []
+        end
+        push!(combination_map[comb], (row.Case, row[3]))
+    end
 
     # Iterate over each unique value in the first column
     unique_LC = unique(df_LC_table[:, 1])
@@ -603,20 +643,27 @@ function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFram
         comb_name = filter(t -> t[1] == LComb, df_lc_titles).Title[1]
         push!(vs, "load_combinations.create($LComb, design_situation=\"DS1\", user_defined_name_enabled=True, name=\"$comb_name\", static_analysis_settings=\"SA2\")")
 
-
         # print combination factors
+        item_index = 1
         for (i, row) in enumerate(eachrow(subset))
-            # println("Row: Combination=$(row.Combination), Case=$(row.Case), MultiplyingFactor=$(row.MultiplyingFactor)")
-
-            push!(vs, "load_combinations[$LComb].items[$i].load_case=$(row[2])")
-            push!(vs, "load_combinations[$LComb].items[$i].factor=$(row[3])")
-
+            case = row[2]
+            factor = row[3]
+            if haskey(combination_map, case)
+                for (sub_case, sub_factor) in combination_map[case]
+                    push!(vs, "load_combinations[$LComb].items[$item_index].load_case=$sub_case")
+                    push!(vs, "load_combinations[$LComb].items[$item_index].factor=$(factor * sub_factor)")
+                    item_index += 1
+                end
+            else
+                push!(vs, "load_combinations[$LComb].items[$item_index].load_case=$case")
+                push!(vs, "load_combinations[$LComb].items[$item_index].factor=$factor")
+                item_index += 1
+            end
         end
     end
 
     push!(vs, "\n")
     return join(vs, "\n")
-
 end
 
 export create_nodal_loads
