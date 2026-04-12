@@ -20,25 +20,9 @@ end
 export set_global_model_settings
 function set_global_model_settings()
 
-    # Delete default objects:
-    ps = "# Delete default objects:\n"
-    ps *= "delete_all()\n\n"
-
-    ps *= "# Set global model settings:\n"
-    ps *= "base_data.current_standard_for_combination_wizard = 6546\n"
-    ps *= "base_data.current_standard_for_load_wizard = 6231\n"
-    ps *= "base_data.current_standard_for_steel_design = 6679\n"
-    ps *= "base_data.activate_load_wizards = False\n"
-    ps *= "base_data.member_representatives_active = True\n"
-    ps *= "base_data.combination_name_according_to_action_category = True\n"
-    ps *= "base_data.global_axes_orientation = \"Z upward\"\n"
-    ps *= "base_data.local_axes_orientation = \"y upward | x\"\n"
-    ps *= "base_data.solids_active = False\n"
-    ps *= "base_data.tolerance_for_nodes = 0.000500000023748726\n"
-    ps *= "base_data.tolerance_for_lines = 0.000500000023748726\n"
-    ps *= "base_data.tolerance_for_surfaces = 0.000500000023748726\n"
-    ps *= "base_data.tolerance_for_directions = 0.000500000023748726\n\n"
-
+    ps = "# Set global model settings:\n"
+    ps *= "BaseSettings(global_axes_orientation=GlobalAxesOrientationType.E_GLOBAL_AXES_ORIENTATION_ZUP, " *
+          "local_axes_orientation=LocalAxesOrientationType.E_LOCAL_AXES_ORIENTATION_YUP_X)\n\n"
 
     return ps
 end
@@ -47,7 +31,7 @@ export create_materials
 function create_materials(vMatName::Vector{String})
     ps = "# Create Materials\n"
     for i in eachindex(vMatName)
-        ps *= "materials.create($(i), name=\"$(vMatName[i])\", definition_type=\"E | (G) | ν\")\n"
+        ps *= "Material($(i), name=\"$(vMatName[i])\")\n"
     end
     ps *= "\n"
     return ps
@@ -62,11 +46,11 @@ function create_sections(dfSections::DataFrame, dfMembers::DataFrame)
 
     for i in eachrow(dfSections)
         # Get the corresponding material number using the Section
-        matnum = get(material_lookup, i.Section, 0) # Default to "Unknown Material" if not found
+        matnum = get(material_lookup, i.Section, 0) 
         if matnum == 0
-            push!(vs, "sections.create_standardized_steel($(i.Section), \"$(i.Name)\")")
+            push!(vs, "CrossSection($(i.Section), name=\"$(i.Name)\")")
         else
-            push!(vs, "sections.create_standardized_steel($(i.Section), \"$(i.Name)\", \"$matnum\")")
+            push!(vs, "CrossSection($(i.Section), name=\"$(i.Name)\", material_no=$matnum)")
         end
     end
     push!(vs, "\n")
@@ -80,7 +64,7 @@ function create_nodes(dfNodes::DataFrame)
 
     for i in eachrow(dfNodes)
         # Access values in the DataFrameRow `i` directly using indexing
-        push!(vs, "nodes.create_standard( $(i[1]), $(i[2]), $(i[3]), $(i[4]))\n")
+        push!(vs, "Node($(i[1]), $(i[2]), $(i[3]), $(i[4]))\n")
     end
     push!(vs, "\n")
 
@@ -92,12 +76,12 @@ function parse_hinge(row::DataFrameRow, ; isStart::Bool=true)
 
     # Define the release parameters in order
     release_params = [
-        "axial_release_n",
-        "axial_release_vy",
-        "axial_release_vz",
-        "moment_release_mt",
-        "moment_release_my",
-        "moment_release_mz"
+        "translational_release_n",
+        "translational_release_vy",
+        "translational_release_vz",
+        "rotational_release_mt",
+        "rotational_release_my",
+        "rotational_release_mz"
     ]
 
     if isStart
@@ -199,7 +183,7 @@ export create_hinges
 function create_hinges(hinges::Vector{Any})
     _hinges = [" # Create Member Hinges"]
     for i in eachindex(hinges)
-        push!(_hinges, "member_hinges.create($i," * hinges[i] * ")")
+        push!(_hinges, "MemberHinge($i," * hinges[i] * ")")
     end
 
     return join(_hinges, "\n")
@@ -410,7 +394,7 @@ export create_beam
 function create_beam(dfMemb::DataFrame, rot_angles::Vector{Float64})
     vs = ["# Create Lines\n"]
     for i in eachrow(dfMemb)
-        push!(vs, "lines.create_polyline($(i[Symbol("Member")]), \"$(i[Symbol("Node A")]),$(i[Symbol("Node B")])\")")
+        push!(vs, "Line($(i[Symbol("Member")]), \"$(i[Symbol("Node A")]) $(i[Symbol("Node B")])\")")
     end
     push!(vs, "\n")
 
@@ -421,20 +405,19 @@ function create_beam(dfMemb::DataFrame, rot_angles::Vector{Float64})
 
     for (i, r) in enumerate(eachrow(dfMemb))
 
-        vs_row = ["members.create_beam($(r.Member), \"$(r.Section)\", line=\"$(r.Member)\""]
+        vs_row = ["Member($(r.Member), line_no=$(r.Member), start_section_no=$(r.Section)"]
 
         # check if r has hinge and match hinge number
         start_hinge = parse_hinge(r)
         i_start = findfirst(x -> x == start_hinge, hinges)
         if i_start !== nothing
-            push!(vs_row, " member_hinge_start=\"$i_start\"")
+            push!(vs_row, " member_hinge_start=$i_start")
         end
 
         end_hinge = parse_hinge(r, isStart=false)
         i_end = findfirst(x -> x == end_hinge, hinges)
         if i_end !== nothing
-            # str_hinge_end = ", member_hinge_end=\"$i_end\"" 
-            push!(vs_row, " member_hinge_end=\"$i_end\"")
+            push!(vs_row, " member_hinge_end=$i_end")
         end
 
 
@@ -445,7 +428,6 @@ function create_beam(dfMemb::DataFrame, rot_angles::Vector{Float64})
         push!(vs, join(vs_row, ",") * ")")
 
     end
-    # push!(vs, ")\n")
 
     return join(vs, "\n") * "\n\n"  # Join all lines into a single string
 end
@@ -547,7 +529,7 @@ function create_nodal_supports(dfNodeRestraints::DataFrame)
     end
 
     for (i, s) in enumerate(supported_nodes)
-        s_line = "nodal_supports.create($i, nodes=\"" * join(s, ",") * "\", $(nodal_supports[i]))"
+        s_line = "NodalSupport($i, nodes_no=\"" * join(s, " ") * "\", $(nodal_supports[i]))"
         push!(vs, s_line)
     end
     push!(vs, "\n")
@@ -556,7 +538,9 @@ end
 
 export create_analysis_settings
 function create_analysis_settings()
-    vs = ["# Create Static Analysis Settings", "static_analysis_settings.create(1)", "static_analysis_settings.create(2, analysis_type=\"Second-order (P-Δ)\")"]
+    vs = ["# Create Static Analysis Settings", 
+          "StaticAnalysisSettings(1)", 
+          "StaticAnalysisSettings(2, analysis_type=StaticAnalysisType.SECOND_ORDER_P_DELTA)"]
     push!(vs, "\n")
     return join(vs, "\n")
 end
@@ -569,8 +553,7 @@ function create_primary_loadcase_titles(df_lc_titles::DataFrame, df_LC_table::Da
     filtered_df_lc_titles = filter(row -> !(row.Case in loadcomb_cases), df_lc_titles)
 
     for r in eachrow(filtered_df_lc_titles)
-
-        push!(vs, "load_cases.create($(r[1]), name=\"$(r[2])\", static_analysis_settings=\"SA1\", to_solve=False)")
+        push!(vs, "LoadCase($(r[1]), name=\"$(r[2])\", params={'static_analysis_settings': 1, 'to_solve': False})")
     end
     push!(vs, "\n")
 
@@ -580,8 +563,8 @@ end
 export create_design_situations
 function create_design_situations()
     vs = ["# Create Design Situations"]
-    push!(vs, "design_situations.create(1, name=\"ULS - Strength\", design_situation_type=\"DESIGN_SITUATION_TYPE_ULS_STRENGTH_AS_NZS\")")
-    push!(vs, "design_situations.create(2, name=\"SLS - Serviceability\", design_situation_type=\"DESIGN_SITUATION_TYPE_SLS_SERVICEABILITY_NZS\")")
+    push!(vs, "DesignSituation(1, name=\"ULS - Strength\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_ULS_STRENGTH_AS_NZS)")
+    push!(vs, "DesignSituation(2, name=\"SLS - Serviceability\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_SLS_SERVICEABILITY_NZS)")
     push!(vs, "\n")
 
     return join(vs, "\n")
@@ -641,25 +624,22 @@ function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFram
 
         # print name
         comb_name = filter(t -> t[1] == LComb, df_lc_titles).Title[1]
-        push!(vs, "load_combinations.create($LComb, design_situation=\"DS1\", user_defined_name_enabled=True, name=\"$comb_name\", static_analysis_settings=\"SA2\")")
-
-        # print combination factors
-        item_index = 1
-        for (i, row) in enumerate(eachrow(subset))
+        
+        items = []
+        for row in eachrow(subset)
             case = row[2]
             factor = row[3]
             if haskey(combination_map, case)
                 for (sub_case, sub_factor) in combination_map[case]
-                    push!(vs, "load_combinations[$LComb].items[$item_index].load_case=$sub_case")
-                    push!(vs, "load_combinations[$LComb].items[$item_index].factor=$(factor * sub_factor)")
-                    item_index += 1
+                    push!(items, "[$(factor * sub_factor), $sub_case, 0, False]")
                 end
             else
-                push!(vs, "load_combinations[$LComb].items[$item_index].load_case=$case")
-                push!(vs, "load_combinations[$LComb].items[$item_index].factor=$factor")
-                item_index += 1
+                push!(items, "[$factor, $case, 0, False]")
             end
         end
+        items_str = "[" * join(items, ", ") * "]"
+        
+        push!(vs, "LoadCombination($LComb, design_situation=1, name=\"$comb_name\", static_analysis_settings=2, combination_items=$items_str)")
     end
 
     push!(vs, "\n")
@@ -686,9 +666,9 @@ function create_nodal_loads(df_nodal_loads::DataFrame)
         x_forces = filter(row -> row[3] != 0.0, case_group)
         if !isempty(x_forces)
             for x_group in groupby(x_forces, Symbol("X Force (kN)"))
-                nodes = join(x_group.Node, ",")
+                nodes = join(x_group.Node, " ")
                 fx = x_group[1, "X Force (kN)"] * 1000  # Convert to N
-                push!(vs, "load_cases[$case_num].nodal_loads.create_force($i, \"$nodes\", $fx, load_case=$case_num)")
+                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fx, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U)")
                 i += 1
             end
         end
@@ -697,9 +677,9 @@ function create_nodal_loads(df_nodal_loads::DataFrame)
         y_forces = filter(row -> row[4] != 0.0, case_group)
         if !isempty(y_forces)
             for y_group in groupby(y_forces, Symbol("Y Force (kN)"))
-                nodes = join(y_group.Node, ",")
+                nodes = join(y_group.Node, " ")
                 fy = y_group[1, "Y Force (kN)"] * 1000  # Convert to N
-                push!(vs, "load_cases[$case_num].nodal_loads.create_force($i, \"$nodes\", $fy, load_direction=\"V\", load_case=$case_num)")
+                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fy, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V)")
                 i += 1
             end
         end
@@ -708,9 +688,9 @@ function create_nodal_loads(df_nodal_loads::DataFrame)
         z_forces = filter(row -> row[5] != 0.0, case_group)
         if !isempty(z_forces)
             for z_group in groupby(z_forces, Symbol("Z Force (kN)"))
-                nodes = join(z_group.Node, ",")
+                nodes = join(z_group.Node, " ")
                 fz = z_group[1, "Z Force (kN)"] * 1000  # Convert to N
-                push!(vs, "load_cases[$case_num].nodal_loads.create_force($i, \"$nodes\", $fz, load_direction=\"W\", load_case=$case_num)")
+                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fz, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W)")
                 i += 1
             end
         end
@@ -759,10 +739,7 @@ function create_member_load_concentrated(df_member_loads::DataFrame)
 
             # Skip if all loads are zero
             if fx == 0 && fy == 0 && fz == 0 && mx == 0 && my == 0 && mz == 0
-                continue
-            end
-
-            # Get position and units
+                       # Get position and units
             position = load_group[1, Symbol("Position (m or %)")]
             units = load_group[1, :Units]
 
@@ -772,83 +749,60 @@ function create_member_load_concentrated(df_member_loads::DataFrame)
                 position = position / 100
             end
 
-            # Set parameter name based on units
-            distance_param = is_relative ? "distance_a_relative" : "distance_a_absolute"
-
             # Define direction based on coordinate system
             is_local = load_group[1, :Axes] == "Local"
-            x_dir = is_local ? "x" : "X_L (U_L )"
-            y_dir = is_local ? "y" : "Y_L (V_L )"
-
-            # Create coordinate system parameter
-            coord_system = is_local ? ", coordinate_system=\"Local\"" : ""
+            x_dir = is_local ? "LOCAL_X" : "GLOBAL_X_OR_USER_DEFINED_U_TRUE"
+            y_dir = is_local ? "LOCAL_Y" : "GLOBAL_Y_OR_USER_DEFINED_V_TRUE"
+            z_dir = !is_local ? "GLOBAL_Z_OR_USER_DEFINED_W_TRUE" : "LOCAL_Z"
 
             # Create force components
             if fx != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_force($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num" *
-                          coord_system *
-                          ", load_direction=\"$x_dir\"" *
-                          ", magnitude=$(fx * 1000)" *
-                          ", distance_a_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                          ", $distance_param=$position" *
-                          ")")
+                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$x_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fx * 1000), $position])")
             end
 
             if fy != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_force($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num" *
-                          coord_system *
-                          ", load_direction=\"$y_dir\"" *
-                          ", magnitude=$(fy * 1000)" *
-                          ", distance_a_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                          ", $distance_param=$position" *
-                          ")")
+                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$y_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fy * 1000), $position])")
             end
 
             if fz != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_force($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num, " *
-                          "magnitude=$(fz * 1000), " *
-                          "distance_a_is_defined_as_relative=$(is_relative ? "True" : "False"), " *
-                          "$distance_param=$position" * ")")
+                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$z_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fz * 1000), $position])")
             end
 
             # Create moment components
             if mx != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_moment($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num" *
-                          coord_system *
-                          ", load_direction=\"$x_dir\"" *
-                          ", magnitude=$(mx * 1000)" *
-                          ", distance_a_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                          ", $distance_param=$position" *
-                          ")")
+                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$x_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(mx * 1000), $position])")
             end
 
             if my != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_moment($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num" *
-                          coord_system *
-                          ", load_direction=\"$y_dir\"" *
-                          ", magnitude=$(my * 1000)" *
-                          ", distance_a_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                          ", $distance_param=$position" *
-                          ")")
+                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$y_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(my * 1000), $position])")
             end
 
             if mz != 0
                 load_case_counters[case_num] += 1
-                push!(vs, "load_cases[$case_num].member_loads.create_moment($(load_case_counters[case_num]), \"$members\", " *
-                          "\"Concentrated - 1\", load_case=$case_num, " *
-                          "magnitude=$(mz * 1000), " *
-                          "distance_a_is_defined_as_relative=$(is_relative ? "True" : "False"), " *
-                          "$distance_param=$position)")
+                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$z_dir" *
+                          ", load_parameter=[$(is_relative ? "True" : "False"), $(mz * 1000), $position])")
             end
         end
     end
@@ -911,33 +865,29 @@ function create_member_load_distributed(df_member_loads::DataFrame)
                 end_pos = 1.0
             end
 
-            # Set coordinate system based on Axes
             coord_system = ""
             if load_group[1, :Axes] == "Local"
-                coord_system = ", coordinate_system=\"Local\""
-
                 directions = [
-                    ("x", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
-                    ("y", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
-                    ("z", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
+                    ("LOCAL_X", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
+                    ("LOCAL_Y", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
+                    ("LOCAL_Z", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
                 ]
             else
                 # Process each direction (X, Y, Z)
                 if load_group[1, :Axes] == "G-Proj"
                     directions = [
-                        ("X_P (U_P )", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
-                        ("Y_P (V_P )", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
-                        ("Z_P (W_P )", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
+                        ("GLOBAL_X_OR_USER_DEFINED_U_PROJECTED", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
+                        ("GLOBAL_Y_OR_USER_DEFINED_V_PROJECTED", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
+                        ("GLOBAL_Z_OR_USER_DEFINED_W_PROJECTED", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
                     ]
                 else
                     directions = [
-                        ("X_L (U_L )", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
-                        ("Y_L (V_L )", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
-                        ("Z_L (W_L )", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
+                        ("GLOBAL_X_OR_USER_DEFINED_U_TRUE", "Start X Force (kN/m)", "Finish X Force (kN/m)"),
+                        ("GLOBAL_Y_OR_USER_DEFINED_V_TRUE", "Start Y Force (kN/m)", "Finish Y Force (kN/m)"),
+                        ("GLOBAL_Z_OR_USER_DEFINED_W_TRUE", "Start Z Force (kN/m)", "Finish Z Force (kN/m)")
                     ]
                 end
             end
-
 
 
             for (dir, start_col, end_col) in directions
@@ -947,18 +897,10 @@ function create_member_load_distributed(df_member_loads::DataFrame)
 
                 if start_force != 0 || end_force != 0
                     load_case_counters[case_num] += 1
-                    push!(vs, "load_cases[$case_num].member_loads.create_force($(load_case_counters[case_num]), \"$members\", " *
-                              "\"Trapezoidal\", " *
-                              "load_case=$case_num" *
-                              coord_system *
-                              ", load_direction=\"$dir\"" *
-                              ", magnitude_1=$(start_force * 1000)" *
-                              ", magnitude_2=$(end_force * 1000)" *
-                              ", distance_a_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                              ", $distance_param_a=$start_pos" *
-                              ", distance_b_is_defined_as_relative=$(is_relative ? "True" : "False")" *
-                              ", $distance_param_b=$end_pos" *
-                              ")")
+                    push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
+                              "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_TRAPEZOIDAL, " *
+                              "load_direction=MemberLoadDirection.LOAD_DIRECTION_$dir" *
+                              ", load_parameter=[$(is_relative ? "True" : "False"), $(is_relative ? "True" : "False"), $(start_force * 1000), $(end_force * 1000), $start_pos, $end_pos])")
                 end
             end
         end
@@ -975,8 +917,28 @@ function fWritePyScript(sg_db_source_filepathname)
     statement = "Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=" * sg_db_source_filepathname
     dbconn = ODBC.Connection(statement)
 
+    header = "import sys\n"
+    header *= "sys.path.append(r'/home/ubuntu/julia_repo/python_venv/lib/python3.10/site-packages')\n"
+    header *= "from RFEM.initModel import Model\n"
+    header *= "from RFEM.BasicObjects.material import Material\n"
+    header *= "from RFEM.BasicObjects.crossSection import CrossSection\n"
+    header *= "from RFEM.BasicObjects.node import Node\n"
+    header *= "from RFEM.BasicObjects.line import Line\n"
+    header *= "from RFEM.BasicObjects.member import Member\n"
+    header *= "from RFEM.TypesForNodes.nodalSupport import NodalSupport\n"
+    header *= "from RFEM.TypesForMembers.memberHinge import MemberHinge\n"
+    header *= "from RFEM.LoadCasesAndCombinations.staticAnalysisSettings import StaticAnalysisSettings\n"
+    header *= "from RFEM.LoadCasesAndCombinations.loadCase import LoadCase\n"
+    header *= "from RFEM.LoadCasesAndCombinations.designSituation import DesignSituation\n"
+    header *= "from RFEM.LoadCasesAndCombinations.loadCombination import LoadCombination\n"
+    header *= "from RFEM.Loads.nodalLoad import NodalLoad\n"
+    header *= "from RFEM.Loads.memberLoad import MemberLoad\n"
+    header *= "from RFEM.enums import *\n"
+    header *= "from RFEM.dataTypes import inf\n\n"
+    header *= "model = Model(new_model=False, model_name=\"\", delete_all=True)\n\n"
+
     # Set global model settings:
-    pyscript = [set_global_model_settings()]
+    pyscript = [header, set_global_model_settings()]
 
 
     # MATERILS PROPERTIES QUERY
