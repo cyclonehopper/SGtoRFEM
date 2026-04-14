@@ -2,8 +2,14 @@ module SGtoRFEM
 
 using DataFrames
 using LinearAlgebra
+using Missings
 using ODBC
-# BUILD DICTIONA
+using SQLite
+
+# Module-level constant for load case counters
+const load_case_counters = Dict{Int,Int}()
+
+# BUILD DICTIONARY
 
 export table_exists
 # Helper function for Access databases
@@ -15,6 +21,57 @@ function table_exists(dbconn, table_name)
     catch e
         return false
     end
+end
+
+function normalize_sg_dataframe!(df::DataFrame)
+    # Map common underscore/abbreviated names to what the code expects
+    mapping = Dict(
+        "Node_A" => "Node A",
+        "Node_B" => "Node B",
+        "Dir_Axis" => "Dir Axis",
+        "Dir_Angle_deg" => "Dir Angle (deg)",
+        "Dir_Node" => "Dir Node",
+        "X_m" => "X (m)",
+        "Y_m" => "Y (m)",
+        "Z_m" => "Z (m)",
+        "Fixity_Code_at_A" => "Fixity Code at A",
+        "Fixity_Code_at_B" => "Fixity Code at B"
+    )
+    for (oldname, newname) in mapping
+        if hasproperty(df, Symbol(oldname)) && !hasproperty(df, Symbol(newname))
+            rename!(df, oldname => newname)
+        end
+    end
+    
+    # Handle general space-to-underscore and units in parentheses
+    for n in names(df)
+        if contains(n, "_")
+            new_n = replace(n, "_" => " ")
+            new_n = replace(new_n, " m" => " (m)")
+            new_n = replace(new_n, " deg" => " (deg)")
+            if !hasproperty(df, Symbol(new_n))
+                rename!(df, n => new_n)
+            end
+        end
+    end
+
+    # Type conversion for String columns that should be numbers
+    for n in names(df)
+        col = df[!, n]
+        if eltype(col) <: AbstractString
+            # Try to convert to Int if it looks like an ID
+            if n in ["Node", "Member", "Section", "Material", "Node A", "Node B", "Dir Node", "Case"]
+                df[!, n] = passmissing(parse).(Int, col)
+            # Try to convert to Float64 if it looks like a coordinate or force
+            elseif contains(lowercase(n), "(m)") || contains(lowercase(n), "(deg)") || 
+                   contains(lowercase(n), "stiffness") || contains(lowercase(n), "force") ||
+                   n in ["X", "Y", "Z"]
+                df[!, n] = passmissing(parse).(Float64, col)
+            end
+        end
+    end
+
+    return df
 end
 
 export set_global_model_settings
@@ -532,284 +589,10 @@ function create_nodal_supports(dfNodeRestraints::DataFrame)
         s_line = "NodalSupport($i, nodes_no=\"" * join(s, " ") * "\", $(nodal_supports[i]))"
         push!(vs, s_line)
     end
-    push!(vs, "\n")
+push!(vs, "\n")
     return join(vs, "\n")
 end
 
-export create_analysis_settings
-function create_analysis_settings()
-    vs = ["# Create Static Analysis Settings", 
-          "StaticAnalysisSettings(1)", 
-          "StaticAnalysisSettings(2, analysis_type=StaticAnalysisType.SECOND_ORDER_P_DELTA)"]
-    push!(vs, "\n")
-    return join(vs, "\n")
-end
-
-export create_primary_loadcase_titles
-function create_primary_loadcase_titles(df_lc_titles::DataFrame, df_LC_table::DataFrame)
-    vs = ["# Create Load Cases"]
-
-    loadcomb_cases = unique(df_LC_table[:, 1])
-    filtered_df_lc_titles = filter(row -> !(row.Case in loadcomb_cases), df_lc_titles)
-
-    for r in eachrow(filtered_df_lc_titles)
-        push!(vs, "LoadCase($(r[1]), name=\"$(r[2])\", params={'static_analysis_settings': 1, 'to_solve': False})")
-    end
-    push!(vs, "\n")
-
-    return join(vs, "\n")
-end
-
-export create_design_situations
-function create_design_situations()
-    vs = ["# Create Design Situations"]
-    push!(vs, "DesignSituation(1, name=\"ULS - Strength\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_ULS_STRENGTH_AS_NZS)")
-    push!(vs, "DesignSituation(2, name=\"SLS - Serviceability\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_SLS_SERVICEABILITY_NZS)")
-    push!(vs, "\n")
-
-    return join(vs, "\n")
-end
-
-
-export create_load_combinations
-# function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFrame)
-#     vs = ["# Create Load Combinations Titles"]
-
-#     # Iterate over each unique value in the first column
-#     unique_LC = unique(df_LC_table[:, 1])
-
-#     for LComb in unique_LC
-#         # Filter rows for the current LComb
-#         subset = filter(x -> x[1] == LComb, df_LC_table)
-
-#         # print name
-#         comb_name = filter(t -> t[1] == LComb, df_lc_titles).Title[1]
-#         push!(vs, "load_combinations.create($LComb, design_situation=\"DS1\", user_defined_name_enabled=True, name=\"$comb_name\", static_analysis_settings=\"SA2\")")
-
-
-#         # print combination factors
-#         for (i, row) in enumerate(eachrow(subset))
-#             # println("Row: Combination=$(row.Combination), Case=$(row.Case), MultiplyingFactor=$(row.MultiplyingFactor)")
-
-#             push!(vs, "load_combinations[$LComb].items[$i].load_case=$(row[2])")
-#             push!(vs, "load_combinations[$LComb].items[$i].factor=$(row[3])")
-
-#         end
-#     end
-
-#     push!(vs, "\n")
-#     return join(vs, "\n")
-
-# end 
-
-function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFrame)
-    vs = ["# Create Load Combinations Titles"]
-
-    # Create a mapping of combinations to their load cases
-    combination_map = Dict{Int, Vector{Tuple{Int, Float64}}}()
-    for row in eachrow(df_LC_table)
-        comb = row[1]
-        if !haskey(combination_map, comb)
-            combination_map[comb] = []
-        end
-        push!(combination_map[comb], (row.Case, row[3]))
-    end
-
-    # Iterate over each unique value in the first column
-    unique_LC = unique(df_LC_table[:, 1])
-
-    for LComb in unique_LC
-        # Filter rows for the current LComb
-        subset = filter(x -> x[1] == LComb, df_LC_table)
-
-        # print name
-        comb_name = filter(t -> t[1] == LComb, df_lc_titles).Title[1]
-        
-        items = []
-        for row in eachrow(subset)
-            case = row[2]
-            factor = row[3]
-            if haskey(combination_map, case)
-                for (sub_case, sub_factor) in combination_map[case]
-                    push!(items, "[$(factor * sub_factor), $sub_case, 0, False]")
-                end
-            else
-                push!(items, "[$factor, $case, 0, False]")
-            end
-        end
-        items_str = "[" * join(items, ", ") * "]"
-        
-        push!(vs, "LoadCombination($LComb, design_situation=1, name=\"$comb_name\", static_analysis_settings=2, combination_items=$items_str)")
-    end
-
-    push!(vs, "\n")
-    return join(vs, "\n")
-end
-
-export create_nodal_loads
-function create_nodal_loads(df_nodal_loads::DataFrame)
-    vs = ["# Create Nodal Loads"]
-
-    if isempty(df_nodal_loads)
-        return ""
-    end
-
-    # Group by Case number
-    for case_group in groupby(df_nodal_loads, :Case)
-        case_num = case_group.Case[1]
-
-        # node load item i
-        i = 1
-
-        # For each force direction, group nodes with same force value
-        # Handle X forces
-        x_forces = filter(row -> row[3] != 0.0, case_group)
-        if !isempty(x_forces)
-            for x_group in groupby(x_forces, Symbol("X Force (kN)"))
-                nodes = join(x_group.Node, " ")
-                fx = x_group[1, "X Force (kN)"] * 1000  # Convert to N
-                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fx, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U)")
-                i += 1
-            end
-        end
-
-        # Handle Y forces
-        y_forces = filter(row -> row[4] != 0.0, case_group)
-        if !isempty(y_forces)
-            for y_group in groupby(y_forces, Symbol("Y Force (kN)"))
-                nodes = join(y_group.Node, " ")
-                fy = y_group[1, "Y Force (kN)"] * 1000  # Convert to N
-                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fy, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V)")
-                i += 1
-            end
-        end
-
-        # Handle Z forces
-        z_forces = filter(row -> row[5] != 0.0, case_group)
-        if !isempty(z_forces)
-            for z_group in groupby(z_forces, Symbol("Z Force (kN)"))
-                nodes = join(z_group.Node, " ")
-                fz = z_group[1, "Z Force (kN)"] * 1000  # Convert to N
-                push!(vs, "NodalLoad.Force($i, $case_num, \"$nodes\", magnitude=$fz, load_direction=NodalLoadDirection.LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W)")
-                i += 1
-            end
-        end
-    end
-
-    push!(vs, "\n")
-    return join(vs, "\n")
-end
-
-# Add this at module level
-const load_case_counters = Dict{Int,Int}()
-
-export create_member_load_concentrated
-function create_member_load_concentrated(df_member_loads::DataFrame)
-    vs = ["# Create Member Loads - Concentrated"]
-
-    if isempty(df_member_loads)
-        return ""
-    end
-
-    # Group by Case number first
-    for case_group in groupby(df_member_loads, :Case)
-        case_num = case_group.Case[1]
-
-        # Initialize or get existing counter for this case
-        sub_load = get!(load_case_counters, case_num, 0)
-
-        # Group by load pattern (all relevant columns except Member)
-        for load_group in groupby(case_group, [:Case, :Axes, :Units, Symbol("Position (m or %)"),
-            Symbol("X Force (kN)"), Symbol("Y Force (kN)"), Symbol("Z Force (kN)"),
-            Symbol("X Moment (kNm)"), Symbol("Y Moment (kNm)"), Symbol("Z Moment (kNm)")])
-
-            # Collect and join all member numbers for this load pattern
-            members = join(sort(unique(load_group.Member)), ",")
-            # sub_load = load_group[1, Symbol("Sub Load")]
-
-            # Get force components
-            fx = load_group[1, Symbol("X Force (kN)")]
-            fy = load_group[1, Symbol("Y Force (kN)")]
-            fz = load_group[1, Symbol("Z Force (kN)")]
-
-            # Get moment components
-            mx = load_group[1, Symbol("X Moment (kNm)")]
-            my = load_group[1, Symbol("Y Moment (kNm)")]
-            mz = load_group[1, Symbol("Z Moment (kNm)")]
-
-            # Skip if all loads are zero
-            if fx == 0 && fy == 0 && fz == 0 && mx == 0 && my == 0 && mz == 0
-                       # Get position and units
-            position = load_group[1, Symbol("Position (m or %)")]
-            units = load_group[1, :Units]
-
-            # Convert position to decimal if percentage
-            is_relative = units == "Percent"
-            if is_relative
-                position = position / 100
-            end
-
-            # Define direction based on coordinate system
-            is_local = load_group[1, :Axes] == "Local"
-            x_dir = is_local ? "LOCAL_X" : "GLOBAL_X_OR_USER_DEFINED_U_TRUE"
-            y_dir = is_local ? "LOCAL_Y" : "GLOBAL_Y_OR_USER_DEFINED_V_TRUE"
-            z_dir = !is_local ? "GLOBAL_Z_OR_USER_DEFINED_W_TRUE" : "LOCAL_Z"
-
-            # Create force components
-            if fx != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$x_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fx * 1000), $position])")
-            end
-
-            if fy != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$y_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fy * 1000), $position])")
-            end
-
-            if fz != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Force($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$z_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(fz * 1000), $position])")
-            end
-
-            # Create moment components
-            if mx != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$x_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(mx * 1000), $position])")
-            end
-
-            if my != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$y_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(my * 1000), $position])")
-            end
-
-            if mz != 0
-                load_case_counters[case_num] += 1
-                push!(vs, "MemberLoad.Moment($(load_case_counters[case_num]), $case_num, \"$members\", " *
-                          "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
-                          "load_direction=MemberLoadDirection.LOAD_DIRECTION_$z_dir" *
-                          ", load_parameter=[$(is_relative ? "True" : "False"), $(mz * 1000), $position])")
-            end
-        end
-    end
-
-    push!(vs, "\n")
-    return join(vs, "\n")
-end
 
 export create_member_load_distributed
 function create_member_load_distributed(df_member_loads::DataFrame)
@@ -911,14 +694,175 @@ function create_member_load_distributed(df_member_loads::DataFrame)
 end
 
 
+function create_analysis_settings()
+    ps = "# Create Analysis Settings\n"
+    ps *= "StaticAnalysisSettings(1, \"Linear\", StaticAnalysisSettingsAnalysisType.GEOMETRICALLY_LINEAR)\n\n"
+    return ps
+end
+
+function create_primary_loadcase_titles(df_lc_titles::DataFrame, df_LC_table::DataFrame)
+    vs = ["# Create Load Cases"]
+    # Identify combination cases to exclude primary definitions if they overlap
+    combo_cases = []
+    if hasproperty(df_LC_table, Symbol("Combination Case"))
+        combo_cases = unique(df_LC_table[!, Symbol("Combination Case")])
+    end
+    
+    for r in eachrow(df_lc_titles)
+        if !(r.Case in combo_cases)
+            # Usually Case 1 is self-weight in SpaceGass models
+            sw = (r.Case == 1) ? "True" : "False"
+            push!(vs, "LoadCase($(r.Case), \"$(r.Title)\", self_weight=[$sw, 0.0, 0.0, 1.0], static_analysis_settings_no=1)")
+        end
+    end
+    push!(vs, "\n")
+    return join(vs, "\n")
+end
+
+function create_design_situations()
+    ps = "# Create Design Situations\n"
+    ps *= "DesignSituation(1, \"ULS (STR/GEO)\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_ULS_STR_GEO)\n"
+    ps *= "DesignSituation(2, \"SLS\", design_situation_type=DesignSituationType.DESIGN_SITUATION_TYPE_SLS_CHARACTERISTIC)\n\n"
+    return ps
+end
+
+function create_load_combinations(df_lc_titles::DataFrame, df_LC_table::DataFrame)
+    vs = ["# Create Load Combinations"]
+    
+    if isempty(df_LC_table)
+        return ""
+    end
+
+    # Group by Combination Case
+    for combo_group in groupby(df_LC_table, Symbol("Combination Case"))
+        combo_num = combo_group[1, Symbol("Combination Case")]
+        
+        # Find title from titles df
+        title_row = filter(r -> r.Case == combo_num, df_lc_titles)
+        title = isempty(title_row) ? "Combo $combo_num" : title_row[1, :Title]
+        
+        # Format items: [[multiplier, case_no], ...]
+        items = []
+        for r in eachrow(combo_group)
+            push!(items, "[$(r[Symbol("Multiplying Factor")]), $(r.Case)]")
+        end
+        items_str = "[" * join(items, ",") * "]"
+        
+        push!(vs, "LoadCombination($combo_num, \"$title\", static_analysis_settings_no=1, design_situation_no=1, items=$items_str)")
+    end
+    push!(vs, "\n")
+    return join(vs, "\n")
+end
+
+function create_nodal_loads(df_nodal_loads::DataFrame)
+    vs = ["# Create Nodal Loads"]
+    if isempty(df_nodal_loads)
+        return ""
+    end
+
+    for case_group in groupby(df_nodal_loads, :Case)
+        case_num = case_group.Case[1]
+        
+        # Identify columns for force and moment
+        force_cols = [n for n in names(df_nodal_loads) if contains(lowercase(n), "force")]
+        moment_cols = [n for n in names(df_nodal_loads) if contains(lowercase(n), "moment")]
+        
+        # Ensure we have column names to group by
+        group_cols = vcat([:Node], force_cols, moment_cols)
+        for load_group in groupby(case_group, intersect(group_cols, names(case_group)))
+            nodes = join(unique(load_group.Node), " ")
+            
+            # Map columns to RFEM direction enums
+            mapping = [
+                ("X Force", "GLOBAL_X_OR_USER_DEFINED_U_TRUE"),
+                ("Y Force", "GLOBAL_Y_OR_USER_DEFINED_V_TRUE"),
+                ("Z Force", "GLOBAL_Z_OR_USER_DEFINED_W_TRUE"),
+                ("X Moment", "GLOBAL_X_OR_USER_DEFINED_U_TRUE"),
+                ("Y Moment", "GLOBAL_Y_OR_USER_DEFINED_V_TRUE"),
+                ("Z Moment", "GLOBAL_Z_OR_USER_DEFINED_W_TRUE")
+            ]
+            
+            for (prefix, rfem_dir) in mapping
+                # Find matching column
+                col_name = findfirst(n -> contains(n, prefix), names(df_nodal_loads))
+                if col_name !== nothing
+                    val = load_group[1, col_name] * 1000
+                    if val != 0
+                        load_id = get!(load_case_counters, case_num, 0) + 1
+                        load_case_counters[case_num] = load_id
+                        
+                        load_type = contains(prefix, "Force") ? "NodalLoad" : "NodalMoment" # Simplified
+                        # Note: NodalLoad in RFEM 6 Python API handles both, usually via load_type parameter
+                        # Here we use the simplified NodalLoad constructor
+                        push!(vs, "NodalLoad($load_id, $case_num, \"$nodes\", load_direction=NodalLoadDirection.LOAD_DIRECTION_$rfem_dir, load_parameter=[$val])")
+                    end
+                end
+            end
+        end
+    end
+    push!(vs, "\n")
+    return join(vs, "\n")
+end
+
+function create_member_load_concentrated(df_member_loads::DataFrame)
+    vs = ["# Create Member Loads - Concentrated"]
+    if isempty(df_member_loads)
+        return ""
+    end
+
+    for case_group in groupby(df_member_loads, :Case)
+        case_num = case_group.Case[1]
+        
+        # Identify columns
+        force_cols = [n for n in names(df_member_loads) if contains(lowercase(n), "force")]
+        
+        for load_group in groupby(case_group, intersect(vcat([:Axes, :Units, Symbol("Position m or pct")], force_cols), names(case_group)))
+            members = join(unique(load_group.Member), ",")
+            
+            pos = load_group[1, Symbol("Position m or pct")]
+            is_relative = load_group[1, :Units] == "Percent"
+            if is_relative
+                pos /= 100
+            end
+            
+            forces = [("X Force", "GLOBAL_X_OR_USER_DEFINED_U_TRUE"), 
+                      ("Y Force", "GLOBAL_Y_OR_USER_DEFINED_V_TRUE"), 
+                      ("Z Force", "GLOBAL_Z_OR_USER_DEFINED_W_TRUE")]
+            
+            for (prefix, dir) in forces
+                col_name = findfirst(n -> contains(n, prefix), names(df_member_loads))
+                if col_name !== nothing
+                    val = load_group[1, col_name] * 1000
+                    if val != 0
+                        load_id = get!(load_case_counters, case_num, 0) + 1
+                        load_case_counters[case_num] = load_id
+                        push!(vs, "MemberLoad.Force($load_id, $case_num, \"$members\", " *
+                                  "load_distribution=MemberLoadDistribution.LOAD_DISTRIBUTION_CONCENTRATED_1, " *
+                                  "load_direction=MemberLoadDirection.LOAD_DIRECTION_$dir" *
+                                  ", load_parameter=[$(is_relative ? "True" : "False"), $val, $pos])")
+                    end
+                end
+            end
+        end
+    end
+    push!(vs, "\n")
+    return join(vs, "\n")
+end
+
 export fWritePyScript
 function fWritePyScript(sg_db_source_filepathname)
 
-    statement = "Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=" * sg_db_source_filepathname
-    dbconn = ODBC.Connection(statement)
+    if endswith(lowercase(sg_db_source_filepathname), ".mdb") || endswith(lowercase(sg_db_source_filepathname), ".accdb")
+        statement = "Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=" * sg_db_source_filepathname
+        dbconn = ODBC.Connection(statement)
+    elseif endswith(lowercase(sg_db_source_filepathname), ".db") || endswith(lowercase(sg_db_source_filepathname), ".sqlite")
+        dbconn = SQLite.DB(sg_db_source_filepathname)
+    else
+        error("Unsupported database format or file extension: $sg_db_source_filepathname")
+    end
 
     header = "import sys\n"
-    header *= "sys.path.append(r'/home/ubuntu/julia_repo/python_venv/lib/python3.10/site-packages')\n"
+    header *= "sys.path.append(r'C:\\Users\\j0sua\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages')\n"
     header *= "from RFEM.initModel import Model\n"
     header *= "from RFEM.BasicObjects.material import Material\n"
     header *= "from RFEM.BasicObjects.crossSection import CrossSection\n"
@@ -943,17 +887,17 @@ function fWritePyScript(sg_db_source_filepathname)
 
     # MATERILS PROPERTIES QUERY
     query_matprop = DBInterface.execute(dbconn, "SELECT * FROM `Material Properties`")
-    df_matprop = DataFrame(query_matprop)
+    df_matprop = normalize_sg_dataframe!(DataFrame(query_matprop))
     vMatNames = df_matprop[:, 2]
 
     push!(pyscript, create_materials(vMatNames))
 
     # CREATE SECTIONS
     query_secprop = DBInterface.execute(dbconn, "SELECT * FROM `Section Properties`")
-    df_secprop = DataFrame(query_secprop)
+    df_secprop = normalize_sg_dataframe!(DataFrame(query_secprop))
 
     query_members = DBInterface.execute(dbconn, "SELECT * FROM Members")
-    df_members = DataFrame(query_members)
+    df_members = normalize_sg_dataframe!(DataFrame(query_members))
 
 
     push!(pyscript, create_sections(df_secprop, df_members))
@@ -961,7 +905,7 @@ function fWritePyScript(sg_db_source_filepathname)
 
     # CREATE NODES
     query_nodes = DBInterface.execute(dbconn, "SELECT * FROM Nodes")
-    df_nodes = DataFrame(query_nodes)
+    df_nodes = normalize_sg_dataframe!(DataFrame(query_nodes))
 
     push!(pyscript, create_nodes(df_nodes))
 
@@ -994,8 +938,8 @@ function fWritePyScript(sg_db_source_filepathname)
     push!(pyscript, create_analysis_settings())
 
     # CREATE LOAD CASE TITLES
-    df_lc_titles = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Load Case Titles`"))
-    df_LC_table = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Combination Load Cases`"))
+    df_lc_titles = normalize_sg_dataframe!(DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Load Case Titles`")))
+    df_LC_table = normalize_sg_dataframe!(DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `Combination Load Cases`")))
 
     push!(pyscript, create_primary_loadcase_titles(df_lc_titles, df_LC_table))
 
@@ -1011,7 +955,7 @@ function fWritePyScript(sg_db_source_filepathname)
     table_name = "Node Loads"
     if table_exists(dbconn, table_name)
         query_nodal_loads = DBInterface.execute(dbconn, "SELECT * FROM `$table_name`")
-        df_nodal_loads = DataFrame(query_nodal_loads)
+        df_nodal_loads = normalize_sg_dataframe!(DataFrame(query_nodal_loads))
         push!(pyscript, create_nodal_loads(df_nodal_loads))
     end
 
@@ -1020,7 +964,7 @@ function fWritePyScript(sg_db_source_filepathname)
     # CREATE MEMBER LOADS - CONCENTRATED
     table_name = "Member Concentrated Loads"
     if table_exists(dbconn, table_name)
-        df_member_loads = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`"))
+        df_member_loads = normalize_sg_dataframe!(DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`")))
         push!(pyscript, create_member_load_concentrated(df_member_loads))
     end
 
@@ -1028,17 +972,16 @@ function fWritePyScript(sg_db_source_filepathname)
     # CREATE MEMBER LOADS - DISTRIBUTED
     table_name = "Member Distributed Forces"
     if table_exists(dbconn, table_name)
-        df_member_forces = DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`"))
+        df_member_forces = normalize_sg_dataframe!(DataFrame(DBInterface.execute(dbconn, "SELECT * FROM `$table_name`")))
         push!(pyscript, create_member_load_distributed(df_member_forces))
     end
 
-    # write to file
-
+# write to file
     write("sg2rfem.py", join(pyscript, ""))
-    ODBC.disconnect!(dbconn)
+    if dbconn isa ODBC.Connection
+        ODBC.disconnect!(dbconn)
+    end
     return ""
 end
 
-
-
-end # module SGtoRFEM
+end

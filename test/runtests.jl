@@ -5,9 +5,9 @@ using SGtoRFEM
 
 # ACTUAL SOURCE CONVERSION CODE
 
-sourcefile = "\\sg_source.MDB"
+sourcefile = "sg_source.db"
 current_dir = @__DIR__
-sg_source_filepathname = current_dir * sourcefile
+sg_source_filepathname = joinpath(current_dir, sourcefile)
 
 fWritePyScript(sg_source_filepathname)
 

@@ -6,9 +6,9 @@ using Pkg
 
 # ACTUAL SOURCE CONVERSION CODE
 
-sourcefile = "\\sg_source.MDB"
+sourcefile = "sg_source.db"
 current_dir = @__DIR__
-filepathname = current_dir * sourcefile
+filepathname = joinpath(current_dir, sourcefile)
 statement = "Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=" * filepathname
 dbconn = ODBC.Connection(statement)
 

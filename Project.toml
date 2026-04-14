@@ -1,22 +1,28 @@
 name = "SGtoRFEM"
 uuid = "c4e901a8-bc5e-4a22-8db3-7c88164cb485"
-authors = ["Josua A <cylconehopper@gmail.com>"]
 version = "0.1.0"
+authors = ["Josua A <cylconehopper@gmail.com>"]
 
 [deps]
+DBInterface = "a10d1c49-ce27-4219-8d33-6db1a4562965"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Missings = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
 ODBC = "be6f12e9-ca4f-5eb2-a339-a4f995cc0291"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+SQLite = "0aa819cd-b072-5ff4-a722-6bc24af294d9"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [compat]
+DBInterface = "2.6.1"
 DataFrames = "1.7.0"
 LinearAlgebra = "1.11.0"
+Missings = "1.2.0"
 ODBC = "1.1.2"
 Pkg = "1.11.0"
 Revise = "3.6.4"
+SQLite = "1.8.0"
 Test = "1.11.0"
 Unitful = "1.21.1"
