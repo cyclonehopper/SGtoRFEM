@@ -1,14 +1,6 @@
-using Pkg 
-using ODBC, DataFrames
-using Revise
+
+using Test
 using SGtoRFEM
 
-# ACTUAL SOURCE CONVERSION CODE
-
-sourcefile = "sg_source.db"
-current_dir = @__DIR__
-sg_source_filepathname = joinpath(current_dir, sourcefile)
-
-fWritePyScript(sg_source_filepathname)
 
  
