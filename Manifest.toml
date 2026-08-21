@@ -1,0 +1,22 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.12.7"
+manifest_format = "2.0"
+project_hash = "3abd1f50f4b4df01ed6f7534093ad99d99e4b93b"
+
+[[deps.SGtoRFEM]]
+deps = ["XML"]
+path = "."
+uuid = "c4e901a8-bc5e-4a22-8db3-7c88164cb485"
+version = "0.1.0"
+
+[[deps.XML]]
+git-tree-sha1 = "92e8ddd9edfd0f374ec738689cbd1d50abfbf01e"
+uuid = "72c71f33-b9b6-44de-8c94-c961784809e2"
+version = "0.4.6"
+
+    [deps.XML.extensions]
+    XMLAbstractTreesExt = "AbstractTrees"
+
+    [deps.XML.weakdeps]
+    AbstractTrees = "1520ce14-60c1-5f80-bbc7-55ef81b5835c"

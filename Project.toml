@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Josua A <cylconehopper@gmail.com>"]
 
 [deps]
-XML = "69e8c417-849c-5b4e-97c4-699997e3b022"
+XML = "72c71f33-b9b6-44de-8c94-c961784809e2"
 
 [compat]
 XML = "0.4.0"
