@@ -21,7 +21,10 @@ function parse_sg_file(filepath::String)
         SGConstraint[],
         Dict{Int,NTuple{6,Float64}}(),  # offsets
         "",                              # title
-        Dict{Symbol,String}()            # units
+        Dict{Symbol,String}(),           # units
+        Dict{Symbol,Int}(),              # section parser state
+        SGMembConc[],                    # member concentrated loads
+        SGMembForce[]                    # member distributed loads
     )
 
     current_section = ""
@@ -29,7 +32,7 @@ function parse_sg_file(filepath::String)
     in_cont = false
 
     open(filepath, "r") do io
-        while !eof(io)
+        while !Base.eof(io)
             raw = readline(io)
             line = strip(raw)
 
@@ -70,7 +73,7 @@ end
 """
     is_section_header(line::String) -> Bool
 """
-function is_section_header(line::String)
+function is_section_header(line::AbstractString)
     occursin(",", line) && return false
     occursin(" ", line) && return false
     all(isuppercase, line) || return false
@@ -80,31 +83,29 @@ end
 """
     process_line(model, section, line)
 """
-function process_line(model::SGModel, section::String, line::String)
-    case section
-        "UNITS"       => parse_units!(model, line)
-        "NODES"       => parse_node!(model, line)
-        "MEMBERS"     => parse_member!(model, line)
-        "SECTIONS"    => parse_section!(model, line)
-        "MATERIALS"   => parse_material!(model, line)
-        "CONSTRAINTS" => parse_constraint!(model, line)
-        "OFFSETS"     => parse_offset!(model, line)
-        "NODELOADS"   => parse_nodal_load!(model, line)
-        "MEMBCONC"    => parse_member_conn!(model, line)
-        "MEMBFORCES"  => parse_member_force!(model, line)
-        "SELFWEIGHT"  => parse_selfweight!(model, line)
-        "LUMPEDMASS"  => parse_lumped_mass!(model, line)
-        "COMBINATIONS"=> parse_combination!(model, line)
-        "TITLES"      => (model.title = strip(line, '"'))
-        _             => nothing
-    end
+function process_line(model::SGModel, section::String, line::AbstractString)
+    if     section == "UNITS";        parse_units!(model, line)
+    elseif section == "NODES";        parse_node!(model, line)
+    elseif section == "MEMBERS";      parse_member!(model, line)
+    elseif section == "SECTIONS";     parse_section!(model, line)
+    elseif section == "MATERIALS";    parse_material!(model, line)
+    elseif section == "CONSTRAINTS";  parse_constraint!(model, line)
+    elseif section == "OFFSETS";      parse_offset!(model, line)
+    elseif section == "NODELOADS";    parse_nodal_load!(model, line)
+    elseif section == "MEMBCONC";     parse_member_conn!(model, line)
+    elseif section == "MEMBFORCES";   parse_member_force!(model, line)
+    elseif section == "SELFWEIGHT";   parse_selfweight!(model, line)
+    elseif section == "LUMPEDMASS";   parse_lumped_mass!(model, line)
+    elseif section == "COMBINATIONS"; parse_combination!(model, line)
+    elseif section == "TITLES";       model.title = strip(line, '"')
+    end # unknown sections are ignored
 end
 
 # =============================================================================
 # INDIVIDUAL SECTION PARSERS
 # =============================================================================
 
-function parse_units!(model::SGModel, line::String)
+function parse_units!(model::SGModel, line::AbstractString)
     for part in split(line)[2:end]
         if occursin(":", part)
             kv = split(part, ":"); length(kv)==2 || continue
@@ -113,7 +114,7 @@ function parse_units!(model::SGModel, line::String)
     end
 end
 
-function parse_node!(model::SGModel, line::String)
+function parse_node!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) >= 4 || return
     try
         id = parse(Int,   strip(f[1]))
@@ -124,38 +125,43 @@ function parse_node!(model::SGModel, line::String)
     catch; end
 end
 
-function parse_member!(model::SGModel, line::String)
+function parse_member!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) < 10 && return
     try
         id     = parse(Int,   strip(f[1]))
         beta   = parse(Float64,strip(f[2]))
         dirfld = strip(f[4])
 
+        # Layout A: "...,<axis>,<endcode>,<start>,..."  (Space GASS native)
+        # Layout B: "...,\"<axis,endcode>\",<start>,..." (legacy/combined)
         if occursin(",", dirfld)
             dp = split(dirfld, ",")
-            axis_dir = only(strip(dp[1]))
+            axis_dir = isempty(strip(dp[1])) ? ' ' : only(strip(dp[1]))
             endcode  = length(dp) > 1 ? only(strip(dp[2])) : 'N'
+            off = 0
+        elseif tryparse(Int, strip(f[5])) !== nothing
+            axis_dir = isempty(dirfld) ? ' ' : only(dirfld)
+            endcode  = 'N'
+            off = 0
         else
-            axis_dir = only(dirfld); endcode = 'N'
+            axis_dir = isempty(dirfld) ? ' ' : only(dirfld)
+            endcode  = isempty(strip(f[5])) ? 'N' : only(strip(f[5]))
+            off = 1
         end
 
-        startn = parse(Int, strip(f[5]))
-        endn   = parse(Int, strip(f[6]))
-        sect   = parse(Int, strip(f[7]))
-        mat    = parse(Int, strip(f[8]))
-        c1 = length(f) > 9  ? strip(f[9])  : "FFFFFF"
-        c2 = length(f) > 10 ? strip(f[10]) : "FFFFFF"
+        startn = parse(Int, strip(f[5+off]))
+        endn   = parse(Int, strip(f[6+off]))
+        sect   = parse(Int, strip(f[7+off]))
+        mat    = parse(Int, strip(f[8+off]))
+        c1 = length(f) > 9+off  ? strip(f[9+off])  : "FFFFFF"
+        c2 = length(f) > 10+off ? strip(f[10+off]) : "FFFFFF"
 
-        # releases (6 values, default 0)
-        rfx_i = length(f) > 10 ? parse(Float64,strip(f[11])) : 0.0
-        rfy_i = length(f) > 11 ? parse(Float64,strip(f[12])) : 0.0
-        rfz_i = length(f) > 12 ? parse(Float64,strip(f[13])) : 0.0
-        rm_i  = length(f) > 13 ? parse(Float64,strip(f[14])) : 0.0
-        rfx_j = length(f) > 14 ? parse(Float64,strip(f[15])) : 0.0
-        rfy_j = length(f) > 15 ? parse(Float64,strip(f[16])) : 0.0
+        # releases (default 0)
+        rel(i) = length(f) >= 11+off+i ? tryparse(Float64, strip(f[10+off+i])) : nothing
+        rv(i)  = (r = rel(i); r === nothing ? 0.0 : r)
 
-        fix_i = (rfx_i, rfy_i, rfz_i, rm_i, 0.0, 0.0)
-        fix_j = (rfx_j, rfy_j, 0.0,    0.0, 0.0, 0.0)
+        fix_i = (rv(1), rv(2), rv(3), rv(4), 0.0, 0.0)
+        fix_j = (rv(5), rv(6), 0.0, 0.0, 0.0, 0.0)
 
         model.members[id] = SGMember(
             id, startn, endn, sect, mat,
@@ -163,24 +169,43 @@ function parse_member!(model::SGModel, line::String)
             c1, c2, fix_i, fix_j,
             (0.0,0.0,0.0)
         )
-    catch; end
+    catch e
+        @debug "member line not parsed" line e
+    end
 end
 
-function parse_section!(model::SGModel, line::String)
-    f = split(line, ","); length(f) < 6 && return
+function parse_section!(model::SGModel, line::AbstractString)
+    f = split(line, ",")
+
+    # Row 1 always carries a quoted description; unquoted rows are the
+    # geometry/dimension continuation of the previously seen section.
+    if !occursin('"', line)
+        length(f) >= 10 || return
+        sid = get(model.section_state, :last, 0)
+        sec = sid == 0 ? nothing : get(model.sections, sid, nothing)
+        sec === nothing && return
+        try
+            # Layout (verified vs Space GASS export):
+            #   f1=shape code (7=I, 4=CHS, 5=SHS, 12=L), f3=depth, f4=width,
+            #   f8=tf, f10=tw, f12=root radius
+            depth = parse(Float64, strip(f[3]))
+            fw    = parse(Float64, strip(f[4]))
+            tf    = parse(Float64, strip(f[8]))
+            tw    = parse(Float64, strip(f[10]))
+            rr    = length(f) >= 12 ? parse(Float64, strip(f[12])) : 0.0
+            model.sections[sid] = SGSection(sec.id, sec.description, sec.material_name,
+                sec.profile, sec.area, sec.iy, sec.iz, sec.j,
+                max(depth, sec.depth), max(fw, sec.flange_width),
+                max(rr, sec.root_radius), max(tw, sec.thickness_web),
+                max(tf, sec.thickness_flange))
+        catch; end
+        return
+    end
+
+    length(f) < 6 && return
     try
         sid = parse(Int, strip(f[1]))
-
-        if haskey(model.sections, sid)
-            # Row 2 – update dims
-            sec = model.sections[sid]
-            depth = length(f) > 2 ? parse(Float64,strip(f[3])) : sec.depth
-            fw    = length(f) > 4 ? parse(Float64,strip(f[5])) : sec.flange_width
-            rr    = length(f) > 5 ? parse(Float64,strip(f[6])) : sec.root_radius
-            model.sections[sid] = SGSection(sec.id, sec.description, sec.material,
-                sec.profile, sec.area, sec.iy, sec.iz, sec.j, depth, fw, rr)
-            return
-        end
+        sid <= 0 && return   # filler/continuation rows use id 0
 
         # Row 1 – primary props
         desc = strip(f[2], '"')
@@ -191,12 +216,13 @@ function parse_section!(model::SGModel, line::String)
         Iz   = parse(Float64, strip(f[7]))
         J    = parse(Float64, strip(f[8]))
 
-        sec = SGSection(sid, desc, mat, prof, A, Iy, Iz, J, 0.0, 0.0, 0.0)
+        sec = SGSection(sid, desc, mat, prof, A, Iy, Iz, J, 0.0, 0.0, 0.0, 0.0, 0.0)
         model.sections[sid] = sec
+        model.section_state[:last] = sid
     catch; end
 end
 
-function parse_material!(model::SGModel, line::String)
+function parse_material!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) >= 8 || return
     try
         id   = parse(Int,    strip(f[1]))
@@ -211,7 +237,7 @@ function parse_material!(model::SGModel, line::String)
     catch; end
 end
 
-function parse_constraint!(model::SGModel, line::String)
+function parse_constraint!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) >= 3 || return
     try
         nid = parse(Int, strip(f[2]))
@@ -220,7 +246,7 @@ function parse_constraint!(model::SGModel, line::String)
     catch; end
 end
 
-function parse_offset!(model::SGModel, line::String)
+function parse_offset!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) >= 8 || return
     try
         mid = parse(Int,    strip(f[1]))
@@ -234,7 +260,7 @@ function parse_offset!(model::SGModel, line::String)
     catch; end
 end
 
-function parse_nodal_load!(model::SGModel, line::String)
+function parse_nodal_load!(model::SGModel, line::AbstractString)
     f = split(line, ","); length(f) >= 9 || return
     try
         lc   = parse(Int,    strip(f[1]))
@@ -251,10 +277,38 @@ function parse_nodal_load!(model::SGModel, line::String)
 end
 
 # Placeholder parsers for less-critical sections
-parse_member_conn!(_m::SGModel, _l::String) = nothing
-parse_member_force!(_m::SGModel, _l::String) = nothing
-parse_selfweight!   (_m::SGModel, _l::String) = nothing
-parse_lumped_mass!  (_m::SGModel, _l::String) = nothing
-parse_combination!  (_m::SGModel, _l::String) = nothing
+# Member concentrated loads (MEMBCONC)
+# Layout: lc, member, loadno, axis(G|L|A), spec(A=absolute | %=relative),
+#         a, Fx, Fy, Fz, Mx, My, Mz [, cat]
+function parse_member_conn!(model::SGModel, line::AbstractString)
+    f = split(line, ","); length(f) < 13 && return
+    try
+        lc  = parse(Int, strip(f[1]))
+        mem = parse(Int, strip(f[2]))
+        axis = uppercase(strip(f[4])[1])
+        relative = occursin("%", strip(uppercase(f[5])))
+        num(i) = (v = tryparse(Float64, strip(f[i])); v === nothing ? 0.0 : v)
+        push!(model.member_concs, SGMembConc(lc, mem, axis, relative,
+            num(6), num(7), num(8), num(9), num(10), num(11), num(12)))
+    catch; end
+end
 
-end # module SGtoRFEM.Parser
+# Member distributed loads (MEMBFORCES) – one trapezoidal piece per row.
+# Layout: lc, member, slot, axis(G|L|A), spec(%|A), a, b,
+#         fx1, fx2, fy1, fy2, fz1, fz2 [, cat]
+function parse_member_force!(model::SGModel, line::AbstractString)
+    f = split(line, ","); length(f) < 14 && return
+    try
+        lc  = parse(Int, strip(f[1]))
+        mem = parse(Int, strip(f[2]))
+        axis = uppercase(strip(f[4])[1])
+        relative = occursin("%", strip(uppercase(f[5])))
+        num(i) = (v = tryparse(Float64, strip(f[i])); v === nothing ? 0.0 : v)
+        push!(model.member_forces, SGMembForce(lc, mem, axis, relative,
+            num(6), num(7),
+            num(8), num(9), num(10), num(11), num(12), num(13)))
+    catch; end
+end
+parse_selfweight!(_m::SGModel, _l::AbstractString) = nothing
+parse_lumped_mass!(_m::SGModel, _l::AbstractString) = nothing
+parse_combination!(_m::SGModel, _l::AbstractString) = nothing

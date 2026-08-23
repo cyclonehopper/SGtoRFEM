@@ -1,438 +1,570 @@
 
-module SGtoRFEM.Writer
-
+# Included into SGtoRFEM – shares all RFEM* struct definitions directly.
 using XML
+using Printf
 using Printf
 
 export generate_rfem_xml
 
-# -------------------------------------------------------------------------
-# Helper functions
-# -------------------------------------------------------------------------
+# =============================================================================
+# XML helpers (XML.jl v0.4.x API – Node{String} trees)
+# =============================================================================
 
-"""
-    find_element(parent::XML.Node, name::String) -> XML.Element
-Return the first child element whose tag name matches `name`.
-"""
-function find_element(parent::XML.Node, name::String)
-    for child in XML.child_nodes(parent)
-        if isa(child, XML.Element) && XML.localname(child) == name
-            return child::XML.Element
-        end
+"""Text node with string content."""
+txt(v) = Node{String}(XML.Text, nothing, nothing, string(v), nothing)
+
+"""Element with a single text value."""
+el(tag::String, v) = Node{String}(XML.Element, tag, nothing, nothing, Node[txt(v)])
+
+"""Element with child elements (e.g. <coordinates><x>..</x>..)."""
+elc(tag::String, children::Vector{<:Node}) = Node{String}(XML.Element, tag, nothing, nothing, children)
+
+"""First direct child element with the given tag name (or nothing)."""
+function find_child(parent::Node, tag::String)
+    for c in something(parent.children, Node[])
+        c.nodetype === XML.Element && c.tag == tag && return c
     end
-    error("Element <$name> not found under $(XML.name(parent))")
+    return nothing
 end
 
-"""
-    clear_container!(container::XML.Node)
-Remove all child elements (typically <item> entries) from a container.
-"""
-function clear_container!(container::XML.Node)
-    children = XML.child_nodes(container)
-    for child in children
-        isa(child, XML.Element) && XML.remove_child(container, child)
-    end
+"""Replace text of a direct child element; creates it if missing."""
+function set_text!(parent::Node, tag::String, v)
+    c = find_child(parent, tag)
+    c === nothing && (push!(parent.children, el(tag, v)); return)
+    empty!(c.children)
+    push!(c.children, txt(v))
 end
 
-"""
-    set_text!(parent::XML.Node, tag::String, value)
-Search direct children for element named `tag` and replace its text content
-with `string(value)`.
-"""
-function set_text!(parent::XML.Node, tag::String, value)
-    for child in XML.child_nodes(parent)
-        if isa(child, XML.Element) && XML.localname(child) == tag
-            # Remove any existing children (including text nodes)
-            while length(XML.child_nodes(child)) > 0
-                old = first(XML.child_nodes(child))
-                XML.remove_child(child, old)
-            end
-            XML.add_child(child, XML.TextNode(string(value)))
-            return
-        end
-    end
-    @warn "Tag <$tag> not found in $(XML.name(parent))"
-end
+"""Remove all children of an element."""
+clear_children!(parent::Node) = !isnothing(parent.children) && empty!(parent.children)
 
-"""
-    replace_recursive!(parent::XML.Node, tag::String, value)
-Replace the text of all child elements named `tag` at any depth.
-"""
-function replace_recursive!(parent::XML.Node, tag::String, value)
-    for child in XML.child_nodes(parent)
-        if isa(child, XML.Element)
-            if XML.localname(child) == tag
-                while length(XML.child_nodes(child)) > 0
-                    XML.remove_child(child, first(XML.child_nodes(child)))
-                end
-                XML.add_child(child, XML.TextNode(string(value)))
-            end
-            replace_recursive!(child, tag, value)
-        end
-    end
-end
-
-"""
-    vector_join(v::Vector{Int}) -> String
-Space-separated integer list string (used for assigned_to_members, definition_nodes).
-"""
-vector_join(v::Vector{Int}) = join(v, ",")
-
-"""
-    format_float(x::Float64) -> String
-Format a floating-point number without scientific notation, trimmed trailing zeros.
-"""
-function format_float(x::Float64)
-    s = @sprintf("%.6f", x)
-    # strip trailing zeros and maybe dot
+"""Format a float without scientific notation."""
+function format_float(x::Real)
+    s = @sprintf("%.8f", x)
     s = replace(s, r"0+$" => "")
-    if endswith(s, ".")
-        s = s[1:end-1]
-    end
+    endswith(s, ".") && (s = s[1:end-1])
+    isempty(s) && (s = "0")
     return s
 end
 
-# -------------------------------------------------------------------------
-# Main entry
-# -------------------------------------------------------------------------
+# =============================================================================
+# Parametric section definitions (verified against Dlubal gRPC schema)
+# =============================================================================
 
 """
-    generate_rfem_xml(model::RFEMMode output_path::String)
+Map a classified shape to (section_type, parametrization_type,
+manufacturing_type, dimension tags).
+Dimension tags are limited to fields that exist in the RFEM cross-section
+schema so the import never fails on unknown parameters.
+"""
+function parametric_spec(shape::String)
+    if shape == "CHS"
+        return ("TYPE_PARAMETRIC_THIN_WALLED",
+                "PARAMETRIC_THIN_WALLED__CIRCULAR_HOLLOW_SECTION__CHS",
+                "MANUFACTURING_TYPE_COLD_FORMED",
+                ["d", "t"])
+    elseif shape == "RHS"
+        return ("TYPE_PARAMETRIC_THIN_WALLED",
+                "PARAMETRIC_THIN_WALLED__RECTANGULAR_HOLLOW_SECTION__RHS",
+                "MANUFACTURING_TYPE_COLD_FORMED",
+                ["h", "b", "t"])
+    elseif shape == "SHS"
+        return ("TYPE_PARAMETRIC_THIN_WALLED",
+                "PARAMETRIC_THIN_WALLED__SQUARE_HOLLOW_SECTION__SHS",
+                "MANUFACTURING_TYPE_COLD_FORMED",
+                ["h", "b", "t"])
+    elseif shape == "U"
+        return ("TYPE_PARAMETRIC_THIN_WALLED",
+                "PARAMETRIC_THIN_WALLED__CHANNEL__U",
+                "MANUFACTURING_TYPE_HOT_ROLLED",
+                ["h", "b", "t_w", "t_f"])
+    else
+        # I-sections and anything unrecognised: thin-walled I is always valid.
+        return ("TYPE_PARAMETRIC_THIN_WALLED",
+                "PARAMETRIC_THIN_WALLED__I_SECTION__I",
+                "MANUFACTURING_TYPE_HOT_ROLLED",
+                ["h", "b", "t_w", "t_f", "r_1", "r_2"])
+    end
+end
 
-Write a Dlubal RFEM 6 XML project file based on the provided model.
-The function uses the sample file  `rfem_sample.xml`  as a structural template
-(kept all analysis settings unchanged) and replaces geometry, cross‑sections,
-materials and loads with data from `model`.
+"""Dimension values in schema field order for a classified shape."""
+function section_dims(xs)
+    if xs.shape == "CHS"
+        return [xs.depth, xs.thickness_web]           # d, t
+    elseif xs.shape == "RHS" || xs.shape == "SHS"
+        return [xs.depth, xs.flange_width, xs.thickness_web]   # h, b, t
+    elseif xs.shape == "U"
+        return [xs.depth, xs.flange_width, xs.thickness_web, xs.thickness_flange]
+    else
+        # Thin-walled I: root radius r1 ≈ t_w, inner radius r2 taken as 0
+        return [xs.depth, xs.flange_width, xs.thickness_web,
+                xs.thickness_flange, xs.thickness_web, 0.0]
+    end
+end
 
-The template must exist at `./rfem_xml/rfem_sample.xml` relative to the current
-working directory or the directory of this file.
+"""
+RFEM builds parametric sections by parsing the *name*, which encodes the
+dimensions. Formats follow RFEM's own conventions:
+
+    I   300/200/10/14/12/8/H          (mm: h/b/t_w/t_f/r_1/r_2, H = hot rolled)
+    CHS 0.2191/0.0064/C               (m: d/t, C = cold formed – as exported by RFEM)
+    RHS 0.3/0.2/0.006/C               (m: h/b/t)
+    SHS 0.089/0.005/C                 (m: b/t)
+    U   0.3/0.1/0.006/0.01/H          (m: h/b/t_w/t_f)
+"""
+function section_name(xs)
+    mm(x) = string(round(x*1000, digits=1))
+    m_(x) = string(round(x,     digits=4))
+    if xs.shape == "CHS"
+        return "CHS $(m_(xs.depth))/$(m_(xs.thickness_web))/C"
+    elseif xs.shape == "RHS"
+        return "RHS $(m_(xs.depth))/$(m_(xs.flange_width))/$(m_(xs.thickness_web))/C"
+    elseif xs.shape == "SHS"
+        return "SHS $(m_(xs.depth))/$(m_(xs.thickness_web))/C"
+    elseif xs.shape == "U"
+        return "U $(m_(xs.depth))/$(m_(xs.flange_width))/$(m_(xs.thickness_web))/$(m_(xs.thickness_flange))/H"
+    else
+        # I h/b/t_w/t_f/r_1/r_2/H with r_1 = t_w, r_2 = 0 (thin-walled)
+        return "I $(mm(xs.depth))/$(mm(xs.flange_width))/$(mm(xs.thickness_web))/$(mm(xs.thickness_flange))/$(mm(xs.thickness_web))/0/H"
+    end
+end
+
+# =============================================================================
+# Item builders
+# =============================================================================
+
+function material_item(mat)
+    G = mat.G
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", mat.id)
+    set_text!(item, "material_type", "TYPE_STEEL")                       # assume all steel
+    set_text!(item, "material_model", "MATERIAL_MODEL_ISOTROPIC_LINEAR_ELASTIC")
+    set_text!(item, "application_context", "STEEL_DESIGN")
+    set_text!(item, "user_defined_name_enabled", "true")
+    set_text!(item, "name", isempty(mat.name) ? "Steel" : mat.name)
+    set_text!(item, "user_defined", "true")
+    set_text!(item, "definition_type", "DERIVED_NU")
+    set_text!(item, "stress_failure_hypothesis", "STRESS_FAILURE_HYPOTHESIS_VON_MISES")
+    set_text!(item, "is_temperature_dependent", "false")
+    set_text!(item, "is_dynamic_increase_factor", "false")
+    set_text!(item, "has_cost_estimation", "false")
+    set_text!(item, "has_emissions_estimation", "false")
+
+    temp_item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(temp_item, "elasticity_modulus_global", format_float(mat.E))
+    set_text!(temp_item, "elasticity_modulus_x",      format_float(mat.E))
+    set_text!(temp_item, "elasticity_modulus_y",      format_float(mat.E))
+    set_text!(temp_item, "elasticity_modulus_z",      format_float(mat.E))
+    set_text!(temp_item, "shear_modulus_global",      format_float(G))
+    set_text!(temp_item, "shear_modulus_yz",          format_float(G))
+    set_text!(temp_item, "shear_modulus_xz",          format_float(G))
+    set_text!(temp_item, "shear_modulus_xy",          format_float(G))
+    for suffix in ("global", "yz", "xz", "xy", "zy", "zx", "yx")
+        set_text!(temp_item, "poisson_ratio_"*suffix, format_float(mat.nu))
+    end
+    set_text!(temp_item, "mass_density", format_float(mat.density))       # t/m^3
+    set_text!(temp_item, "specific_weight", format_float(mat.density*9.81)) # kN/m^3
+    for suffix in ("global", "x", "y", "z")
+        set_text!(temp_item, "thermal_expansion_coefficient_"*suffix, format_float(mat.alpha))
+    end
+    set_text!(temp_item, "division_multiplication_factor", "1")
+    set_text!(temp_item, "yield_strength_for_compression", format_float(mat.fy))
+    set_text!(temp_item, "yield_strength_for_tension",     format_float(mat.fy))
+    set_text!(item, "temperature", elc("temperature", [temp_item]))
+
+    set_text!(item, "stiffness_matrix_editable", "false")
+    set_text!(item, "stiffness_modification", "false")
+    set_text!(item, "has_linear_elastic_with_nonlinear_criteria", "false")
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+function section_item(xs, member_list::Vector{Int})
+    sec_type, param_type, manuf, dim_tags = parametric_spec(xs.shape)
+    dims = section_dims(xs)
+
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", xs.id)
+    set_text!(item, "type", sec_type)
+    if sec_type != "TYPE_PARAMETRIC_MASSIVE_I"
+        set_text!(item, "manufacturing_type", manuf)
+    end
+    set_text!(item, "name", section_name(xs))
+    set_text!(item, "assigned_to_members", join(member_list, ","))
+    set_text!(item, "shear_stiffness_deactivated", "false")
+    set_text!(item, "warping_stiffness_deactivated", "true")
+    set_text!(item, "deactivate_shear_weld_elements", "false")
+    set_text!(item, "thin_walled_model", sec_type == "TYPE_PARAMETRIC_THIN_WALLED" ? "true" : "false")
+    set_text!(item, "us_spelling_of_properties", "false")
+    set_text!(item, "has_cost_estimation", "false")
+    set_text!(item, "has_emissions_estimation", "false")
+    set_text!(item, "stress_smoothing_to_avoid_singularities", "false")
+
+    # driving dimensions – all tags verified to exist in the RFEM schema
+    for (tag, val) in zip(dim_tags, dims)
+        val > 0 && set_text!(item, tag, format_float(val))
+    end
+
+    # gross properties (RFEM recomputes these for parametric sections)
+    set_text!(item, "area_axial",                  format_float(xs.area))
+    set_text!(item, "area_shear_z",                format_float(xs.asz))
+    set_text!(item, "area_shear_y",                format_float(xs.asy))
+    set_text!(item, "inclination_principal_axes", "0")
+    set_text!(item, "rotation_angle", "0")
+    set_text!(item, "depth_temperature_load", format_float(xs.depth))
+    set_text!(item, "width_temperature_load", format_float(max(xs.flange_width, xs.depth)))
+    set_text!(item, "material", xs.material_id)
+    set_text!(item, "parametrization_type", param_type)
+    set_text!(item, "linear_analysis_mesh_refinement_factor", "1")
+    set_text!(item, "nonlinear_analysis_mesh_refinement_factor", "1")
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+function node_item(n)
+    coords = elc("coordinates", [el("x", format_float(n.x)),
+                                 el("y", format_float(n.y)),
+                                 el("z", format_float(n.z))])
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", n.id)
+    set_text!(item, "type", "TYPE_STANDARD")
+    set_text!(item, "coordinate_system", "1")
+    set_text!(item, "coordinate_system_type", "COORDINATE_SYSTEM_CARTESIAN")
+    push!(item.children, coords)
+    set_text!(item, "coordinate_1", format_float(n.x))
+    set_text!(item, "coordinate_2", format_float(n.y))
+    set_text!(item, "coordinate_3", format_float(n.z))
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+function line_item(ln, nodes::Dict{Int,RFEMNode})
+    n1 = ln.start.node_id
+    n2 = ln.end_ref.node_id
+    n1d = get(nodes, n1, nothing)
+    n2d = get(nodes, n2, nothing)
+    if n1d !== nothing && n2d !== nothing
+        len = sqrt((n2d.x-n1d.x)^2 + (n2d.y-n1d.y)^2 + (n2d.z-n1d.z)^2)
+        dx, dy, dz = abs(n2d.x-n1d.x), abs(n2d.y-n1d.y), abs(n2d.z-n1d.z)
+        amax = max(dx, dy, dz)
+        dir_char = dx == amax ? "X" : (dy == amax ? "Y" : "Z")
+    else
+        len = 0.0; dir_char = "X"
+    end
+    β = ln.β
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", ln.id)
+    set_text!(item, "definition_nodes", "$n1,$n2")
+    set_text!(item, "type", "TYPE_POLYLINE")
+    set_text!(item, "length", format_float(len))
+    set_text!(item, "position_short", "|| "*dir_char)
+    set_text!(item, "rotation_specification_type", "COORDINATE_SYSTEM_ROTATION_VIA_ANGLE")
+    set_text!(item, "rotation_angle", format_float(β))
+    set_text!(item, "is_rotated", abs(β) > 1e-12 ? "true" : "false")
+    set_text!(item, "parent_layer", "1")
+    set_text!(item, "member", ln.id)
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+function member_item(m; hinge_start::Int=0, hinge_end::Int=0)
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", m.id)
+    set_text!(item, "type", "TYPE_BEAM")
+    set_text!(item, "activate_load_transfer", "false")
+    set_text!(item, "line", m.line_id)
+    set_text!(item, "cross_section_distribution_type", "SECTION_DISTRIBUTION_TYPE_UNIFORM")
+    set_text!(item, "nodes", "$(m.start_node),$(m.end_node)")
+    set_text!(item, "node_start", m.start_node)
+    set_text!(item, "node_end", m.end_node)
+    set_text!(item, "analytical_length", format_float(m.length))
+    set_text!(item, "length", format_float(m.length))
+    set_text!(item, "position_short", m.position_short)
+    set_text!(item, "load_transfer_type", "STRIPE")
+    set_text!(item, "projected_length", format_float(m.length))
+    set_text!(item, "is_curved", "false")
+    set_text!(item, "rotation_specification_type", "COORDINATE_SYSTEM_ROTATION_VIA_ANGLE")
+    set_text!(item, "rotation_angle", format_float(m.beta))
+    set_text!(item, "is_rotated", abs(m.beta) > 1e-12 ? "true" : "false")
+    set_text!(item, "cross_section_start", m.sect_id)
+    set_text!(item, "cross_section_end", m.sect_id)
+    set_text!(item, "cross_section_internal", m.sect_id)
+    set_text!(item, "cross_section_taper_end", m.sect_id)
+    set_text!(item, "cross_section_taper_start", m.sect_id)
+    set_text!(item, "cross_section_material", m.mat_id)
+    # end releases – only written when a hinge is actually needed
+    hinge_start > 0 && set_text!(item, "member_hinge_start", hinge_start)
+    hinge_end   > 0 && set_text!(item, "member_hinge_end",   hinge_end)
+    set_text!(item, "has_any_end_modifications", "false")
+    set_text!(item, "parent_layer", "1")
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+"""
+SG end-release code (6 chars, one per DOF: x, y, z, rx, ry, rz).
+'R' = released, anything else = fixed.
+
+Member local axes (SG and RFEM identical): x = member length,
+y = section minor axis, z = section major axis; right-hand rule.
+So: rx = torsion (mt), ry = bending about minor axis (my),
+rz = bending about major axis (mz).
+"""
+released_dofs(code::AbstractString) =
+    Tuple(c == 'R' || c == 'r' for c in code)
+
+function member_hinge_item(no::Int, released::NTuple{6,Bool})
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", no)
+    set_text!(item, "user_defined_name_enabled", "true")
+    set_text!(item, "name", "MH$no")
+    # released DOFs: n=ux, vy=uy, vz=uz, mt=rx, my=ry, mz=rz
+    set_text!(item, "axial_release_n",   string(released[1]))
+    set_text!(item, "axial_release_vy",  string(released[2]))
+    set_text!(item, "axial_release_vz",  string(released[3]))
+    set_text!(item, "moment_release_mt", string(released[4]))
+    set_text!(item, "moment_release_my", string(released[5]))
+    set_text!(item, "moment_release_mz", string(released[6]))
+    return item
+end
+
+"""Get or create a hinge id for a release pattern; returns 0 when fully fixed."""
+function hinge_id!(hinges::Dict{NTuple{6,Bool},Int}, container::Node,
+                   code::AbstractString)
+    released = released_dofs(code)
+    any(released) || return 0
+    get!(hinges, released) do
+        no = length(hinges) + 1
+        push!(container.children, member_hinge_item(no, released))
+        return no
+    end
+end
+
+function load_case_item(cid, lc_name, loads::Vector{RFEMNodalLoadItem},
+                        moments::Vector{RFEMNodalMomentItem},
+                        mloads::Vector{RFEMMemberLoadItem})
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", cid)
+    set_text!(item, "analysis_type", "ANALYSIS_TYPE_STATIC")
+    set_text!(item, "name", lc_name)
+    set_text!(item, "static_analysis_settings", "SA1")
+    set_text!(item, "consider_imperfection", "false")
+    set_text!(item, "consider_initial_state", "false")
+    set_text!(item, "to_solve", "false")
+    set_text!(item, "action_category", "ACTION_CATEGORY_NONE_NONE")
+    set_text!(item, "self_weight_active", "false")
+
+    nl_container = Node{String}(XML.Element, "nodal_loads", nothing, nothing, Node[])
+    for ld in loads
+        nl = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+        set_text!(nl, "no", ld.load_no)
+        set_text!(nl, "load_type", "LOAD_TYPE_FORCE")
+        set_text!(nl, "nodes", ld.node_id)
+        set_text!(nl, "has_force_eccentricity", "false")
+        set_text!(nl, "coordinate_system", "1")
+        set_text!(nl, "has_specific_direction", "false")
+        set_text!(nl, "specific_direction_type", "DIRECTION_TYPE_ROTATED_VIA_3_ANGLES")
+        set_text!(nl, "axes_sequence", "SEQUENCE_XYZ")
+        set_text!(nl, "rotated_about_angle_x", "0")
+        set_text!(nl, "rotated_about_angle_y", "0")
+        set_text!(nl, "rotated_about_angle_z", "0")
+        set_text!(nl, "force_magnitude", format_float(ld.magnitude))
+        dir_str = ld.component == 'X' ? "LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U" :
+                  ld.component == 'Y' ? "LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V" :
+                  "LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W_TRUE"
+        set_text!(nl, "load_direction", dir_str)
+        set_text!(nl, "load_case", "LC"*string(cid))
+        set_text!(nl, "is_generated", "false")
+        push!(nl_container.children, nl)
+    end
+    push!(item.children, nl_container)
+
+    # nodal moments – same container, LOAD_TYPE_MOMENT per axis component
+    for mo in moments
+        nl = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+        set_text!(nl, "no", mo.load_no)
+        set_text!(nl, "load_type", "LOAD_TYPE_MOMENT")
+        set_text!(nl, "nodes", mo.node_id)
+        set_text!(nl, "has_force_eccentricity", "false")
+        set_text!(nl, "coordinate_system", "1")
+        set_text!(nl, "has_specific_direction", "false")
+        set_text!(nl, "specific_direction_type", "DIRECTION_TYPE_ROTATED_VIA_3_ANGLES")
+        set_text!(nl, "axes_sequence", "SEQUENCE_XYZ")
+        set_text!(nl, "force_magnitude", format_float(mo.magnitude))
+        dir_str = mo.axis == 'X' ? "LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U" :
+                  mo.axis == 'Y' ? "LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V" :
+                  "LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W_TRUE"
+        set_text!(nl, "load_direction", dir_str)
+        set_text!(nl, "load_case", "LC"*string(cid))
+        set_text!(nl, "is_generated", "false")
+        push!(nl_container.children, nl)
+    end
+
+    # member loads (concentrated + trapezoidal)
+    if !isempty(mloads)
+        ml_container = Node{String}(XML.Element, "member_loads", nothing, nothing, Node[])
+        for ml in mloads
+            nl = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+            set_text!(nl, "no", ml.load_no)
+            lt = ml.kind == :conc_moment ? "LOAD_TYPE_MOMENT" : "LOAD_TYPE_FORCE"
+            set_text!(nl, "load_type", lt)
+            set_text!(nl, "members", ml.member)
+            set_text!(nl, "load_case", "LC"*string(cid))
+            set_text!(nl, "coordinate_system", "1")
+            set_text!(nl, "load_distribution",
+                      ml.distribution == "TRAPEZOIDAL" ?
+                      "LOAD_DISTRIBUTION_TRAPEZOIDAL" : "LOAD_DISTRIBUTION_CONCENTRATED_1")
+            # axis mapping (SG model is Z-up, right-hand rule).
+            # Member local axes: x = length, y = section minor axis,
+            # z = section major axis – identical in SG and RFEM, so local
+            # Y/Z loads pass through 1:1.
+            #   'G' -> global axes (true length)   'A' -> global projected
+            #   'L' -> member local axes
+            dir_str =
+                ml.axis == 'L' ?
+                    (ml.component == 'X' ? "LOAD_DIRECTION_LOCAL_X" :
+                     ml.component == 'Y' ? "LOAD_DIRECTION_LOCAL_Y" :
+                                           "LOAD_DIRECTION_LOCAL_Z") :
+                ml.axis == 'A' ?
+                    (ml.component == 'X' ? "LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U_PROJECTED_LENGTH" :
+                     ml.component == 'Y' ? "LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V_PROJECTED_LENGTH" :
+                                           "LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W_PROJECTED_LENGTH") :
+                    (ml.component == 'X' ? "LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U_TRUE_LENGTH" :
+                     ml.component == 'Y' ? "LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V_TRUE_LENGTH" :
+                                           "LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W_TRUE_LENGTH")
+            set_text!(nl, "load_direction", dir_str)
+            # magnitude: force components are forces; moment kind uses magnitude too
+            set_text!(nl, "magnitude", format_float(ml.mag1))
+            if ml.distribution == "TRAPEZOIDAL"
+                set_text!(nl, "magnitude_1", format_float(ml.mag1))
+                set_text!(nl, "magnitude_2", format_float(ml.mag2))
+                set_text!(nl, "distance_b_is_defined_as_relative", string(ml.relative))
+                set_text!(nl, "distance_b_relative", format_float(ml.b))
+            end
+            set_text!(nl, "distance_a_is_defined_as_relative", string(ml.relative))
+            if ml.relative
+                set_text!(nl, "distance_a_relative", format_float(ml.a))
+            else
+                set_text!(nl, "distance_a_absolute", format_float(ml.a))
+            end
+            set_text!(nl, "reference_to_list_of_members", "false")
+            set_text!(nl, "is_generated", "false")
+            push!(ml_container.children, nl)
+        end
+        push!(item.children, ml_container)
+    end
+
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
+# =============================================================================
+# Main entry
+# =============================================================================
+
+"""
+    generate_rfem_xml(model::RFEMModel, outpath::String)
+
+Write a Dlubal RFEM 6 XML project file. Uses `rfem_xml/rfem_sample.xml`
+as a template for overall document structure/analysis settings and replaces
+materials, sections, nodes, lines, members and load cases.
+
+All sections are written as **parametric** sections (dimensions only), so no
+RFEM library lookup can fail: sections not found in the library are simply
+approximated by their geometric parameters. All materials are written as steel.
 """
 function generate_rfem_xml(model::RFEMModel, outpath::String)::Nothing
-    # ---- locate template --------------------------------------------------
     here = @__DIR__
-    tmpl_path_here = joinpath(here, "..", "..", "rfem_xml", "rfem_sample.xml")
+    tmpl_path_here = normpath(joinpath(here, "..", "rfem_xml", "rfem_sample.xml"))
     tmpl_path_cwd  = joinpath(pwd(), "rfem_xml", "rfem_sample.xml")
     tmpl_path = isfile(tmpl_path_here) ? tmpl_path_here : tmpl_path_cwd
-    if !isfile(tmpl_path)
-        error("""
-        RFEM sample template not found.
-        Expected at ./rfem_xml/rfem_sample.xml or at $(tmpl_path_here)
-        """)
+    isfile(tmpl_path) || error("RFEM sample template not found at $tmpl_path")
+
+    doc = open(f -> read(f, XML.Node), tmpl_path)
+
+    # document → model
+    root = nothing
+    for c in doc.children
+        c isa Node && c.nodetype === XML.Element && c.tag == "document" && (root = c)
+    end
+    root === nothing && error("Template has no <document> root")
+    model_el = find_child(root, "model")
+    model_el === nothing && error("Template has no <model>")
+    basic = find_child(model_el, "basic_objects")
+    basic === nothing && error("Template has no <basic_objects>")
+    loadsec = find_child(model_el, "load_cases_and_combinations")
+    loadsec === nothing && error("Template has no <load_cases_and_combinations>")
+    lc_container = find_child(loadsec, "load_case")
+    lc_container === nothing && error("Template has no <load_case>")
+
+    containers = Dict{String,Node}()
+    for tag in ("material", "section", "node", "line", "member")
+        c = find_child(basic, tag)
+        c === nothing && error("Template has no <$tag> container")
+        containers[tag] = c
     end
 
-    # ---- load template ----------------------------------------------------
-    doc = XML.read(tmpl_path, XML.Document)
-    root = doc.root  # <document>
-
-    # ---- navigate to <model> → <basic_objects> ----------------------------
-    model_el = find_element(root, "model")
-    basic     = find_element(model_el, "basic_objects")
-    loadsec   = find_element(model_el, "load_cases_and_combinations")
-    load_cases_cont = find_element(loadsec, "load_cases")
-
-    # ---- containers for item lists ----------------------------------------
-    mat_cont   = find_element(basic, "material")
-    sec_cont   = find_element(basic, "section")
-    node_cont  = find_element(basic, "node")
-    line_cont  = find_element(basic, "line")
-    member_cont= find_element(basic, "member")
-
-    # ---- template items (first item of each list) ------------------------
-    mat_tpl   = first(XML.child_nodes(mat_cont))
-    sec_tpl   = first(XML.child_nodes(sec_cont))
-    node_tpl  = first(XML.child_nodes(node_cont))
-    line_tpl  = first(XML.child_nodes(line_cont))
-    member_tpl= first(XML.child_nodes(member_cont))
-
-    # load case template: first <item> under <load_cases>
-    lc_tpl    = first(XML.child_nodes(load_cases_cont))
-    # nodal_loads template inside that item
-    nl_parent = find_element(lc_tpl, "nodal_loads")
-    nl_tpl    = first(XML.child_nodes(nl_parent))
-
-    # ---- clear existing item lists ----------------------------------------
-    clear_container!(mat_cont)
-    clear_container!(sec_cont)
-    clear_container!(node_cont)
-    clear_container!(line_cont)
-    clear_container!(member_cont)
-    clear_container!(load_cases_cont)
-
-    # -------------------------------------------------------------------------
-    # 1. MATERIALS
-    # -------------------------------------------------------------------------
-    for mat in values(model.materials)
-        item = deepcopy(mat_tpl)
-
-        # Basic identifiers
-        set_text!(item, "no",          mat.id)
-        set_text!(item, "name",        mat.name)
-
-        # Elastic modulus (Pa) – numerous occurrences
-        replace_recursive!(item, "elasticity_modulus_global", mat.E)
-        replace_recursive!(item, "elasticity_modulus_x",      mat.E)
-        replace_recursive!(item, "elasticity_modulus_y",      mat.E)
-        replace_recursive!(item, "elasticity_modulus_z",      mat.E)
-
-        # Shear modulus
-        G = mat.E / (2*(1 - mat.nu))
-        replace_recursive!(item, "shear_modulus_global", G)
-        replace_recursive!(item, "shear_modulus_yz",    G)
-        replace_recursive!(item, "shear_modulus_xz",    G)
-        replace_recursive!(item, "shear_modulus_xy",    G)
-
-        # Poisson ratio
-        replace_recursive!(item, "poisson_ratio_global", mat.nu)
-        replace_recursive!(item, "poisson_ratio_yz",    mat.nu)
-        replace_recursive!(item, "poisson_ratio_xz",    mat.nu)
-        replace_recursive!(item, "poisson_ratio_xy",    mat.nu)
-        replace_recursive!(item, "poisson_ratio_zy",    mat.nu)
-        replace_recursive!(item, "poisson_ratio_zx",    mat.nu)
-        replace_recursive!(item, "poisson_ratio_yx",    mat.nu)
-
-        # Density & others
-        replace_recursive!(item, "mass_density", mat.density)
-        replace_recursive!(item, "specific_weight", mat.density)
-
-        # Thermal expansion
-        replace_recursive!(item, "thermal_expansion_coefficient_global", mat.α)
-        replace_recursive!(item, "thermal_expansion_coefficient_x", mat.α)
-        replace_recursive!(item, "thermal_expansion_coefficient_y", mat.α)
-        replace_recursive!(item, "thermal_expansion_coefficient_z", mat.α)
-
-        # Yield strength
-        replace_recursive!(item, "yield_strength_for_compression", mat.fy)
-        replace_recursive!(item, "yield_strength_for_tension",     mat.fy)
-
-        XML.add_child(mat_cont, item)
+    # ---- 1. MATERIALS (all steel) -----------------------------------------
+    clear_children!(containers["material"])
+    for (_, mat) in model.materials
+        push!(containers["material"].children, material_item(mat))
     end
 
-    # -------------------------------------------------------------------------
-    # 2. SECTIONS
-    # -------------------------------------------------------------------------
-    # Build mapping section_id → list of member IDs that use it
-    sec_members = Dict{Int, Vector{Int}}()
-    for (memb_id, line) in model.lines
-      push!(get!(Vector{Int}, sec_members, line.sect_id), memb_id)
-    end
-
-    for xs in values(model.cross_sections)
-        item = deepcopy(sec_tpl)
-        sid  = xs.id
-        set_text!(item, "no",              sid)
-        set_text!(item, "name",            xs.name)
-        # assigned members
-        member_list = get(sec_members, sid, Int[])
-        set_text!(item, "assigned_to_members", vector_join(member_list))
-
-        # Cross-section material reference
-        set_text!(item, "material", string(xs.material_id))
-
-        # Basic area / inertia properties (SI units m, m^2, m^4)
-        set_text!(item, "area_axial",                     format_float(xs.area))
-        set_text!(item, "moment_of_inertia_bending_z",    format_float(xs.iz))
-        set_text!(item, "moment_of_inertia_bending_y",    format_float(xs.iy))
-        set_text!(item, "moment_of_inertia_torsion",      format_float(xs.j))
-
-        # Shear areas (rough approximation)
-        A_shear = xs.area * 0.6
-        set_text!(item, "area_shear_z", format_float(A_shear))
-        set_text!(item, "area_shear_y", format_float(A_shear))
-
-        # Temperature load dimensions (depth and width in meters)
-        set_text!(item, "depth_temperature_load",  format_float(xs.depth))
-        set_text!(item, "width_temperature_load",  format_float(xs.flange_width))
-
-        # Some geometry parameters – keep from template if not provided
-        if xs.depth > 0
-            set_text!(item, "h", format_float(xs.depth))
-        end
-        if xs.flange_width > 0
-            set_text!(item, "b", format_float(xs.flange_width))
-        end
-        if xs.root_radius > 0
-            set_text!(item, "r_1", format_float(xs.root_radius))
-            set_text!(item, "r_2", format_float(xs.root_radius))
-        end
-        if xs.thickness_web > 0
-            set_text!(item, "t_w", format_float(xs.thickness_web))
-        end
-        if xs.thickness_flange > 0
-            set_text!(item, "t_f", format_float(xs.thickness_flange))
-        end
-
-        XML.add_child(sec_cont, item)
-    end
-
-    # -------------------------------------------------------------------------
-    # 3. NODES
-    # -------------------------------------------------------------------------
-    for n in values(model.nodes)
-        item = deepcopy(node_tpl)
-        set_text!(item, "no", n.id)
-        # coordinates – multiple places exist, update both location blocks
-
-        # direct coordinates child
-        coords = find_element(item, "coordinates")
-        set_text!(coords, "x", n.x)
-        set_text!(coords, "y", n.y)
-        set_text!(coords, "z", n.z)
-
-        # individual number fields
-        set_text!(item, "coordinate_1", n.x)
-        set_text!(item, "coordinate_2", n.y)
-        set_text!(item, "coordinate_3", n.z)
-
-        XML.add_child(node_cont, item)
-    end
-
-    # -------------------------------------------------------------------------
-    # 4. LINES (geometry)
-    # -------------------------------------------------------------------------
-    for (line_id, ln) in model.lines
-        item = deepcopy(line_tpl)
-        set_text!(item, "no",               ln.id)   # integer to string
-        set_text!(item, "definition_nodes", string(ln.start.node_id)*","*string(ln.end.node_id))
-        # length
-        len = compute_length(model.nodes[ln.start.node_id], model.nodes[ln.end.node_id])
-        set_text!(item, "length",           format_float(len))
-
-        # Determine primary direction for position_short
-        n1 = model.nodes[ln.start.node_id]
-        n2 = model.nodes[ln.end.node_id]
-        dx, dy, dz = n2.x - n1.x, n2.y - n1.y, n2.z - n1.z
-        amax = max(abs(dx), abs(dy), abs(dz))
-        dir_char = abs(dx) == amax ? "X" : (abs(dy)==amax ? "Y" : "Z")
-        set_text!(item, "position_short", "|| "*dir_char)
-
-        # rotation angle – take from line beta (already in degrees)
-        set_text!(item, "rotation_angle", format_float(ln.β))
-
-        # <member> element: which member uses this line
-        # We'll store member_id as same as line_id
-        # find the <member> child element and set its text
-        memb_el = find_element(item, "member")
-        set_text!(memb_el, "", ln.id)   # the <member> tag's text content
-        # Note: In template member tag probably contains number like "4".
-
-        XML.add_child(line_cont, item)
-    end
-
-    # -------------------------------------------------------------------------
-    # 5. MEMBERS (beams)
-    # -------------------------------------------------------------------------
-    # The member data we stored directly as vector in model.members_data after conversion.
-    # We'll prepare that in converter: model.members_data::Vector{RFEMMember}
-    # If not present, we can recompute.
+    # ---- 2. SECTIONS (parametric approximations) --------------------------
+    clear_children!(containers["section"])
+    sec_members = Dict{Int,Vector{Int}}()
     for memb in model.members_data
-        item = deepcopy(member_tpl)
-
-        set_text!(item, "no",                       memb.id)
-        set_text!(item, "line",                     memb.line_id)
-
-        # cross‑section references
-        set_text!(item, "cross_section_start", memb.sect_id)
-        set_text!(item, "cross_section_end",   memb.sect_id)
-        set_text!(item, "cross_section_internal", memb.sect_id)
-        set_text!(item, "cross_section_taper_end",   memb.sect_id)
-        set_text!(item, "cross_section_taper_start", memb.sect_id)
-
-        # material
-        set_text!(item, "cross_section_material", memb.mat_id)
-
-        # nodes info
-        set_text!(item, "nodes",            string(memb.start_node)*","*string(memb.end_node))
-        set_text!(item, "node_start",        memb.start_node)
-        set_text!(item, "node_end",          memb.end_node)
-
-        # Length / mass / volume
-        set_text!(item, "analytical_length",  format_float(memb.length))
-        set_text!(item, "length",             format_float(memb.length))
-        set_text!(item, "analytical_volume",  format_float(memb.volume))
-        set_text!(item, "volume",             format_float(memb.volume))
-        set_text!(item, "analytical_mass",    format_float(memb.mass))
-        set_text!(item, "mass",               format_float(memb.mass))
-
-        # Position short (orientation)
-        set_text!(item, "position_short", memb.position_short)
-
-        # rotation angle (beta)
-        set_text!(item, "rotation_angle", format_float(memb.beta))
-
-        # centre of gravity
-        cg = find_element(item, "center_of_gravity")
-        set_text!(cg, "x", memb.cg_x)
-        set_text!(cg, "y", memb.cg_y)
-        set_text!(cg, "z", memb.cg_z)
-        # also individual CG coordinates elements
-        set_text!(item, "center_of_gravity_x", memb.cg_x)
-        set_text!(item, "center_of_gravity_y", memb.cg_y)
-        set_text!(item, "center_of_gravity_z", memb.cg_z)
-
-        XML.add_child(member_cont, item)
+        push!(get!(Vector{Int}, sec_members, memb.sect_id), memb.id)
+    end
+    for (_, xs) in model.cross_sections
+        push!(containers["section"].children,
+              section_item(xs, get(sec_members, xs.id, Int[])))
     end
 
-    # -------------------------------------------------------------------------
-    # 6. LOAD CASES
-    # -------------------------------------------------------------------------
-    # The template may contain several <static_analysis_settings> items etc which we leave.
-    # We will create new <load_case> items.
-    lc_no = 0
-    for cas in model.cases
-        lc_no += 1
-        lc_item = deepcopy(lc_tpl)
-        set_text!(lc_item, "no",              lc_no)
-        set_text!(lc_item, "name",            cas.name)
-        # Keep other fields like analysis_type from template (static) etc.
-        # Clear any existing loads
-        nodal_parent = find_element(lc_item, "nodal_loads")
-        clear_container!(nodal_parent)
+    # ---- 3. NODES ----------------------------------------------------------
+    clear_children!(containers["node"])
+    for (_, n) in model.nodes
+        push!(containers["node"].children, node_item(n))
+    end
 
-        # Create nodal load items for this case
-        for load in cas.nodal_loads
-            nl_item = deepcopy(nl_tpl)
-            set_text!(nl_item, "no",   load.load_no)  # sequential within case?
-            set_text!(nl_item, "load_type", "LOAD_TYPE_FORCE")
-            set_text!(nl_item, "nodes",  load.node_id)
-            set_text!(nl_item, "coordinate_system", "1")
-            set_text!(nl_item, "has_specific_direction", "false")
-            set_text!(nl_item, "specific_direction_type", "DIRECTION_TYPE_ROTATED_VIA_3_ANGLES")
-            set_text!(nl_item, "axes_sequence", "SEQUENCE_XYZ")
-            # directions
-            set_text!(nl_item, "rotated_about_angle_x","0")
-            set_text!(nl_item, "rotated_about_angle_y","0")
-            set_text!(nl_item, "rotated_about_angle_z","0")
+    # ---- 4. LINES ----------------------------------------------------------
+    clear_children!(containers["line"])
+    for (_, ln) in model.lines
+        push!(containers["line"].children, line_item(ln, model.nodes))
+    end
 
-            # Only one component per item; use appropriate load_direction string
-            # We decide based on which component is non-zero; later we create separate items.
-            # Here we assume load has .component & .value fields.
-            dir_str = load.component == 'X' ? "LOAD_DIRECTION_GLOBAL_X_OR_USER_DEFINED_U" :
-                      load.component == 'Y' ? "LOAD_DIRECTION_GLOBAL_Y_OR_USER_DEFINED_V" :
-                      "LOAD_DIRECTION_GLOBAL_Z_OR_USER_DEFINED_W_TRUE"
-            set_text!(nl_item, "load_direction", dir_str)
-            set_text!(nl_item, "force_magnitude", load.magnitude)
+    # ---- 5. MEMBERS (with end-release hinges) -----------------------------
+    # create the <member_hinge> container if the template lacks one
+    hinge_container = find_child(basic, "member_hinge")
+    if hinge_container === nothing
+        hinge_container = Node{String}(XML.Element, "member_hinge", nothing, nothing, Node[])
+        push!(basic.children, hinge_container)
+    end
+    clear_children!(hinge_container)
+    hinges = Dict{NTuple{6,Bool},Int}()
 
-            XML.add_child(nodal_parent, nl_item)
+    clear_children!(containers["member"])
+    for memb in model.members_data
+        ln = get(model.lines, memb.id, nothing)
+        hs = he = 0
+        if ln !== nothing
+            hs = hinge_id!(hinges, hinge_container, get(ln.props, "release_i", "FFFFFF"))
+            he = hinge_id!(hinges, hinge_container, get(ln.props, "release_j", "FFFFFF"))
         end
-
-        XML.add_child(load_cases_cont, lc_item)
+        push!(containers["member"].children,
+              member_item(memb; hinge_start=hs, hinge_end=he))
     end
 
-    # -------------------------------------------------------------------------
-    # 7. WRITE OUT
-    # -------------------------------------------------------------------------
+    # ---- 6. LOAD CASES -----------------------------------------------------
+    clear_children!(lc_container)
+    for cas in model.cases
+        push!(lc_container.children,
+              load_case_item(cas.id, cas.name, cas.nodal_loads,
+                             cas.nodal_moments, cas.member_loads))
+    end
+
     open(outpath, "w") do io
         XML.write(io, doc)
     end
     return nothing
 end
-
-# -------------------------------------------------------------------------
-# Additional helper: compute length between two nodes
-# -------------------------------------------------------------------------
-function compute_length(n1::RFEMNode, n2::RFEMNode)
-    dx = n2.x - n1.x; dy = n2.y - n1.y; dz = n2.z - n1.z
-    return sqrt(dx*dx + dy*dy + dz*dz)
-end
-
-end # module SGtoRFEM.Writer

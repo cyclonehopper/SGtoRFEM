@@ -12,22 +12,9 @@ module SGtoRFEM
 # -------------------------- Public API ---------------------------------
 export parse_sg_file, convert_to_rfem, generate_rfem_xml,
        SGModel, SGNode, SGMember, SGSection, SGMaterial, SGNodalLoad,
-       SGLoadCase, SGConstraint
+       SGLoadCase, SGConstraint, SGMembConc, SGMembForce, find_child
 
 # -------------------------- SG Data Structures ----------------------------------
-struct SGModel
-    nodes          ::Dict{Int,SGNode}
-    members        ::Dict{Int,SGMember}
-    sections       ::Dict{Int,SGSection}
-    materials      ::Dict{Int,SGMaterial}
-    nodal_loads    ::Vector{SGNodalLoad}
-    load_cases     ::Vector{SGLoadCase}
-    constraints    ::Vector{SGConstraint}
-    offsets        ::Dict{Int,NTuple{6,Float64}}
-    title          ::String
-    units          ::Dict{Symbol,String}
-end
-
 struct SGNode
     id  ::Int
     x   ::Float64
@@ -63,6 +50,8 @@ struct SGSection
     depth         ::Float64    # from second row (mm)
     flange_width  ::Float64    # from second row (mm)
     root_radius   ::Float64    # from second row (mm)
+    thickness_web ::Float64    # from second row (mm)
+    thickness_flange ::Float64 # from second row (mm)
 end
 
 struct SGMaterial
@@ -99,20 +88,53 @@ struct SGConstraint
     code    ::String
 end
 
+# Member concentrated load (MEMBCONC):
+#   lc, member, axis ('G' global / 'L' local / 'A' projected),
+#   spec ('A' absolute metres / '%' relative), distance a,
+#   force (fx,fy,fz), moment (mx,my,mz)
+struct SGMembConc
+    lc       ::Int
+    member   ::Int
+    axis     ::Char
+    relative ::Bool
+    a        ::Float64
+    fx ::Float64; fy ::Float64; fz ::Float64
+    mx ::Float64; my ::Float64; mz ::Float64
+end
+
+# Member distributed/trapezoidal load (MEMBFORCES): one linear piece between
+# distances a..b with start/end magnitudes per component.
+struct SGMembForce
+    lc       ::Int
+    member   ::Int
+    axis     ::Char
+    relative ::Bool
+    a        ::Float64
+    b        ::Float64
+    fx1::Float64; fx2::Float64
+    fy1::Float64; fy2::Float64
+    fz1::Float64; fz2::Float64
+end
+
+struct SGModel
+    nodes          ::Dict{Int,SGNode}
+    members        ::Dict{Int,SGMember}
+    sections       ::Dict{Int,SGSection}
+    materials      ::Dict{Int,SGMaterial}
+    nodal_loads    ::Vector{SGNodalLoad}
+    load_cases     ::Vector{SGLoadCase}
+    constraints    ::Vector{SGConstraint}
+    offsets        ::Dict{Int,NTuple{6,Float64}}
+    title          ::String
+    units          ::Dict{Symbol,String}
+    section_state  ::Dict{Symbol,Int}   # parser scratch state
+    member_concs   ::Vector{SGMembConc}
+    member_forces  ::Vector{SGMembForce}
+end
+
 # =============================================================================
 # 2  RFEM INTERMEDIATE TYPES
 # =============================================================================
-struct RFEMModel
-    nodes          ::Dict{Int,RFEMNode}
-    lines          ::Dict{Int,RFEMLine}      # geometry lines
-    cross_sections ::Dict{Int,RFEMCrossSection}
-    materials      ::Dict{Int,RFEMMaterial}
-    cases          ::Vector{RFEMCase}
-    members_data   ::Vector{RFEMMember}      # created after lines
-    name           ::String
-    units          ::Dict{String,String}
-end
-
 struct RFEMNode
     id  ::Int
     name::String
@@ -133,7 +155,7 @@ struct RFEMLine
     sect_id    ::Int
     mat_id     ::Int
     start      ::RFEMNodeRef
-    `end`      ::RFEMNodeRef
+    end_ref    ::RFEMNodeRef
     β          ::Float64
     fixed_i    ::NTuple{6,Float64}
     fixed_j    ::NTuple{6,Float64}
@@ -156,6 +178,7 @@ struct RFEMCrossSection
     thickness_web         ::Float64      # web thickness (m)
     thickness_flange      ::Float64      # flange thickness (m)
     root_radius           ::Float64      # root radius (m)
+    shape                 ::String       # "I","CHS","RHS","SHS","U","LE","UNKNOWN"
     comments              ::String
 end
 
@@ -179,10 +202,37 @@ struct RFEMNodalLoadItem
     magnitude ::Float64
 end
 
+# Nodal moment: axis 'X','Y','Z' (right-hand rule), magnitude in kNm
+struct RFEMNodalMomentItem
+    load_no   ::Int
+    node_id   ::Int
+    axis      ::Char
+    magnitude ::Float64
+end
+
+# Member load item. kind: :conc_force, :conc_moment or :dist.
+# For :conc_* only mag1/a are used; for :dist mag1/mag2 at distances a/b.
+# axis: 'G' global axes, 'L' member local axes, 'A' global projected.
+struct RFEMMemberLoadItem
+    load_no      ::Int
+    member       ::Int
+    kind         ::Symbol
+    component    ::Char        # 'X','Y','Z'
+    axis         ::Char        # 'G','L','A'
+    distribution ::String      # "CONCENTRATED_1" | "TRAPEZOIDAL"
+    relative     ::Bool
+    a            ::Float64
+    b            ::Float64
+    mag1         ::Float64
+    mag2         ::Float64
+end
+
 struct RFEMCase
     id           ::Int
     name         ::String
     nodal_loads  ::Vector{RFEMNodalLoadItem}
+    nodal_moments::Vector{RFEMNodalMomentItem}
+    member_loads ::Vector{RFEMMemberLoadItem}
 end
 
 struct RFEMMember
@@ -200,6 +250,17 @@ struct RFEMMember
     cg_z              ::Float64
     beta              ::Float64
     position_short    ::String   # "|| X", "|| Y", "|| Z"
+end
+
+struct RFEMModel
+    nodes          ::Dict{Int,RFEMNode}
+    lines          ::Dict{Int,RFEMLine}      # geometry lines
+    cross_sections ::Dict{Int,RFEMCrossSection}
+    materials      ::Dict{Int,RFEMMaterial}
+    cases          ::Vector{RFEMCase}
+    members_data   ::Vector{RFEMMember}      # created after lines
+    name           ::String
+    units          ::Dict{String,String}
 end
 
 # =============================================================================
