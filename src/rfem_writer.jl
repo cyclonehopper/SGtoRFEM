@@ -458,6 +458,31 @@ function load_case_item(cid, lc_name, loads::Vector{RFEMNodalLoadItem},
     return item
 end
 
+function load_combination_item(co::RFEMCombination)
+    item = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+    set_text!(item, "no", co.no)
+    set_text!(item, "analysis_type", "ANALYSIS_TYPE_STATIC")
+    set_text!(item, "user_defined_name_enabled", "true")
+    set_text!(item, "name", co.name)
+    set_text!(item, "static_analysis_settings", "SA1")
+    set_text!(item, "to_solve", "false")
+
+    rule = join(["$(f)*LC$(lc)" for (lc, f) in co.items], " + ")
+    rows = Node{String}(XML.Element, "items", nothing, nothing, Node[])
+    for (i, (lcno, factor)) in enumerate(co.items)
+        row = Node{String}(XML.Element, "item", nothing, nothing, Node[])
+        set_text!(row, "no", i)
+        set_text!(row, "description", "LC$lcno")
+        set_text!(row, "factor", format_float(factor))
+        set_text!(row, "load_case", lcno)
+        push!(rows.children, row)
+    end
+    push!(item.children, rows)
+    set_text!(item, "combination_rule_str", rule)
+    set_text!(item, "is_generated", "false")
+    return item
+end
+
 # =============================================================================
 # Main entry
 # =============================================================================
@@ -561,6 +586,18 @@ function generate_rfem_xml(model::RFEMModel, outpath::String)::Nothing
         push!(lc_container.children,
               load_case_item(cas.id, cas.name, cas.nodal_loads,
                              cas.nodal_moments, cas.member_loads))
+    end
+
+    # ---- 6b. LOAD COMBINATIONS --------------------------------------------
+    comb_container = find_child(loadsec, "load_combination")
+    if comb_container === nothing
+        comb_container = Node{String}(XML.Element, "load_combination",
+                                      nothing, nothing, Node[])
+        push!(loadsec.children, comb_container)
+    end
+    clear_children!(comb_container)
+    for co in model.combinations
+        push!(comb_container.children, load_combination_item(co))
     end
 
     open(outpath, "w") do io

@@ -8474,71 +8474,7 @@ DOWNWARDS</text>
           </different_materials>
         </item>
       </design_situation>
-      <load_combination>
-        <item>
-          <no>1</no>
-          <analysis_type>ANALYSIS_TYPE_STATIC</analysis_type>
-          <associated_standard>6546</associated_standard>
-          <design_situation>DS2</design_situation>
-          <user_defined_name_enabled>false</user_defined_name_enabled>
-          <name>LC1</name>
-          <static_analysis_settings>SA1</static_analysis_settings>
-          <consider_imperfection>false</consider_imperfection>
-          <consider_initial_state>false</consider_initial_state>
-          <structure_modification_enabled>false</structure_modification_enabled>
-          <to_solve>true</to_solve>
-          <items>
-            <item>
-              <factor>1</factor>
-              <load_case>LC1</load_case>
-            </item>
-          </items>
-          <combination_rule_str>LC1</combination_rule_str>
-          <is_generated>false</is_generated>
-        </item>
-        <item>
-          <no>2</no>
-          <analysis_type>ANALYSIS_TYPE_STATIC</analysis_type>
-          <associated_standard>6546</associated_standard>
-          <design_situation>DS1</design_situation>
-          <user_defined_name_enabled>false</user_defined_name_enabled>
-          <name>LC2</name>
-          <static_analysis_settings>SA3</static_analysis_settings>
-          <consider_imperfection>false</consider_imperfection>
-          <consider_initial_state>false</consider_initial_state>
-          <structure_modification_enabled>false</structure_modification_enabled>
-          <to_solve>true</to_solve>
-          <items>
-            <item>
-              <factor>1</factor>
-              <load_case>LC2</load_case>
-            </item>
-          </items>
-          <combination_rule_str>LC2</combination_rule_str>
-          <is_generated>false</is_generated>
-        </item>
-        <item>
-          <no>3</no>
-          <analysis_type>ANALYSIS_TYPE_STATIC</analysis_type>
-          <associated_standard>6546</associated_standard>
-          <design_situation>DS1</design_situation>
-          <user_defined_name_enabled>false</user_defined_name_enabled>
-          <name>LC3</name>
-          <static_analysis_settings>SA3</static_analysis_settings>
-          <consider_imperfection>false</consider_imperfection>
-          <consider_initial_state>false</consider_initial_state>
-          <structure_modification_enabled>false</structure_modification_enabled>
-          <to_solve>true</to_solve>
-          <items>
-            <item>
-              <factor>1</factor>
-              <load_case>LC3</load_case>
-            </item>
-          </items>
-          <combination_rule_str>LC3</combination_rule_str>
-          <is_generated>false</is_generated>
-        </item>
-      </load_combination>
+      <load_combination/>
       <static_analysis_settings>
         <item>
           <no>1</no>

@@ -24,7 +24,9 @@ function parse_sg_file(filepath::String)
         Dict{Symbol,String}(),           # units
         Dict{Symbol,Int}(),              # section parser state
         SGMembConc[],                    # member concentrated loads
-        SGMembForce[]                    # member distributed loads
+        SGMembForce[],                    # member distributed loads
+        Dict{Int,String}(),               # load titles (TITLES)
+        SGCombo[]                         # combinations
     )
 
     current_section = ""
@@ -97,7 +99,7 @@ function process_line(model::SGModel, section::String, line::AbstractString)
     elseif section == "SELFWEIGHT";   parse_selfweight!(model, line)
     elseif section == "LUMPEDMASS";   parse_lumped_mass!(model, line)
     elseif section == "COMBINATIONS"; parse_combination!(model, line)
-    elseif section == "TITLES";       model.title = strip(line, '"')
+    elseif section == "TITLES";       parse_title!(model, line)
     end # unknown sections are ignored
 end
 
@@ -309,6 +311,31 @@ function parse_member_force!(model::SGModel, line::AbstractString)
             num(8), num(9), num(10), num(11), num(12), num(13)))
     catch; end
 end
+
+# TITLES rows: `no,name` or `no,"name with, comma"` – names for load cases
+# and combinations. A line without a leading integer is the job title.
+function parse_title!(model::SGModel, line::AbstractString)
+    f = split(line, ','; limit=2)
+    no = tryparse(Int, strip(f[1]))
+    if no === nothing
+        isempty(model.title) && (model.title = strip(strip(line), '"'))
+        return
+    end
+    length(f) >= 2 || return
+    name = strip(f[2])
+    startswith(name, '"') && (name = lstrip(strip(name, '"')))
+    isempty(name) || (model.load_titles[no] = String(name))
+end
+
+# COMBINATIONS rows: combination_no, load_case_no, factor
+function parse_combination!(model::SGModel, line::AbstractString)
+    f = split(line, ","); length(f) < 3 && return
+    try
+        push!(model.combinations, SGCombo(parse(Int, strip(f[1])),
+                                          parse(Int, strip(f[2])),
+                                          parse(Float64, strip(f[3]))))
+    catch; end
+end
+
 parse_selfweight!(_m::SGModel, _l::AbstractString) = nothing
 parse_lumped_mass!(_m::SGModel, _l::AbstractString) = nothing
-parse_combination!(_m::SGModel, _l::AbstractString) = nothing

@@ -102,8 +102,6 @@ struct SGMembConc
     mx ::Float64; my ::Float64; mz ::Float64
 end
 
-# Member distributed/trapezoidal load (MEMBFORCES): one linear piece between
-# distances a..b with start/end magnitudes per component.
 struct SGMembForce
     lc       ::Int
     member   ::Int
@@ -116,7 +114,14 @@ struct SGMembForce
     fz1::Float64; fz2::Float64
 end
 
-struct SGModel
+# Load combination factor row (COMBINATIONS): combination no, load case, factor
+struct SGCombo
+    no    ::Int
+    lc_no ::Int
+    factor::Float64
+end
+
+mutable struct SGModel
     nodes          ::Dict{Int,SGNode}
     members        ::Dict{Int,SGMember}
     sections       ::Dict{Int,SGSection}
@@ -130,6 +135,8 @@ struct SGModel
     section_state  ::Dict{Symbol,Int}   # parser scratch state
     member_concs   ::Vector{SGMembConc}
     member_forces  ::Vector{SGMembForce}
+    load_titles    ::Dict{Int,String}   # TITLES: case/combination no -> name
+    combinations   ::Vector{SGCombo}
 end
 
 # =============================================================================
@@ -235,6 +242,13 @@ struct RFEMCase
     member_loads ::Vector{RFEMMemberLoadItem}
 end
 
+# Load combination: ordered (load_case_no, factor) items
+struct RFEMCombination
+    no    ::Int
+    name  ::String
+    items ::Vector{Tuple{Int,Float64}}   # (load case no, factor)
+end
+
 struct RFEMMember
     id                ::Int
     line_id           ::Int
@@ -258,6 +272,7 @@ struct RFEMModel
     cross_sections ::Dict{Int,RFEMCrossSection}
     materials      ::Dict{Int,RFEMMaterial}
     cases          ::Vector{RFEMCase}
+    combinations   ::Vector{RFEMCombination}
     members_data   ::Vector{RFEMMember}      # created after lines
     name           ::String
     units          ::Dict{String,String}

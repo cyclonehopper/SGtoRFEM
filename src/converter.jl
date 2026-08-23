@@ -256,15 +256,15 @@ function convert_to_rfem(sg::SGModel)::RFEMModel
         push!(get!(Vector{SGMembForce}, forces_by_case, d.lc), d)
     end
 
+    # load cases referenced only by combinations still need to exist
+    combo_lcs = [c.lc_no for c in sg.combinations]
     all_cases = sort(union(collect(keys(loads_by_case)),
                            collect(keys(concs_by_case)),
-                           collect(keys(forces_by_case))))
+                           collect(keys(forces_by_case)), combo_lcs))
 
     cases = RFEMCase[]
     for cid in all_cases
-        lc_name = "LC " * string(cid)
-        idx = findfirst(lc -> lc.id == cid, sg.load_cases)
-        idx !== nothing && (lc_name = sg.load_cases[idx].name)
+        lc_name = get(sg.load_titles, cid, "LC " * string(cid))
 
         ncomps = RFEMNodalLoadItem[]
         nmoments = RFEMNodalMomentItem[]
@@ -320,10 +320,26 @@ function convert_to_rfem(sg::SGModel)::RFEMModel
     end
 
     # -------------------------------------------------------------------------
+    # 6b. Load combinations (COMBINATIONS + TITLES)
+    # -------------------------------------------------------------------------
+    combos = RFEMCombination[]
+    if !isempty(sg.combinations)
+        by_no = Dict{Int,Vector{SGCombo}}()
+        for c in sg.combinations
+            push!(get!(Vector{SGCombo}, by_no, c.no), c)
+        end
+        for no in sort(collect(keys(by_no)))
+            items = [(c.lc_no, c.factor) for c in sort(by_no[no]; by=x -> x.lc_no)]
+            name = get(sg.load_titles, no, "CO " * string(no))
+            push!(combos, RFEMCombination(no, name, items))
+        end
+    end
+
+    # -------------------------------------------------------------------------
     # 7. Assemble Model
     # -------------------------------------------------------------------------
     model = RFEMModel(nodes, lines, cross_sections, materials,
-                      cases, members, sg.title, Dict{String,String}())
+                      cases, combos, members, sg.title, Dict{String,String}())
     return model
 end
 
